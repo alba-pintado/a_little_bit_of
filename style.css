@@ -1,0 +1,203 @@
+/* ---------------------- */
+/* GENERAL / RESET       */
+/* ---------------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fafafa;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ---------------------- */
+/* HEADER / MENÚ FIJO     */
+/* ---------------------- */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #4a90e2;
+  padding: 15px 0;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+header nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 15px;
+  transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+  color: #ffd700;
+}
+
+/* ---------------------- */
+/* HERO / PORTADA         */
+/* ---------------------- */
+#hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 160px 50px 100px;
+  background-color: #f0f0f0;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+
+.hero-text p {
+  font-size: 1.5rem;
+  opacity: 0;
+  animation: fadeIn 2s 1s forwards; /* retrasa 1s */
+}
+
+/* Perfil */
+.hero-profile .profile-container {
+  text-align: center;
+}
+
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid white;
+  background-color: white;
+  padding: 5px;
+}
+
+.profile-box {
+  background-color: white;
+  border-radius: 15px;
+  padding: 15px;
+  margin-top: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* ---------------------- */
+/* SECCIONES GENERALES    */
+/* ---------------------- */
+section {
+  padding: 80px 50px;
+  text-align: center;
+}
+
+section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+/* Sub-cards */
+.subsections {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.sub-card {
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 15px;
+  width: 180px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.sub-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.sub-card img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
+}
+
+/* ---------------------- */
+/* TUTORING               */
+/* ---------------------- */
+#tutoring {
+  margin-top: 60px;
+  padding: 40px 20px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* ---------------------- */
+/* SCROLL / FADE-IN       */
+/* ---------------------- */
+.scroll-appear {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-appear.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------------------- */
+/* ANIMACIONES HERO       */
+/* ---------------------- */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---------------------- */
+/* RESPONSIVE             */
+/* ---------------------- */
+@media (max-width: 900px) {
+  #hero {
+    flex-direction: column;
+    padding: 120px 30px 80px;
+  }
+
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-text p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .sub-card {
+    width: 140px;
+    padding: 15px;
+  }
+
+  .sub-card img {
+    width: 60px;
+    height: 60px;
+  }
+}
