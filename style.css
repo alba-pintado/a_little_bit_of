@@ -1,93 +1,92 @@
-/* ---------------------- */
-/* GENERAL                */
-/* ---------------------- */
-* { box-sizing: border-box; margin:0; padding:0; }
-body { font-family: 'Montserrat', sans-serif; background: #fafafa; color:#333; }
+/* GENERAL */
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:'Montserrat', sans-serif; background:#fafafa; color:#333; }
 img { max-width:100%; display:block; }
 
-/* ---------------------- */
-/* HEADER                 */
-/* ---------------------- */
-header {
-  position: fixed;
-  top:0;
-  width:100%;
-  background:#4a90e2;
-  padding:15px 0;
-  z-index:1000;
-}
+/* HEADER */
+header { position:fixed; top:0; width:100%; background:#4a90e2; padding:15px 0; z-index:1000; }
 header nav ul { display:flex; justify-content:center; list-style:none; }
 header nav ul li a { color:white; text-decoration:none; font-weight:bold; margin:0 15px; transition:color 0.3s; }
 header nav ul li a:hover { color:#ffd700; }
 
-/* ---------------------- */
-/* HERO / PORTADA         */
-/* ---------------------- */
+/* HERO */
 #hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: #f0f0f0;
-  text-align: center;
-  padding: 0 20px;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:#f0f0f0;
+  padding:0 20px;
 }
-#hero h1 {
-  font-size: 8vw; /* gigante, adaptativo */
-  font-weight: 900;
-  opacity:0;
-  animation: fadeIn 2s forwards;
-  line-height: 1.1;
-}
-#hero p {
-  font-size: 3vw;
-  margin-top: 20px;
-  opacity:0;
-  animation: fadeIn 2s 1s forwards;
-}
+#hero h1 { font-size:12vw; font-weight:900; opacity:0; animation:fadeIn 2s forwards; line-height:1.1; }
+#hero p { font-size:4vw; margin-top:20px; opacity:0; animation:fadeIn 2s 1s forwards; }
 
-/* ---------------------- */
-/* PERFIL Y OBJETIVO      */
-/* ---------------------- */
+/* PERFIL Y OBJETIVO */
 #profile-objective {
   display:flex;
   justify-content:center;
-  align-items:center;
-  padding:100px 50px;
+  align-items:flex-start;
   gap:50px;
+  padding:100px 50px;
 }
-.profile-left { flex:1; display:flex; justify-content:center; }
-.profile-pic { width:200px; height:200px; border-radius:50%; border:3px solid white; background:white; padding:5px; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
-.objective-right { flex:2; }
-.objective-right h2 { font-size:2rem; margin-bottom:15px; }
-.objective-right p { font-size:1.2rem; line-height:1.6; }
 
-/* ---------------------- */
-/* SECCIONES ICONOS       */
-/* ---------------------- */
-section.scroll-appear { display:flex; justify-content:center; padding:80px 20px; }
-.icon-section { text-align:center; margin:30px; }
+.profile-left { flex:1; display:flex; flex-direction:column; align-items:center; }
+.profile-pic { width:200px; height:200px; border-radius:50%; border:3px solid white; background:white; padding:5px; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
+.profile-box, .objective-box {
+  background:white;
+  border-radius:15px;
+  padding:20px;
+  margin-top:20px;
+  max-width:300px;
+  overflow:hidden;
+  opacity:0;
+}
+
+/* POP-UP */
+.pop-up .profile-box.visible {
+  opacity:1;
+  transform: scale(1);
+  transition: all 0.6s ease-out;
+}
+
+/* OBJECTIVE */
+.objective-right { flex:2; display:flex; align-items:center; }
+.objective-box { max-width:500px; font-size:1.2rem; overflow:hidden; }
+
+/* TYPEWRITER */
+.typewriter p {
+  display:inline-block;
+  border-right:3px solid #333;
+  white-space: nowrap;
+  overflow:hidden;
+  animation: typing 4s steps(80,end), blink 0.75s step-end infinite;
+}
+@keyframes typing { from{width:0;} to{width:100%;} }
+@keyframes blink { 50%{border-color:transparent;} }
+
+/* SECCIONES ICONOS */
+section.scroll-appear { display:flex; justify-content:center; padding:80px 20px; flex-wrap:wrap; }
+.icon-section { text-align:center; margin:30px; opacity:0; transform:translateY(50px); transition: opacity 0.8s, transform 0.8s; }
+.icon-section.visible { opacity:1; transform:translateY(0); }
 .icon-section img { width:80px; height:80px; }
 .icon-section p { margin-top:10px; font-weight:bold; }
 
-/* ---------------------- */
-/* SCROLL / FADE-IN       */
+/* SCROLL / FADE-IN */
 .scroll-appear { opacity:0; transform:translateY(50px); transition: opacity 0.8s, transform 0.8s; }
 .scroll-appear.visible { opacity:1; transform:translateY(0); }
 
-/* ---------------------- */
-/* ANIMACIONES HERO       */
-@keyframes fadeIn { to { opacity:1; } }
+/* HERO ANIMACION */
+@keyframes fadeIn { to{opacity:1;} }
 
-/* ---------------------- */
-/* RESPONSIVE             */
+/* RESPONSIVE */
 @media(max-width:900px){
   #profile-objective { flex-direction:column; text-align:center; gap:30px; }
   .objective-right { flex:none; }
 }
 @media(max-width:600px){
-  #hero h1 { font-size:10vw; }
-  #hero p { font-size:5vw; }
+  #hero h1 { font-size:15vw; }
+  #hero p { font-size:6vw; }
   .icon-section img { width:60px; height:60px; }
 }

@@ -1,5 +1,6 @@
-// Aparece secciones al hacer scroll
+// Scroll animations
 const scrollElements = document.querySelectorAll(".scroll-appear");
+const profileBox = document.querySelector(".pop-up .profile-box");
 
 const elementInView = (el, dividend = 1) => {
   const elementTop = el.getBoundingClientRect().top;
@@ -16,11 +17,12 @@ const handleScrollAnimation = () => {
       displayScrollElement(el);
     }
   });
+
+  // Pop-up perfil
+  if (profileBox && elementInView(profileBox.parentElement, 1.5)) {
+    profileBox.classList.add("visible");
+  }
 };
 
-window.addEventListener("scroll", () => {
-  handleScrollAnimation();
-});
-
-// Inicial para verlas si están en pantalla al cargar
+window.addEventListener("scroll", handleScrollAnimation);
 handleScrollAnimation();
