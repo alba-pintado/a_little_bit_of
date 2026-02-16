@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>A Little Bit Of…</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Header / Menú fijo -->
+
+  <!-- HEADER / MENÚ -->
   <header>
     <nav>
       <ul>
-        <li><a href="#hero">Inicio</a></li>
         <li><a href="#science">Science & Bioinformatics</a></li>
+        <li><a href="#tutoring">Tutoring</a></li>
         <li><a href="#lifestyle">Lifestyle</a></li>
         <li><a href="#books">Books</a></li>
         <li><a href="#travel">Travel</a></li>
@@ -24,156 +24,78 @@
     </nav>
   </header>
 
-  <!-- Hero / Portada -->
+  <!-- HERO / PORTADA -->
   <section id="hero">
-    <div class="hero-text">
-      <h1 class="fade-in">A Little Bit Of…</h1>
-      <p class="fade-in-delay">For the curious and weird ones</p>
-    </div>
-
-    <div class="hero-profile">
-      <div class="profile-container">
-        <img src="images/perfil.jpg" alt="Alba Pintado" class="profile-pic">
-        <div class="profile-box">
-          <p><strong>Alba Pintado</strong></p>
-          <p>Bioinformatics, Science & Explorer of the World</p>
-        </div>
-      </div>
-    </div>
+    <h1 class="fade-in">A Little Bit Of…</h1>
+    <p class="fade-in-delay">For the curious and weird ones</p>
   </section>
 
-  <!-- Objetivo / descripción del vlog -->
-  <section id="objective" class="scroll-appear">
-    <p>
-      This vlog shares science, bioinformatics, travel, movies, music, and curiosities for the inquisitive minds.
-    </p>
-  </section>
-
-  <!-- Science & Bioinformatics -->
-  <section id="science">
-    <h2>Science & Bioinformatics</h2>
-    <div class="subsections">
-      <div class="sub-card">
-        <img src="icons/molecular.png" alt="Molecular Biology">
-        <p>Molecular Biology</p>
-      </div>
-      <div class="sub-card">
-        <img src="icons/omics.png" alt="Omics">
-        <p>Omics</p>
-      </div>
-      <div class="sub-card">
-        <img src="icons/programming.png" alt="Programming">
-        <p>Programming</p>
-      </div>
-      <div class="sub-card">
-        <img src="icons/medicine.png" alt="Health & Medicine">
-        <p>Health & Medicine</p>
-      </div>
-      <div class="sub-card">
-        <img src="icons/researcher.png" alt="Research Illustration">
-        <p>Research Illustration</p>
-      </div>
+  <!-- PERFIL Y OBJETIVO -->
+  <section id="profile-objective" class="scroll-appear">
+    <div class="profile-left">
+      <img src="images/perfil.jpg" alt="Alba Pintado" class="profile-pic">
     </div>
-
-    <!-- Tutoring integrado -->
-    <div id="tutoring" class="scroll-appear">
-      <h3>Tutoring</h3>
-      <div class="subsections">
-        <div class="sub-card">
-          <img src="icons/biology.png" alt="Biology Tutoring">
-          <p>Mathematics</p>
-        </div>
-        <div class="sub-card">
-          <img src="icons/bioinformatics.png" alt="Bioinformatics Tutoring">
-          <p>Chemistry</p>
-        </div>
-        <div class="sub-card">
-          <img src="icons/programming.png" alt="Programming Tutoring">
-          <p>Physics</p>
-        </div>
-        <div class="sub-card">
-          <img src="icons/online.png" alt="Online Tutoring">
-          <p>Bilogy</p>
-        </div>
-      </div>
+    <div class="objective-right">
+      <h2>Hello! I’m Alba Pintado</h2>
       <p>
-        If you are curious about science, bioinformatics, or programming, I offer tutoring sessions tailored for all levels.
+        This blog shares science, bioinformatics, travel, movies, music, and curiosities for the curious and inquisitive minds.
       </p>
     </div>
   </section>
 
-  <!-- Lifestyle -->
-  <section id="lifestyle">
-    <h2>Lifestyle</h2>
-    <div class="subsections">
-      <div class="sub-card">
-        <img src="icons/sports.png" alt="Sports">
-        <p>Sports</p>
-      </div>
-      <div class="sub-card">
-        <img src="icons/recipes.png" alt="Recipes">
-        <p>Recipes</p>
-      </div>
+  <!-- SCIENCE & BIOINFORMATICS -->
+  <section id="science" class="scroll-appear">
+    <div class="icon-section">
+      <img src="icons/science.png" alt="Science">
+      <p>Science & Bioinformatics</p>
     </div>
   </section>
 
-  <!-- Books -->
-  <section id="books">
-    <h2>Books</h2>
-    <div class="subsections">
-      <div class="sub-card">
-        <img src="icons/book.png" alt="Reviews">
-        <p>Reviews</p>
-      </div>
-      <div class="sub-card">
-        <img src="icons/book2.png" alt="Recommendations">
-        <p>Recommendations</p>
-      </div>
+  <!-- TUTORING -->
+  <section id="tutoring" class="scroll-appear">
+    <div class="icon-section">
+      <img src="icons/tutoring.png" alt="Tutoring">
+      <p>Tutoring</p>
     </div>
   </section>
 
-  <!-- Travel -->
-  <section id="travel">
-    <h2>Travel</h2>
-    <div class="subsections">
-      <div class="sub-card">
-        <img src="icons/travel.png" alt="Destinations">
-        <p>Destinations</p>
-      </div>
-      <div class="sub-card">
-        <img src="icons/tips.png" alt="Tips">
-        <p>Tips</p>
-      </div>
+  <!-- LIFESTYLE -->
+  <section id="lifestyle" class="scroll-appear">
+    <div class="icon-section">
+      <img src="icons/lifestyle.png" alt="Lifestyle">
+      <p>Lifestyle</p>
     </div>
   </section>
 
-  <!-- Movies, Series & Documentaries -->
-  <section id="movies">
-    <h2>Movies, Series & Documentaries</h2>
-    <div class="subsections">
-      <div class="sub-card">
-        <img src="icons/movie.png" alt="Reviews">
-        <p>Movies</p>
-      </div>
-      <div class="sub-card">
-        <img src="icons/trailer.png" alt="Trailers">
-        <p>Series</p>
-      </div>
+  <!-- BOOKS -->
+  <section id="books" class="scroll-appear">
+    <div class="icon-section">
+      <img src="icons/books.png" alt="Books">
+      <p>Books</p>
     </div>
   </section>
 
-  <!-- Music & Podcasts -->
-  <section id="music">
-    <h2>Music & Podcasts</h2>
-    <div class="subsections">
-      <div class="sub-card">
-        <img src="icons/music.png" alt="Playlists">
-        <p>Playlists</p>
-      </div>
-      <div class="sub-card">
-        <img src="icons/podcast.png" alt="Episodes">
-        <p>Episodes</p>
-      </div>
+  <!-- TRAVEL -->
+  <section id="travel" class="scroll-appear">
+    <div class="icon-section">
+      <img src="icons/travel.png" alt="Travel">
+      <p>Travel</p>
+    </div>
+  </section>
+
+  <!-- MOVIES, SERIES & DOCS -->
+  <section id="movies" class="scroll-appear">
+    <div class="icon-section">
+      <img src="icons/movies.png" alt="Movies & Docs">
+      <p>Movies & Docs</p>
+    </div>
+  </section>
+
+  <!-- MUSIC & PODCASTS -->
+  <section id="music" class="scroll-appear">
+    <div class="icon-section">
+      <img src="icons/music.png" alt="Music & Podcasts">
+      <p>Music & Podcasts</p>
     </div>
   </section>
 
