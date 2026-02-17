@@ -35,12 +35,3 @@ document.querySelectorAll("#sections-icons .icon-section").forEach(icon=>{
     section.scrollIntoView({behavior:"smooth"});
   });
 });
-
-document.querySelectorAll("nav a[data-target]").forEach(link=>{
-  link.addEventListener("click", e=>{
-    e.preventDefault();
-    const targetId = link.getAttribute("data-target");
-    const section = document.getElementById(targetId);
-    section.scrollIntoView({behavior:"smooth"});
-  });
-});
