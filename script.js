@@ -1,28 +1,46 @@
-// Scroll animations
-const scrollElements = document.querySelectorAll(".scroll-appear");
-const profileBox = document.querySelector(".pop-up .profile-box");
-
-const elementInView = (el, dividend = 1) => {
-  const elementTop = el.getBoundingClientRect().top;
-  return elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend;
-};
-
-const displayScrollElement = (element) => {
-  element.classList.add("visible");
-};
-
-const handleScrollAnimation = () => {
-  scrollElements.forEach((el) => {
-    if (elementInView(el, 1.25)) {
-      displayScrollElement(el);
+/* TYPEWRITER EFFECT */
+function typeWriter(element, speed=30){
+  const text = element.innerText;
+  element.innerText = "";
+  let i=0;
+  function typing(){
+    if(i<text.length){
+      element.innerText+=text.charAt(i);
+      i++;
+      setTimeout(typing,speed);
     }
-  });
-
-  // Pop-up perfil
-  if (profileBox && elementInView(profileBox.parentElement, 1.5)) {
-    profileBox.classList.add("visible");
   }
-};
+  typing();
+}
 
-window.addEventListener("scroll", handleScrollAnimation);
-handleScrollAnimation();
+window.addEventListener("load", ()=>{
+  const typeElements = document.querySelectorAll(".profile-box p, .objective-box p");
+  typeElements.forEach((el,index)=>{
+    setTimeout(()=>typeWriter(el),500+index*600);
+  });
+});
+
+/* SEARCH TOGGLE */
+const openSearch = document.getElementById("openSearch");
+const searchBox = document.getElementById("searchBox");
+openSearch.addEventListener("click",()=>{ 
+  searchBox.style.display = searchBox.style.display==="block"?"none":"block"; 
+});
+
+/* ICON NAVIGATION (scroll to section) */
+document.querySelectorAll("#sections-icons .icon-section").forEach(icon=>{
+  icon.addEventListener("click", ()=>{
+    const targetId = icon.getAttribute("data-target");
+    const section = document.getElementById(targetId);
+    section.scrollIntoView({behavior:"smooth"});
+  });
+});
+
+document.querySelectorAll("nav a[data-target]").forEach(link=>{
+  link.addEventListener("click", e=>{
+    e.preventDefault();
+    const targetId = link.getAttribute("data-target");
+    const section = document.getElementById(targetId);
+    section.scrollIntoView({behavior:"smooth"});
+  });
+});
