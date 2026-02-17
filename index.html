@@ -13,26 +13,36 @@
 </head>
 <body>
 
-  <!-- HEADER / MENÚ -->
+  <!-- HEADER / MENÚ CON LUPA -->
   <header>
-    <ul class="menu-items">
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#science">Science & Bioinformatics</a></li>
-      <li><a href="#tutoring">Tutoring</a></li>
-      <li><a href="#lifestyle">Lifestyle</a></li>
-      <li><a href="#books">Books</a></li>
-      <li><a href="#travel">Travel</a></li>
-      <li><a href="#movies">Movies, Series & Documentaries</a></li>
-      <li><a href="#music">Music & Podcasts</a></li>
-    </ul>
+    <nav class="nav-container">
+      <ul class="menu-items">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#science">Science & Bioinformatics</a></li>
+        <li><a href="#tutoring">Tutoring</a></li>
+        <li><a href="#lifestyle">Lifestyle</a></li>
+        <li><a href="#books">Books</a></li>
+        <li><a href="#travel">Travel</a></li>
+        <li><a href="#movies">Movies, Series & Documentaries</a></li>
+        <li><a href="#music">Music & Podcasts</a></li>
+      </ul>
+      <button id="search-btn" class="search-icon">🔍</button>
+    </nav>
   </header>
 
   <!-- HERO -->
   <section id="hero">
-    <h1 class="caprasimo-regular">A Little Bit Of…</h1>
-    <p class="subtitle">For the curious and weird ones</p>
-    <p class="author">by Alba Pintado Rodrigo</p>
-  </section>
+  <h1 class="caprasimo-regular fade-in" id="main-title">A Little Bit Of…</h1>
+  <p class="subtitle fade-in-delay" id="sub-title">For the curious and weird ones</p>
+
+  <!-- Firma manuscrita animada -->
+  <svg id="author-sign" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 100">
+    <text x="0" y="70" font-family="Homemade Apple, cursive" font-size="60" fill="none" stroke="#333" stroke-width="2">
+      by Alba Pintado Rodrigo
+    </text>
+  </svg>
+</section>
+
 
   <!-- PERFIL Y OBJETIVO -->
   <section id="profile-objective">
@@ -97,11 +107,10 @@
         <img src="icons/music.png" alt="Music & Podcasts">
         <p>Music & Podcasts</p>
       </div>
-      <button id="search-btn" class="search-icon">🔍</button>
     </div>
   </section>
 
-  <!-- SECCIONES -->
+  <!-- SECCIONES (no se muestran abajo del todo) -->
   <section id="science" class="section-padding"><h2>Science & Bioinformatics</h2></section>
   <section id="tutoring" class="section-padding"><h2>Tutoring</h2></section>
   <section id="lifestyle" class="section-padding"><h2>Lifestyle</h2></section>
