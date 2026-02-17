@@ -20,14 +20,22 @@ window.addEventListener("load", ()=>{
   });
 });
 
-/* ICON NAVIGATION (scroll to section) */
+/* ICON NAVIGATION */
 document.querySelectorAll("#sections-icons .icon-section").forEach(icon=>{
   icon.addEventListener("click", ()=>{
-    const targetId = icon.getAttribute("data-target");
-    const section = document.getElementById(targetId);
-    section.scrollIntoView({behavior:"smooth"});
+    const targetUrl = icon.getAttribute("data-target");
+    window.location.href = targetUrl; // redirige a otra página
   });
 });
+
+/* BUSCADOR */
+document.getElementById("search-btn").addEventListener("click", ()=>{
+  const query = document.getElementById("search-input").value.trim();
+  if(query){
+    window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, "_blank");
+  }
+});
+
 
 
 

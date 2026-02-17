@@ -13,19 +13,25 @@
 </head>
 <body>
 
-  <!-- HEADER / MENÚ -->
+  <!-- HEADER / MENÚ + BUSCADOR -->
   <header>
     <nav>
-      <ul>
+      <ul class="menu-items">
         <li><a href="#hero">Home</a></li>
-        <li><a href="#science">Science & Bioinformatics</a></li>
-        <li><a href="#tutoring">Tutoring</a></li>
-        <li><a href="#lifestyle">Lifestyle</a></li>
-        <li><a href="#books">Books</a></li>
-        <li><a href="#travel">Travel</a></li>
-        <li><a href="#movies">Movies, Series & Docs</a></li>
-        <li><a href="#music">Music & Podcasts</a></li>
+        <li><a href="science.html">Science & Bioinformatics</a></li>
+        <li><a href="tutoring.html">Tutoring</a></li>
+        <li><a href="lifestyle.html">Lifestyle</a></li>
+        <li><a href="books.html">Books</a></li>
+        <li><a href="travel.html">Travel</a></li>
+        <li><a href="movies.html">Movies, Series & Docs</a></li>
+        <li><a href="music.html">Music & Podcasts</a></li>
       </ul>
+
+      <!-- BUSCADOR -->
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="Search...">
+        <button id="search-btn">🔍</button>
+      </div>
     </nav>
   </header>
 
@@ -41,17 +47,15 @@
     <div class="profile-column">
       <img src="images/perfil.jpg" alt="Alba Pintado" class="profile-pic">
       <div class="profile-box typewriter">
-        <p>
-          Hi! I’m Alba Pintado Rodrigo, a biologist and bioinformatician. I enjoy staying active, following a healthy routine, and sharing knowledge with curiosity and rigor.
-        </p>
+        <p>Hi! I’m Alba Pintado Rodrigo, a biologist and bioinformatician.</p>
+        <p>I enjoy staying active, following a healthy routine, and sharing knowledge with curiosity and rigor.</p>
       </div>
     </div>
 
     <div class="objective-column">
       <div class="objective-box rectangular typewriter">
-        <p>
-          The aim of this vlog is to professionally share what I am passionate about—science, bioinformatics, lifestyle, travel, books, and music—so it reaches curious minds worldwide. Thank you for being here!
-        </p>
+        <p>The aim of this vlog is to professionally share what I am passionate about—science, bioinformatics, lifestyle, travel, books, and music—so it reaches curious minds worldwide.</p>
+        <p>Thank you for being here!</p>
       </div>
     </div>
   </section>
@@ -59,107 +63,39 @@
   <!-- ICONOS -->
   <section id="sections-icons">
     <div class="icon-row">
-      <div class="icon-section" data-target="science">
+      <div class="icon-section" data-target="science.html">
         <img src="icons/science.png" alt="Science">
         <p>Science & Bioinformatics</p>
       </div>
-      <div class="icon-section" data-target="tutoring">
+      <div class="icon-section" data-target="tutoring.html">
         <img src="icons/tutoring.png" alt="Tutoring">
         <p>Tutoring</p>
       </div>
     </div>
     <div class="icon-row">
-      <div class="icon-section" data-target="lifestyle">
+      <div class="icon-section" data-target="lifestyle.html">
         <img src="icons/lifestyle.png" alt="Lifestyle">
         <p>Lifestyle</p>
       </div>
-      <div class="icon-section" data-target="books">
+      <div class="icon-section" data-target="books.html">
         <img src="icons/books.png" alt="Books">
         <p>Books</p>
       </div>
     </div>
     <div class="icon-row">
-      <div class="icon-section" data-target="travel">
+      <div class="icon-section" data-target="travel.html">
         <img src="icons/travel.png" alt="Travel">
         <p>Travel</p>
       </div>
-      <div class="icon-section" data-target="movies">
+      <div class="icon-section" data-target="movies.html">
         <img src="icons/movies.png" alt="Movies & Docs">
         <p>Movies, Series & Docs</p>
       </div>
     </div>
     <div class="icon-row single-center">
-      <div class="icon-section" data-target="music">
+      <div class="icon-section" data-target="music.html">
         <img src="icons/music.png" alt="Music & Podcasts">
         <p>Music & Podcasts</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECCIÓN TUTORING -->
-  <section id="tutoring" class="section-padding">
-    <h1 class="section-title">Tutoring</h1>
-    <div class="tutoring-message">
-      <p>
-        I am from Madrid, Spain, and I usually give my classes in Spanish. For this reason, most of the documents are in Spanish. 
-        However, if you would like any of the documents in English, please do not hesitate to contact me and I can provide them in English.
-      </p>
-    </div>
-
-    <div class="courses-container">
-      <div class="course">
-        <h2>1º ESO</h2>
-        <ul>
-          <li>Matemáticas</li>
-          <li>Física</li>
-          <li>Química</li>
-          <li>Biología</li>
-        </ul>
-      </div>
-      <div class="course">
-        <h2>2º ESO</h2>
-        <ul>
-          <li>Matemáticas</li>
-          <li>Física</li>
-          <li>Química</li>
-          <li>Biología</li>
-        </ul>
-      </div>
-      <div class="course">
-        <h2>3º ESO</h2>
-        <ul>
-          <li>Matemáticas</li>
-          <li>Física</li>
-          <li>Química</li>
-          <li>Biología</li>
-        </ul>
-      </div>
-      <div class="course">
-        <h2>4º ESO</h2>
-        <ul>
-          <li>Matemáticas</li>
-          <li>Física</li>
-          <li>Química</li>
-          <li>Biología</li>
-        </ul>
-      </div>
-      <div class="course">
-        <h2>1º Bachillerato</h2>
-        <ul>
-          <li>Matemáticas</li>
-          <li>Física</li>
-          <li>Química</li>
-          <li>Biología</li>
-        </ul>
-      </div>
-      <div class="course">
-        <h2>2º Bachillerato</h2>
-        <ul>
-          <li>Matemáticas</li>
-          <li>Física</li>
-          <li>Química</li>
-          <li>Biología</li>
-        </ul>
       </div>
     </div>
   </section>

@@ -17,17 +17,44 @@ body {
 }
 
 /* HEADER */
-header { position:fixed; width:100%; top:0; background:white; padding:15px 0; box-shadow:0 2px 10px rgba(0,0,0,0.05); z-index:1000; }
-nav ul { display:flex; justify-content:center; list-style:none; gap:25px; }
-nav a { text-decoration:none; color:#333; font-weight:500; font-family:'Outfit', sans-serif; cursor:pointer; }
-nav a:hover { color:#777; }
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background: white;
+  padding: 15px 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-items { display:flex; list-style:none; gap:20px; }
+.menu-items li a { text-decoration:none; color:#333; font-weight:500; font-family:'Outfit', sans-serif; }
+.menu-items li a:hover { color:#777; }
+
+/* BUSCADOR */
+.search-box { display:flex; align-items:center; gap:5px; }
+.search-box input {
+  padding:6px 10px;
+  border:1px solid #ccc;
+  border-radius:20px;
+  outline:none;
+  font-family:'Outfit', sans-serif;
+  font-size:0.9rem;
+  width:150px;
+  transition: width 0.3s ease;
+}
+.search-box input:focus { width:200px; border-color:#888; }
+.search-box button { border:none; background:none; font-size:1.1rem; cursor:pointer; }
 
 /* HERO */
 #hero { height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
-.dm-serif-text-regular, #hero h1.title {
+.dm-serif-text-regular {
   font-family: "DM Serif Text", serif;
-  font-weight: 900;
-  font-size: 12vw;
+  font-weight:900;
+  font-size:12vw;
   line-height:1.1;
   letter-spacing:2px;
   color:#222;
@@ -57,26 +84,22 @@ nav a:hover { color:#777; }
 #profile-objective { display:flex; justify-content:center; align-items:flex-start; gap:50px; padding:80px 20px; flex-wrap:wrap; }
 .profile-column, .objective-column { display:flex; flex-direction:column; align-items:flex-start; position:relative; }
 .profile-pic { width:220px; height:220px; border-radius:50%; object-fit:cover; margin-bottom:20px; }
-.profile-box, .objective-box.rectangular, .tutoring-message {
+.profile-box, .objective-box.rectangular {
   padding:25px; border-radius:20px; background:white; box-shadow:0 4px 20px rgba(0,0,0,0.05);
-  text-align:justify; font-family:'Outfit', sans-serif; line-height:1.7; font-weight:400; font-size:1.15rem; word-break:break-word; margin:20px auto; max-width:450px;
+  text-align:justify; font-family:'Outfit', sans-serif; line-height:1.8; font-weight:400; font-size:1.2rem; word-break:break-word; margin:20px auto; max-width:450px;
 }
-.profile-box p { font-size:1.2rem; line-height:1.8; }
+.profile-box p,
+.objective-box p {
+  white-space: pre-wrap;
+  margin-bottom:1rem;
+}
 
 /* ICONOS */
 .icon-row { display:flex; justify-content:center; gap:50px; flex-wrap:wrap; margin-bottom:30px; }
 .icon-row.single-center { justify-content:center; }
-.icon-section { display:flex; flex-direction:column; align-items:center; text-align:center; }
-.icon-section img { width:200px; height:200px; cursor:pointer; display:block; margin:0 auto; }
+.icon-section { display:flex; flex-direction:column; align-items:center; text-align:center; cursor:pointer; }
+.icon-section img { width:200px; height:200px; display:block; margin:0 auto; }
 .icon-section p { font-family:'Outfit', sans-serif; font-weight:500; font-size:1.2rem; margin-top:10px; text-align:center; }
-
-/* TUTORING */
-.tutoring-message { max-width:800px; margin:0 auto 50px auto; padding:25px; background:rgba(255,255,255,0.7); border-radius:20px; box-shadow:0 4px 20px rgba(0,0,0,0.05); font-family:'Outfit', sans-serif; font-size:1.15rem; line-height:1.7; text-align:justify; }
-.courses-container { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:30px; max-width:1200px; margin:0 auto; }
-.course { background:white; border-radius:20px; padding:20px; box-shadow:0 4px 20px rgba(0,0,0,0.05); text-align:center; font-family:'Outfit', sans-serif; }
-.course h2 { font-family:'Outfit', sans-serif; font-weight:500; margin-bottom:15px; }
-.course ul { list-style:none; padding:0; }
-.course ul li { font-size:1.1rem; margin-bottom:8px; }
 
 /* RESPONSIVE */
 @media(max-width:900px){
@@ -88,4 +111,5 @@ nav a:hover { color:#777; }
   .profile-pic { width:180px; height:180px; }
   .profile-box { max-width:300px; font-size:1rem; }
   .icon-section img { width:180px; height:180px; }
+  .search-box input { width:120px; }
 }
