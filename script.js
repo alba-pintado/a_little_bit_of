@@ -14,18 +14,16 @@ function typeWriter(element, speed=30){
 }
 
 window.addEventListener("load", ()=>{
-  const typeElements = document.querySelectorAll(".profile-box p, .objective-box p");
+  const typeElements = document.querySelectorAll(".typewriter");
   typeElements.forEach((el,index)=>{
-    setTimeout(()=>typeWriter(el),500+index*600);
+    setTimeout(()=>typeWriter(el.querySelector('p')),500+index*600);
   });
 });
 
-/* ICON NAVIGATION (scroll to section) */
-document.querySelectorAll("#sections-icons .icon-section").forEach(icon=>{
+/* ICON NAVIGATION */
+document.querySelectorAll("#sections-icons .icon-section a").forEach(icon=>{
   icon.addEventListener("click", ()=>{
-    const targetId = icon.getAttribute("data-target");
-    const section = document.getElementById(targetId);
-    section.scrollIntoView({behavior:"smooth"});
+    // Enlace normal, abre HTML correspondiente
   });
 });
 

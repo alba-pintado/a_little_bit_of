@@ -1,7 +1,7 @@
 /* RESET */
 * { margin:0; padding:0; box-sizing:border-box; }
 body {
-  font-family:'Montserrat', sans-serif;
+  font-family:'Poppins', sans-serif;
   scroll-behavior:smooth;
   background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb);
   background-size:400% 400%;
@@ -9,16 +9,12 @@ body {
   color:#222;
 }
 
-/* FUENTES */
-.dm-serif { font-family: "DM Serif Text", serif; }
-.homemade { font-family: "Homemade Apple", cursive; }
+/* TIPOGRAFIAS */
+.dm-serif { font-family: 'Playfair Display', serif; }
+.homemade { font-family: 'Homemade Apple', cursive; }
 
-/* ANIMACION FONDO */
-@keyframes gradientBG {
-  0% {background-position:0% 50%;}
-  50% {background-position:100% 50%;}
-  100% {background-position:0% 50%;}
-}
+/* GRADIENT ANIMATION */
+@keyframes gradientBG { 0% {background-position:0% 50%;} 50% {background-position:100% 50%;} 100% {background-position:0% 50%;} }
 
 /* HEADER */
 header { position:fixed; width:100%; top:0; background:white; padding:15px 0; box-shadow:0 2px 10px rgba(0,0,0,0.05); z-index:1000; }
@@ -27,37 +23,39 @@ nav a { text-decoration:none; color:#333; font-weight:500; cursor:pointer; }
 nav a:hover { color:#777; }
 
 /* HERO */
-#hero { height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
-#hero h1.title { font-size:6vw; font-weight:normal; }
-#hero p.subtitle { font-size:1.8vw; margin-top:10px; }
-#hero .author { font-size:2.5vw; margin-top:10px; color:#444; }
-
-/* PERFIL Y OBJETIVO */
-#profile-objective {
-  display:flex;
-  justify-content:center;
-  align-items:flex-start;
-  gap:50px;
-  padding:80px 20px;
-  flex-wrap:wrap;
-}
-
-/* COLUMNAS */
-.profile-column, .objective-column {
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-  position:relative; /* para que los hijos respeten el recuadro */
-}
-
-/* FOTO PERFIL */
-.profile-pic {
-  width:220px;
-  height:220px;
-  border-radius:50%;
-  object-fit:cover;
+#hero { height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:0 20px; }
+#hero h1.title {
+  font-family: 'Playfair Display', serif;
+  font-size:8vw;
+  font-weight:700;
+  background: linear-gradient(90deg, #ff6a6a, #ffb86c, #6ac1ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  text-shadow:2px 2px 12px rgba(0,0,0,0.1);
   margin-bottom:20px;
 }
+#hero p.subtitle { font-family:'Poppins', sans-serif; font-size:2vw; margin-top:10px; color:#444; }
+#hero p.author {
+  font-family: 'Homemade Apple', cursive;
+  font-size:2.5vw;
+  margin-top:40px;
+  color:#555;
+  display:inline-block;
+  white-space:pre-wrap;
+  border-right:2px solid #555;
+  overflow:hidden;
+}
+
+/* PERFIL Y OBJETIVO */
+#profile-objective { display:flex; justify-content:center; align-items:flex-start; gap:50px; padding:80px 20px; flex-wrap:wrap; }
+
+/* COLUMNAS */
+.profile-column, .objective-column { display:flex; flex-direction:column; align-items:flex-start; }
+
+/* FOTO PERFIL */
+.profile-pic { width:220px; height:220px; border-radius:50%; object-fit:cover; margin-bottom:20px; }
 
 /* CAJAS PERFIL Y OBJETIVO */
 .profile-box, .objective-box.rectangular {
@@ -67,9 +65,9 @@ nav a:hover { color:#777; }
   box-shadow:0 4px 20px rgba(0,0,0,0.05);
   line-height:1.6;
   word-wrap: break-word;
-  white-space: normal;       /* <--- muy importante */
-  width:100%;                /* ocupa todo el ancho del contenedor */
-  max-width:100%;            /* no se sale del contenedor */
+  white-space: pre-wrap;
+  width:100%;
+  max-width:100%;
   box-sizing:border-box;
 }
 
@@ -79,18 +77,21 @@ nav a:hover { color:#777; }
 /* OBJETIVO */
 .objective-box.rectangular { max-width:450px; min-height:350px; }
 
-/* TYPEWRITER */
+/* TYPEWRITER EFFECT */
 .typewriter p {
-  display:block;             /* bloque para respetar ancho */
-  border-right:3px solid #333;
-  overflow:hidden;
-  animation:blink 0.75s step-end infinite;
-  white-space:pre-wrap;      /* <--- permite saltos y wrap automáticos */
-  word-break: break-word;    /* evita que palabras largas se salgan */
+  display:block;
   width:100%;
 }
 
-@keyframes blink { 50% { border-color:transparent; } }
+/* ICONOS */
+#sections-icons { padding:40px 20px; text-align:center; }
+.icon-row { display:flex; justify-content:center; gap:50px; margin-bottom:30px; flex-wrap:wrap; }
+.icon-row.single-center { justify-content:center; }
+.icon-section img { width:150px; height:150px; cursor:pointer; }
+.icon-section p { margin-top:10px; font-weight:500; }
+
+/* FOOTER */
+footer { text-align:center; padding:20px; color:#555; }
 
 /* RESPONSIVE */
 @media(max-width:900px){
@@ -101,5 +102,5 @@ nav a:hover { color:#777; }
   #hero .author { font-size:5vw; }
   .profile-pic { width:180px; height:180px; }
   .profile-box { max-width:300px; font-size:1rem; }
-  .icon-section img { width:150px; height:150px; }
+  .icon-section img { width:120px; height:120px; }
 }
