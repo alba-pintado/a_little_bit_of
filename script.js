@@ -5,25 +5,19 @@ function typeWriter(element, speed=30){
   let i=0;
   function typing(){
     if(i<text.length){
-      element.innerText+=text.charAt(i);
+      element.innerText += text.charAt(i);
       i++;
-      setTimeout(typing,speed);
+      setTimeout(typing, speed);
     }
   }
   typing();
 }
 
 window.addEventListener("load", ()=>{
-  const typeElements = document.querySelectorAll(".typewriter");
+  const typeElements = document.querySelectorAll(".profile-box p, .objective-box p");
   typeElements.forEach((el,index)=>{
-    setTimeout(()=>typeWriter(el.querySelector('p')),500+index*600);
+    setTimeout(()=>typeWriter(el),500+index*600);
   });
 });
 
-/* ICON NAVIGATION */
-document.querySelectorAll("#sections-icons .icon-section a").forEach(icon=>{
-  icon.addEventListener("click", ()=>{
-    // Enlace normal, abre HTML correspondiente
-  });
-});
 
