@@ -5,13 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>A Little Bit Of…</title>
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Outfit:wght@400;500;600;700&family=Homemade+Apple&display=swap" rel="stylesheet">
+
   <!-- CSS -->
   <link rel="stylesheet" href="style.css">
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cal+Sans:wght@700&family=Homemade+Apple&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -19,28 +17,27 @@
   <header>
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="science.html">Science & Bioinformatics</a></li>
-        <li><a href="tutoring.html">Tutoring</a></li>
-        <li><a href="lifestyle.html">Lifestyle</a></li>
-        <li><a href="books.html">Books</a></li>
-        <li><a href="travel.html">Travel</a></li>
-        <li><a href="movies.html">Movies, Series & Docs</a></li>
-        <li><a href="music.html">Music & Podcasts</a></li>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#science">Science & Bioinformatics</a></li>
+        <li><a href="#tutoring">Tutoring</a></li>
+        <li><a href="#lifestyle">Lifestyle</a></li>
+        <li><a href="#books">Books</a></li>
+        <li><a href="#travel">Travel</a></li>
+        <li><a href="#movies">Movies, Series & Docs</a></li>
+        <li><a href="#music">Music & Podcasts</a></li>
       </ul>
     </nav>
   </header>
 
   <!-- HERO -->
   <section id="hero">
-    <h1 class="title">A Little Bit Of…</h1>
+    <h1 class="dm-serif-text-regular">A Little Bit Of…</h1>
     <p class="subtitle">For the curious and weird ones</p>
     <p class="author">by Alba Pintado Rodrigo</p>
   </section>
 
   <!-- PERFIL Y OBJETIVO -->
   <section id="profile-objective">
-    <!-- PERFIL -->
     <div class="profile-column">
       <img src="images/perfil.jpg" alt="Alba Pintado" class="profile-pic">
       <div class="profile-box typewriter">
@@ -50,7 +47,6 @@
       </div>
     </div>
 
-    <!-- OBJETIVO -->
     <div class="objective-column">
       <div class="objective-box rectangular typewriter">
         <p>
@@ -60,60 +56,115 @@
     </div>
   </section>
 
-  <!-- ICONOS DE SECCIONES -->
+  <!-- ICONOS -->
   <section id="sections-icons">
     <div class="icon-row">
-      <div class="icon-section">
-        <a href="science.html">
-          <img src="icons/science.png" alt="Science">
-          <p>Science & Bioinformatics</p>
-        </a>
+      <div class="icon-section" data-target="science">
+        <img src="icons/science.png" alt="Science">
+        <p>Science & Bioinformatics</p>
       </div>
-      <div class="icon-section">
-        <a href="tutoring.html">
-          <img src="icons/tutoring.png" alt="Tutoring">
-          <p>Tutoring</p>
-        </a>
+      <div class="icon-section" data-target="tutoring">
+        <img src="icons/tutoring.png" alt="Tutoring">
+        <p>Tutoring</p>
       </div>
     </div>
     <div class="icon-row">
-      <div class="icon-section">
-        <a href="lifestyle.html">
-          <img src="icons/lifestyle.png" alt="Lifestyle">
-          <p>Lifestyle</p>
-        </a>
+      <div class="icon-section" data-target="lifestyle">
+        <img src="icons/lifestyle.png" alt="Lifestyle">
+        <p>Lifestyle</p>
       </div>
-      <div class="icon-section">
-        <a href="books.html">
-          <img src="icons/books.png" alt="Books">
-          <p>Books</p>
-        </a>
+      <div class="icon-section" data-target="books">
+        <img src="icons/books.png" alt="Books">
+        <p>Books</p>
       </div>
     </div>
     <div class="icon-row">
-      <div class="icon-section">
-        <a href="travel.html">
-          <img src="icons/travel.png" alt="Travel">
-          <p>Travel</p>
-        </a>
+      <div class="icon-section" data-target="travel">
+        <img src="icons/travel.png" alt="Travel">
+        <p>Travel</p>
       </div>
-      <div class="icon-section">
-        <a href="movies.html">
-          <img src="icons/movies.png" alt="Movies & Docs">
-          <p>Movies, Series & Docs</p>
-        </a>
+      <div class="icon-section" data-target="movies">
+        <img src="icons/movies.png" alt="Movies & Docs">
+        <p>Movies, Series & Docs</p>
       </div>
     </div>
     <div class="icon-row single-center">
-      <div class="icon-section">
-        <a href="music.html">
-          <img src="icons/music.png" alt="Music & Podcasts">
-          <p>Music & Podcasts</p>
-        </a>
+      <div class="icon-section" data-target="music">
+        <img src="icons/music.png" alt="Music & Podcasts">
+        <p>Music & Podcasts</p>
       </div>
     </div>
   </section>
 
+  <!-- SECCIÓN TUTORING -->
+  <section id="tutoring" class="section-padding">
+    <h1 class="section-title">Tutoring</h1>
+    <div class="tutoring-message">
+      <p>
+        I am from Madrid, Spain, and I usually give my classes in Spanish. For this reason, most of the documents are in Spanish. 
+        However, if you would like any of the documents in English, please do not hesitate to contact me and I can provide them in English.
+      </p>
+    </div>
+
+    <div class="courses-container">
+      <div class="course">
+        <h2>1º ESO</h2>
+        <ul>
+          <li>Matemáticas</li>
+          <li>Física</li>
+          <li>Química</li>
+          <li>Biología</li>
+        </ul>
+      </div>
+      <div class="course">
+        <h2>2º ESO</h2>
+        <ul>
+          <li>Matemáticas</li>
+          <li>Física</li>
+          <li>Química</li>
+          <li>Biología</li>
+        </ul>
+      </div>
+      <div class="course">
+        <h2>3º ESO</h2>
+        <ul>
+          <li>Matemáticas</li>
+          <li>Física</li>
+          <li>Química</li>
+          <li>Biología</li>
+        </ul>
+      </div>
+      <div class="course">
+        <h2>4º ESO</h2>
+        <ul>
+          <li>Matemáticas</li>
+          <li>Física</li>
+          <li>Química</li>
+          <li>Biología</li>
+        </ul>
+      </div>
+      <div class="course">
+        <h2>1º Bachillerato</h2>
+        <ul>
+          <li>Matemáticas</li>
+          <li>Física</li>
+          <li>Química</li>
+          <li>Biología</li>
+        </ul>
+      </div>
+      <div class="course">
+        <h2>2º Bachillerato</h2>
+        <ul>
+          <li>Matemáticas</li>
+          <li>Física</li>
+          <li>Química</li>
+          <li>Biología</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- JS -->
   <script src="script.js"></script>
 </body>
 </html>

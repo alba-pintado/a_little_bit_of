@@ -1,13 +1,13 @@
-/* TYPEWRITER EFFECT */
+/* TYPEWRITER */
 function typeWriter(element, speed=30){
   const text = element.innerText;
   element.innerText = "";
   let i=0;
   function typing(){
     if(i<text.length){
-      element.innerText += text.charAt(i);
+      element.innerText+=text.charAt(i);
       i++;
-      setTimeout(typing, speed);
+      setTimeout(typing,speed);
     }
   }
   typing();
@@ -19,5 +19,15 @@ window.addEventListener("load", ()=>{
     setTimeout(()=>typeWriter(el),500+index*600);
   });
 });
+
+/* ICON NAVIGATION (scroll to section) */
+document.querySelectorAll("#sections-icons .icon-section").forEach(icon=>{
+  icon.addEventListener("click", ()=>{
+    const targetId = icon.getAttribute("data-target");
+    const section = document.getElementById(targetId);
+    section.scrollIntoView({behavior:"smooth"});
+  });
+});
+
 
 

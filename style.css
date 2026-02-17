@@ -1,21 +1,14 @@
-/* -------------------------- */
 /* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+* { margin:0; padding:0; box-sizing:border-box; }
 body {
   font-family: 'Outfit', sans-serif;
   scroll-behavior: smooth;
   background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb);
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
-  color: #222;
+  color:#222;
 }
 
-/* -------------------------- */
 /* ANIMACION FONDO */
 @keyframes gradientBG {
   0% {background-position:0% 50%;}
@@ -23,263 +16,76 @@ body {
   100% {background-position:0% 50%;}
 }
 
-/* -------------------------- */
-/* HEADER / MENÚ */
-header {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  background: white;
-  padding: 15px 0;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  z-index: 1000;
-}
+/* HEADER */
+header { position:fixed; width:100%; top:0; background:white; padding:15px 0; box-shadow:0 2px 10px rgba(0,0,0,0.05); z-index:1000; }
+nav ul { display:flex; justify-content:center; list-style:none; gap:25px; }
+nav a { text-decoration:none; color:#333; font-weight:500; font-family:'Outfit', sans-serif; cursor:pointer; }
+nav a:hover { color:#777; }
 
-nav ul {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  gap: 25px;
-}
-
-nav a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  font-family: 'Outfit', sans-serif;
-  cursor: pointer;
-}
-
-nav a:hover {
-  color: #777;
-}
-
-/* -------------------------- */
 /* HERO */
-#hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-/* TITULO PRINCIPAL */
+#hero { height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
 .dm-serif-text-regular, #hero h1.title {
   font-family: "DM Serif Text", serif;
-  font-weight: 900; /* muy gordo y potente */
-  font-size: 10vw;  /* grande y responsive */
-  line-height: 1.1;
-  color: #222;
-  letter-spacing: 2px;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.1); /* efecto difuminado */
-  text-align: center;
+  font-weight: 900;
+  font-size: 12vw;
+  line-height:1.1;
+  letter-spacing:2px;
+  color:#222;
+  margin-bottom:20px;
+  text-align:center;
+  text-shadow:2px 2px 12px rgba(0,0,0,0.1);
 }
-
-/* SUBTITULO */
-.subtitle, .section-subtitle {
-  font-family: 'Outfit', sans-serif;
-  font-weight: 500; /* Medium */
-  font-size: 2.5vw;
-  text-align: center;
-  margin-top: 10px;
-  color: #333;
-  text-shadow: 0 0 5px rgba(255,255,255,0.2);
+.subtitle {
+  font-family:'Outfit', sans-serif;
+  font-weight:500;
+  font-size:2.5vw;
+  text-align:center;
+  margin-top:10px;
+  color:#333;
+  text-shadow:0 0 5px rgba(255,255,255,0.2);
 }
-
-/* FIRMA */
 .author {
-  font-family: 'Homemade Apple', cursive;
-  font-size: 2vw;
-  margin-top: 60px; /* más abajo */
-  color: #555;
-  text-align: center;
-  display: block;
+  font-family:'Homemade Apple', cursive;
+  font-size:2vw;
+  margin-top:60px;
+  color:#555;
+  display:block;
+  text-align:center;
 }
 
-/* -------------------------- */
 /* PERFIL Y OBJETIVO */
-#profile-objective {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 50px;
-  padding: 80px 20px;
-  flex-wrap: wrap;
+#profile-objective { display:flex; justify-content:center; align-items:flex-start; gap:50px; padding:80px 20px; flex-wrap:wrap; }
+.profile-column, .objective-column { display:flex; flex-direction:column; align-items:flex-start; position:relative; }
+.profile-pic { width:220px; height:220px; border-radius:50%; object-fit:cover; margin-bottom:20px; }
+.profile-box, .objective-box.rectangular, .tutoring-message {
+  padding:25px; border-radius:20px; background:white; box-shadow:0 4px 20px rgba(0,0,0,0.05);
+  text-align:justify; font-family:'Outfit', sans-serif; line-height:1.7; font-weight:400; font-size:1.15rem; word-break:break-word; margin:20px auto; max-width:450px;
 }
+.profile-box p { font-size:1.2rem; line-height:1.8; }
 
-.profile-column, .objective-column {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  position: relative;
-}
-
-/* FOTO PERFIL */
-.profile-pic {
-  width: 220px;
-  height: 220px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 20px;
-}
-
-/* CAJAS PERFIL Y OBJETIVO */
-.profile-box, .objective-box.rectangular {
-  padding: 25px;
-  border-radius: 20px;
-  background: white;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-  max-width: 450px;
-  margin: 20px auto;
-  text-align: justify;
-  font-family: 'Outfit', sans-serif;
-  line-height: 1.7;
-  font-weight: 400; /* Regular */
-  font-size: 1.15rem;
-  word-break: break-word;
-}
-
-/* PERFIL - un poco más grande */
-.profile-box p {
-  font-size: 1.2rem;
-  line-height: 1.8;
-}
-
-/* -------------------------- */
-/* TYPEWRITER (si lo usas) */
-.typewriter p {
-  display: block;
-  border-right: none;
-  overflow: hidden;
-  white-space: pre-wrap;
-  word-break: break-word;
-  width: 100%;
-}
-
-/* -------------------------- */
 /* ICONOS */
-#sections-icons {
-  padding: 50px 20px;
-}
+.icon-row { display:flex; justify-content:center; gap:50px; flex-wrap:wrap; margin-bottom:30px; }
+.icon-row.single-center { justify-content:center; }
+.icon-section { display:flex; flex-direction:column; align-items:center; text-align:center; }
+.icon-section img { width:200px; height:200px; cursor:pointer; display:block; margin:0 auto; }
+.icon-section p { font-family:'Outfit', sans-serif; font-weight:500; font-size:1.2rem; margin-top:10px; text-align:center; }
 
-.icon-row {
-  display: flex;
-  justify-content: center;
-  gap: 50px;
-  flex-wrap: wrap;
-  margin-bottom: 30px;
-}
+/* TUTORING */
+.tutoring-message { max-width:800px; margin:0 auto 50px auto; padding:25px; background:rgba(255,255,255,0.7); border-radius:20px; box-shadow:0 4px 20px rgba(0,0,0,0.05); font-family:'Outfit', sans-serif; font-size:1.15rem; line-height:1.7; text-align:justify; }
+.courses-container { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:30px; max-width:1200px; margin:0 auto; }
+.course { background:white; border-radius:20px; padding:20px; box-shadow:0 4px 20px rgba(0,0,0,0.05); text-align:center; font-family:'Outfit', sans-serif; }
+.course h2 { font-family:'Outfit', sans-serif; font-weight:500; margin-bottom:15px; }
+.course ul { list-style:none; padding:0; }
+.course ul li { font-size:1.1rem; margin-bottom:8px; }
 
-.icon-row.single-center {
-  justify-content: center;
-}
-
-.icon-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-/* ICONOS - más grandes */
-.icon-section img {
-  width: 200px;  /* tamaño aumentado */
-  height: 200px;
-  cursor: pointer;
-  display: block;
-  margin: 0 auto;
-}
-
-.icon-section p {
-  font-family: 'Outfit', sans-serif;
-  font-weight: 500; /* Medium */
-  font-size: 1.2rem;
-  margin-top: 10px;
-  text-align: center;
-}
-
-/* -------------------------- */
-/* SECCIÓN TUTORING */
-.tutoring-message {
-  max-width: 800px;
-  margin: 0 auto 50px auto;
-  padding: 25px;
-  background: rgba(255, 255, 255, 0.7); /* semitransparente */
-  border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.15rem;
-  line-height: 1.7;
-  text-align: justify;
-}
-
-.courses-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.course {
-  background: white;
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-  text-align: center;
-  font-family: 'Outfit', sans-serif;
-}
-
-.course h2 {
-  font-family: 'Outfit', sans-serif;
-  font-weight: 500;
-  margin-bottom: 15px;
-}
-
-.course ul {
-  list-style: none;
-  padding: 0;
-}
-
-.course ul li {
-  font-size: 1.1rem;
-  margin-bottom: 8px;
-}
-
-/* -------------------------- */
 /* RESPONSIVE */
-@media(max-width: 900px){
-  #profile-objective {
-    flex-direction: column;
-    align-items: center;
-  }
-  .objective-box.rectangular {
-    max-width: 350px;
-    margin-top: 20px;
-  }
-  #hero h1.title {
-    font-size: 12vw;
-  }
-  #hero p.subtitle {
-    font-size: 4vw;
-  }
-  #hero .author {
-    font-size: 4.5vw;
-    margin-top: 40px;
-  }
-  .profile-pic {
-    width: 180px;
-    height: 180px;
-  }
-  .profile-box {
-    max-width: 300px;
-    font-size: 1rem;
-  }
-  .icon-section img {
-    width: 180px;
-    height: 180px;
-  }
+@media(max-width:900px){
+  #profile-objective { flex-direction:column; align-items:center; }
+  .objective-box.rectangular { max-width:350px; margin-top:20px; }
+  #hero h1.title { font-size:14vw; }
+  #hero .subtitle { font-size:4vw; }
+  #hero .author { font-size:4.5vw; margin-top:40px; }
+  .profile-pic { width:180px; height:180px; }
+  .profile-box { max-width:300px; font-size:1rem; }
+  .icon-section img { width:180px; height:180px; }
 }
