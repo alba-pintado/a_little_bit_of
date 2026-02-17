@@ -43,10 +43,21 @@ nav a:hover { color:#777; }
 }
 
 /* COLUMNAS */
-.profile-column, .objective-column { display:flex; flex-direction:column; align-items:flex-start; }
+.profile-column, .objective-column {
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  position:relative; /* para que los hijos respeten el recuadro */
+}
 
 /* FOTO PERFIL */
-.profile-pic { width:220px; height:220px; border-radius:50%; object-fit:cover; margin-bottom:20px; }
+.profile-pic {
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-bottom:20px;
+}
 
 /* CAJAS PERFIL Y OBJETIVO */
 .profile-box, .objective-box.rectangular {
@@ -55,8 +66,11 @@ nav a:hover { color:#777; }
   background:white;
   box-shadow:0 4px 20px rgba(0,0,0,0.05);
   line-height:1.6;
-  word-wrap: break-word;         /* fuerza wrap de texto */
-  white-space: normal;            /* evita línea infinita */
+  word-wrap: break-word;
+  white-space: normal;       /* <--- muy importante */
+  width:100%;                /* ocupa todo el ancho del contenedor */
+  max-width:100%;            /* no se sale del contenedor */
+  box-sizing:border-box;
 }
 
 /* PERFIL */
@@ -65,23 +79,17 @@ nav a:hover { color:#777; }
 /* OBJETIVO */
 .objective-box.rectangular { max-width:450px; min-height:350px; }
 
-/* ICONOS HOME */
-#sections-icons { margin:50px 0; }
-.icon-row { display:flex; justify-content:center; gap:120px; margin:40px 0; flex-wrap:wrap; }
-.icon-row.single-center { justify-content:center; }
-.icon-section { text-align:center; cursor:pointer; transition:transform 0.3s ease; }
-.icon-section img { width:200px; height:200px; }
-.icon-section:hover img { transform:scale(1.1); }
-.icon-section p { font-weight:600; margin-top:15px; font-size:1.4rem; }
-
 /* TYPEWRITER */
-.typewriter p { 
-  display:block;                /* bloque para wrap */
+.typewriter p {
+  display:block;             /* bloque para respetar ancho */
   border-right:3px solid #333;
   overflow:hidden;
   animation:blink 0.75s step-end infinite;
-  white-space:normal;           /* wrap correcto */
+  white-space:pre-wrap;      /* <--- permite saltos y wrap automáticos */
+  word-break: break-word;    /* evita que palabras largas se salgan */
+  width:100%;
 }
+
 @keyframes blink { 50% { border-color:transparent; } }
 
 /* RESPONSIVE */
