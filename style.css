@@ -21,17 +21,12 @@ header { position:fixed; width:100%; top:0; background:white; padding:15px 0; bo
 nav ul { display:flex; justify-content:center; list-style:none; gap:25px; }
 nav a { text-decoration:none; color:#333; font-weight:500; cursor:pointer; }
 nav a:hover { color:#777; }
-.search-icon { cursor:pointer; font-size:18px; }
-
-/* SEARCH BOX */
-#searchBox { position:fixed; top:70px; right:20px; background:white; padding:10px; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.1); display:none; }
-#searchBox input { border:none; outline:none; font-size:14px; }
 
 /* HERO */
 #hero { height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
 #hero h1.title { font-family:'DM Serif Text', serif; font-size:6vw; font-weight:normal; }
-#hero p.subtitle { font-size:1.5vw; margin-top:10px; }
-#hero .author { font-family:'Dancing Script', cursive; font-size:2.5vw; margin-top:10px; color:#444; }
+#hero p.subtitle { font-size:1.8vw; margin-top:10px; }
+#hero .author { font-family:'Homemade Apple', cursive; font-size:2.5vw; margin-top:10px; color:#444; }
 
 /* PERFIL Y OBJETIVO */
 #profile-objective {
@@ -39,7 +34,7 @@ nav a:hover { color:#777; }
   justify-content:center;
   align-items:flex-start;
   gap:50px;
-  padding:100px 20px;
+  padding:80px 20px;
   flex-wrap:wrap;
 }
 .profile-column, .objective-column { display:flex; flex-direction:column; align-items:flex-start; }
@@ -49,15 +44,12 @@ nav a:hover { color:#777; }
 
 /* ICONOS HOME */
 #sections-icons { margin:50px 0; }
-.icon-row { display:flex; justify-content:center; gap:80px; margin:30px 0; flex-wrap:wrap; }
+.icon-row { display:flex; justify-content:center; gap:120px; margin:40px 0; flex-wrap:wrap; }
 .icon-row.single-center { justify-content:center; }
 .icon-section { text-align:center; cursor:pointer; transition:transform 0.3s ease; }
-.icon-section img { width:130px; height:130px; }
+.icon-section img { width:200px; height:200px; }
 .icon-section:hover img { transform:scale(1.1); }
-.icon-section p { font-weight:600; margin-top:10px; }
-
-/* SECCIONES DETALLADAS */
-.content-section { padding:50px 20px; }
+.icon-section p { font-weight:600; margin-top:15px; font-size:1.4rem; }
 
 /* TYPEWRITER */
 .typewriter p { display:inline-block; border-right:3px solid #333; white-space:nowrap; overflow:hidden; animation:blink 0.75s step-end infinite; }
@@ -69,8 +61,8 @@ nav a:hover { color:#777; }
   .objective-box.rectangular { max-width:350px; margin-top:20px; }
   #hero h1.title { font-size:12vw; }
   #hero p.subtitle { font-size:4vw; }
+  #hero .author { font-size:5vw; }
   .profile-pic { width:180px; height:180px; }
   .profile-box { max-width:300px; font-size:1rem; }
-  #searchBox { right:10px; left:10px; }
-  .icon-row { gap:25px; }
+  .icon-section img { width:150px; height:150px; }
 }

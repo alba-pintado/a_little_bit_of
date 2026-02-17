@@ -20,13 +20,6 @@ window.addEventListener("load", ()=>{
   });
 });
 
-/* SEARCH TOGGLE */
-const openSearch = document.getElementById("openSearch");
-const searchBox = document.getElementById("searchBox");
-openSearch.addEventListener("click",()=>{ 
-  searchBox.style.display = searchBox.style.display==="block"?"none":"block"; 
-});
-
 /* ICON NAVIGATION (scroll to section) */
 document.querySelectorAll("#sections-icons .icon-section").forEach(icon=>{
   icon.addEventListener("click", ()=>{
