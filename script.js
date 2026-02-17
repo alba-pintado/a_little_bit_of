@@ -28,3 +28,4 @@ document.querySelectorAll("#sections-icons .icon-section").forEach(icon=>{
     section.scrollIntoView({behavior:"smooth"});
   });
 });
+
