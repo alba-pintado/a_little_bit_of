@@ -24,12 +24,11 @@ window.addEventListener("load", ()=>{
 document.querySelectorAll("#sections-icons .icon-section").forEach(icon=>{
   icon.addEventListener("click", ()=>{
     const targetId = icon.getAttribute("data-target");
-    const section = document.getElementById(targetId);
-    if(section){
-      section.scrollIntoView({behavior:"smooth"});
-    }
+    window.location.href = targetId + ".html";
   });
 });
+
+
 
 /* BUSCADOR interno */
 document.getElementById("search-btn").addEventListener("click", ()=>{
