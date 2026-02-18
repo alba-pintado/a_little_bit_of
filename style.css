@@ -90,15 +90,16 @@ header {
 
 /* FIRMA */
 #author-sign {
-  width: 220px;               /* tamaño visible */
-  margin: 0 auto;   /* centrado debajo del subtitulo */
+  width: 400px;               /* tamaño visible */
+  margin: 30px auto o auto;   /* centrado debajo del subtitulo */
   display: block;
 }
 
 #author-sign text {
-  font-size: 15vw;
+  font-size: 40px;
   stroke: #333;
   fill: #333;
+  stroke-width: 0.8;
   stroke-dasharray: 800;       /* longitud total del trazo */
   stroke-dashoffset: 800;      /* oculta el trazo al inicio */
   fill-opacity: 1;             /* relleno visible */
