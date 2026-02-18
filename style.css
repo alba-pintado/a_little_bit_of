@@ -32,15 +32,13 @@ header {
   display:flex;
   justify-content:center;
   align-items:center;
-  gap:20px;
-  position:relative;
 }
 
 .menu-items {
   display:flex;
   list-style:none;
   gap:20px;
-  justify-content:center;
+  align-items:center;
   flex-wrap:wrap;
 }
 
@@ -48,63 +46,62 @@ header {
   text-decoration:none;
   color:#333;
   font-weight:500;
-  font-family:'Outfit', sans-serif;
 }
 
 .menu-items li a:hover { color:#777; }
 
 .search-icon {
-  font-size:1.8rem;
+  font-size:1.4rem;
   cursor:pointer;
   border:none;
   background:none;
-  position:absolute;
-  right:0;
 }
 
-/* HERO */
+/* HERO CENTRADO */
+#hero {
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding-top:70px; /* evita que el header tape */
+}
+
+/* TÍTULO */
 .caprasimo-regular {
   font-family:"Caprasimo", serif;
   font-weight:400;
-  font-size:6vw;
+  font-size:4.2vw;
   line-height:1.1;
   letter-spacing:1px;
-  text-align:center;
   color:#222;
   text-shadow:2px 2px 12px rgba(0,0,0,0.1);
-  margin-bottom:20px;
+  margin-bottom:8px;
 }
 
+/* SUBTÍTULO */
 .subtitle {
-  font-family:'Outfit',sans-serif;
   font-weight:500;
-  font-size:2.5vw;
-  text-align:center;
-  margin-top:10px;
+  font-size:1.4vw;
   color:#333;
-  text-shadow:0 0 5px rgba(255,255,255,0.2);
+  margin:0;
 }
 
+/* FIRMA */
 #author-sign {
-  display:block;
-  margin:30px auto 0 auto;
-  width:80%;
-  max-width:600px;
+  width:260px;
+  margin-top:18px;
 }
 
 #author-sign text {
-  font-size:32px;     /* tamaño visible */
-  stroke:#333;
-  stroke-width:2;
-  fill:none;
-
-  stroke-dasharray: 1200;
-  stroke-dashoffset: 1200;
-  animation: draw 4s ease forwards;
-  animation-delay:2s;
+  font-family:'Homemade Apple', cursive;
+  font-size:26px;
+  fill:#333;
+  opacity:0;
+  animation:fadeSignature 1.5s ease forwards;
+  animation-delay:1.6s;
 }
-
-
 
 /* PERFIL Y OBJETIVO */
 #profile-objective {
@@ -120,7 +117,6 @@ header {
   display:flex;
   flex-direction:column;
   align-items:flex-start;
-  position:relative;
 }
 
 .profile-pic {
@@ -137,17 +133,14 @@ header {
   background:white;
   box-shadow:0 4px 20px rgba(0,0,0,0.05);
   text-align:justify;
-  font-family:'Outfit',sans-serif;
   line-height:1.8;
-  font-weight:400;
-  font-size:1.2rem;
-  word-break:break-word;
+  font-size:1.1rem;
   margin:20px auto;
   max-width:450px;
 }
 
 .profile-box p, .objective-box p {
-  white-space: pre-wrap;
+  white-space:pre-wrap;
   margin-bottom:1rem;
 }
 
@@ -160,94 +153,66 @@ header {
   margin-bottom:30px;
 }
 
-.icon-row.single-center {
-  justify-content:center;
-  align-items:center;
-  position:relative;
-}
-
 .icon-section {
   display:flex;
   flex-direction:column;
   align-items:center;
   text-align:center;
   cursor:pointer;
+  transition:transform 0.3s ease;
+}
+
+.icon-section:hover {
+  transform:scale(1.15);
 }
 
 .icon-section img {
   width:200px;
   height:200px;
-  display:block;
-  margin:0 auto;
 }
 
 .icon-section p {
-  font-family:'Outfit',sans-serif;
   font-weight:500;
-  font-size:1.2rem;
+  font-size:1.1rem;
   margin-top:10px;
-  text-align:center;
-}
-
-/* SECCIONES */
-.section-padding {
-  padding:150px 20px;
-  text-align:center;
-  font-family:'Outfit',sans-serif;
-  font-size:1.5rem;
 }
 
 /* RESPONSIVE */
 @media(max-width:900px){
-  #profile-objective { flex-direction:column; align-items:center; }
-  .objective-box.rectangular { max-width:350px; margin-top:20px; }
-  .caprasimo-regular { font-size:14vw; }
+
+  .caprasimo-regular { font-size:10vw; }
   .subtitle { font-size:4vw; }
-  #author-sign text { font-size:40px; }
-  .author { font-size:4.5vw; margin-top:40px; }
+
+  #author-sign text { font-size:22px; }
+
+  #profile-objective {
+    flex-direction:column;
+    align-items:center;
+  }
+
   .profile-pic { width:180px; height:180px; }
   .profile-box { max-width:300px; font-size:1rem; }
-  .icon-section img { width:180px; height:180px; }
+
+  .icon-section img { width:150px; height:150px; }
 }
 
-/* FADE-IN ANIMACION */
-.fade-in { opacity:0; animation: fadeInTitle 1s forwards; }
-.fade-in-delay { opacity:0; animation: fadeInSubtitle 1s forwards; animation-delay:1.2s; }
+/* ANIMACIONES */
+.fade-in {
+  opacity:0;
+  animation:fadeOnly 1.2s forwards;
+}
 
-@keyframes fadeInTitle {
+.fade-in-delay {
+  opacity:0;
+  animation:fadeOnly 1.2s forwards;
+  animation-delay:0.8s;
+}
+
+@keyframes fadeOnly {
   from { opacity:0; filter:blur(8px); }
   to { opacity:1; filter:blur(0); }
 }
 
-
-@keyframes fadeInSubtitle {
-  from { opacity:0; filter:blur(6px); }
-  to { opacity:1; filter:blur(0); }
-}
-
-
-/* ANIMACION TRAZO FIRMA */
-@keyframes draw {
-  to { stroke-dashoffset:0; }
-}
-
-.icon-section {
-  transition: transform 0.3s ease;
-}
-
-.icon-section:hover {
-  transform: scale(1.15);
-}
-
-#hero {
-  min-height: 100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-}
-
-#hero {
-  align-items:center;     /* centra horizontalmente */
-  text-align:center;
-  padding-top:80px;       /* evita que el menú fijo lo tape */
+@keyframes fadeSignature {
+  to { opacity:1; }
 }
