@@ -91,13 +91,16 @@ header {
 /* FIRMA */
 #author-sign {
   width:260px;
-  margin-top:18px;
+  height: auto;
+  margin-top:20px auto 0 auto;
+  display: block;
 }
 
 #author-sign text {
   font-family:'Homemade Apple', cursive;
   font-size:26px;
   fill:#333;
+  stroke: none;
   opacity:0;
   animation:fadeSignature 1.5s ease forwards;
   animation-delay:1.6s;
