@@ -72,18 +72,18 @@ header {
 .caprasimo-regular {
   font-family:"Caprasimo", serif;
   font-weight:400;
-  font-size: 5vw;
+  font-size: 15vw;
   line-height:1.1;
   letter-spacing:1px;
   color:#222;
   text-shadow:2px 2px 12px rgba(0,0,0,0.1);
-  margin-bottom:15px;
+  margin-bottom:20px;
 }
 
 /* SUBTÍTULO */
 .subtitle {
   font-weight:500;
-  font-size: 3vw;
+  font-size: 10vw;
   color:#333;
   margin: 0 0 20px 0;
 }
@@ -96,9 +96,11 @@ header {
 }
 
 #author-sign text {
-  font-size: 2vw;
-  stroke-dasharray: 300;       /* longitud total del trazo */
-  stroke-dashoffset: 300;      /* oculta el trazo al inicio */
+  font-size: 5vw;
+  stroke: #333;
+  fill: #333;
+  stroke-dasharray: 800;       /* longitud total del trazo */
+  stroke-dashoffset: 800;      /* oculta el trazo al inicio */
   fill-opacity: 1;             /* relleno visible */
   animation: draw 2.5s ease forwards; /* animación de izquierda a derecha */
   animation-delay: 1s;         /* empieza después del fade del subtitulo */
