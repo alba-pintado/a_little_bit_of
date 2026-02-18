@@ -59,21 +59,22 @@ header {
 
 /* HERO */
 #hero {
-  padding: 120px 20px 80px 20px;  /* espacio suficiente arriba y abajo */
-  text-align: center;             /* centrado horizontal */
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;         /* centrado horizontal */
+  text-align: center;
+  padding: 80px 20px;          /* espacio suficiente arriba y abajo */
 }
 
 /* TÍTULO */
 .caprasimo-regular {
   font-family: "Caprasimo", serif;
   font-weight: 400;
-  font-size: 8vw;               /* tamaño grande pero proporcionado */
-  line-height: 1.1;
-  letter-spacing: 1px;
+  font-size: 3.5rem;          /* aprox Word 30 */
+  line-height: 1.2;
   color: #222;
   text-shadow: 2px 2px 12px rgba(0,0,0,0.1);
-  margin-bottom: 15px;          /* separación hasta subtítulo */
+  margin-bottom: 20px;        /* separación hasta subtítulo */
   opacity: 0;
   animation: fadeInText 1s forwards;
   animation-delay: 0.5s;
@@ -83,7 +84,7 @@ header {
 .subtitle {
   font-family: 'Outfit', sans-serif;
   font-weight: 500;
-  font-size: 4vw;               /* proporcional al título */
+  font-size: 1.8rem;           /* un poco más pequeño */
   color: #333;
   margin: 0 0 40px 0;           /* separación hasta firma */
   opacity: 0;
@@ -93,21 +94,21 @@ header {
 
 /* FIRMA */
 #author-sign {
-  width: 500px;                 /* ancho del SVG */
-  max-width: 90%;               /* responsive */
-  margin: 0 auto;               /* centrado */
+  width: 400px;                /* ancho visible */
+  max-width: 90%;
+  margin: 0 auto;
   display: block;
 }
 
 #author-sign text {
-  font-size: 3vw;               /* tamaño proporcional */
-  stroke: #333;                 /* contorno */
-  fill: #333;                   /* relleno sólido */
-  stroke-width: 0.8;            /* trazo fino */
-  stroke-dasharray: 1000;       /* longitud total del trazo */
-  stroke-dashoffset: 1000;      /* inicio oculto */
-  animation: draw 2.5s linear forwards;
-  animation-delay: 1.5s;        /* empieza después del subtítulo */
+  font-size: 1.5rem;           /* tamaño proporcionado al subtítulo */
+  stroke: #333;                /* contorno */
+  fill: #333;                  /* relleno */
+  stroke-width: 0.8;           /* trazo fino */
+  stroke-dasharray: 800;       /* longitud total del trazo */
+  stroke-dashoffset: 800;      /* inicio oculto */
+  animation: draw 2s linear forwards;
+  animation-delay: 1.5s;       /* empieza después del subtítulo */
 }
 
 
@@ -207,18 +208,18 @@ header {
 
 /* ANIMACIONES */
 @keyframes fadeInText {
-  from { opacity: 0; filter: blur(6px); }
+  from { opacity: 0; filter: blur(4px); }
   to { opacity: 1; filter: blur(0); }
 }
 
 @keyframes draw {
-  from { stroke-dashoffset: 1000; }
+  from { stroke-dashoffset: 800; }
   to { stroke-dashoffset: 0; }
 }
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
-  .caprasimo-regular { font-size: 12vw; }
-  .subtitle { font-size: 6vw; margin-bottom: 30px; }
-  #author-sign text { font-size: 4vw; }
+  .caprasimo-regular { font-size: 2.5rem; }
+  .subtitle { font-size: 1.4rem; margin-bottom: 30px; }
+  #author-sign text { font-size: 1.2rem; }
 }
