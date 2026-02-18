@@ -72,7 +72,7 @@ header {
 .caprasimo-regular {
   font-family:"Caprasimo", serif;
   font-weight:400;
-  font-size: 15vw;
+  font-size: 25vw;
   line-height:1.1;
   letter-spacing:1px;
   color:#222;
@@ -83,7 +83,7 @@ header {
 /* SUBTÍTULO */
 .subtitle {
   font-weight:500;
-  font-size: 10vw;
+  font-size: 20vw;
   color:#333;
   margin: 0 0 20px 0;
 }
@@ -96,7 +96,7 @@ header {
 }
 
 #author-sign text {
-  font-size: 5vw;
+  font-size: 15vw;
   stroke: #333;
   fill: #333;
   stroke-dasharray: 800;       /* longitud total del trazo */
