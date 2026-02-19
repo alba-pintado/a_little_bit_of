@@ -79,8 +79,7 @@ header {
   text-shadow: 2px 2px 12px rgba(0,0,0,0.1);
   margin-bottom: 15px;        
   opacity: 0;
-  filter: blur(5px);
-  animation: blurIn 1s forwards 0s;
+  animation: blurIn 1s forwards;
   text-align: center;
 }
 
@@ -92,9 +91,8 @@ header {
   color: #333;
   margin: 0 0 40px 0;           
   opacity: 0;
-  filter: blur(5px);
-  transition: opacity 1s ease, filter 1s ease;
-  animation: blurIn 1s forwards 1s;
+  animation: fadeIn 1s forwards;
+  animation-delay: 2s;
   text-align: center;
 }
 
@@ -108,12 +106,11 @@ header {
 }
 
 .signature path {
-  stroke-linecap: round;
-  stroke-linejoin: round;
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
+  fill: navy;
   animation: draw 2.5s linear forwards;
-  animation-delay: 2s;
+  animation-delay: 2.5s;
 }
 
 
@@ -216,8 +213,8 @@ header {
 .fade-in { opacity:0; animation: fadeIn 1s forwards; }
 .fade-in-delay { opacity:0; animation: fadeIn 1s forwards; animation-delay:1s; }
 
-@keyframes blurIn {
-  to { opacity: 1; filter: blur(0); }
+@keyframes fadeIn {
+  to { opacity: 1; }
 }
 
 @keyframes draw {
