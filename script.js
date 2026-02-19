@@ -16,24 +16,24 @@ function typeWriter(element, speed = 30) {
 window.addEventListener("load", () => {
   const title = document.querySelector(".caprasimo-regular");
   const subtitle = document.querySelector(".subtitle");
-  const authorSign = document.querySelector("#author-sign text");
+  const svg = document.querySelector("#author-sign");
+  const path = document.querySelector("#signature-path");
 
-  // mostrar título
+  // mostrar título con blur
   title.style.opacity = 1;
 
-  // mostrar subtitulo después del título
-  subtitle.addEventListener("animationend", () => {
+  // esperar a que termine la animación de título
+  title.addEventListener("animationend", () => {
     subtitle.style.opacity = 1;
 
-    // mostrar y animar firma justo después del subtitulo
-    const svg = document.querySelector("#author-sign");
-    svg.style.opacity = 1;
-    authorSign.style.animation = "draw 2.5s linear forwards";
+    // mostrar firma después del subtítulo
+    subtitle.addEventListener("animationend", () => {
+      svg.style.opacity = 1;
+      path.style.animation = "draw 2.5s linear forwards";
+    });
   });
-
-  // activar la animación de fade-in del subtitulo
-  subtitle.style.animation = "fadeIn 1s forwards";
 });
+
 
 
 

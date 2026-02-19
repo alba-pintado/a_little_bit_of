@@ -73,26 +73,22 @@ header {
 .caprasimo-regular {
   font-family: "Caprasimo", serif;
   font-weight: 400;
-  font-size: 9rem;          
+  font-size: 8.5rem;          
   line-height: 1.2;
   color: #222;
   text-shadow: 2px 2px 12px rgba(0,0,0,0.1);
   margin-bottom: 15px;        /* separación hasta subtítulo */
   opacity: 0;
-  animation: fadeIn 1s forwards;
-  animation-delay: 1s;
 }
 
 /* SUBTÍTULO */
 .subtitle {
   font-family: 'Outfit', sans-serif;
   font-weight: 500;
-  font-size: 4rem;           /* un poco más pequeño */
+  font-size: 3.5rem;           /* un poco más pequeño */
   color: #333;
   margin: 0 0 40px 0;           /* separación hasta firma */
   opacity: 0;
-  animation: fadeIn 1s forwards;
-  animation-delay: 1s;
 }
 
 /* FIRMA */
@@ -104,15 +100,9 @@ header {
   opacity: 0;
 }
 
-#author-sign text {
-  font-size: 4.5rem;           /* tamaño proporcionado al subtítulo */
-  stroke: #333;                /* contorno */
-  fill: none;                  /* relleno */
-  stroke-width: 0.8;           /* trazo fino */
-  stroke-dasharray: 800;       /* longitud total del trazo */
-  stroke-dashoffset: 800;      /* inicio oculto */
-   animation: draw 2.5s linear forwards;
-  animation-delay: 2s;   /* espera 2s antes de empezar, justo después del subtitulo */
+#signature-path {
+  animation: draw 2.5s linear forwards;
+  animation-delay: 2s; /* empieza después del subtítulo */
 }
 
 
@@ -215,8 +205,10 @@ header {
 .fade-in { opacity:0; animation: fadeIn 1s forwards; }
 .fade-in-delay { opacity:0; animation: fadeIn 1s forwards; animation-delay:1s; }
 
-@keyframes fadeIn {
-  to { opacity: 1; }
+@keyframes blurIn {
+  to { opacity: 1;
+       filter: blur(0);
+  }
 }
 
 @keyframes draw {
