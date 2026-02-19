@@ -14,32 +14,26 @@ function typeWriter(element, speed = 30) {
 }
 
 window.addEventListener("load", () => {
-  const title = document.querySelector(".caprasimo-regular");
   const subtitle = document.querySelector(".subtitle");
   const svg = document.querySelector(".signature");
-  const path = svg.querySelector("path"); // selecciona el path dentro del SVG
+  const path = svg.querySelector("path");
 
-  // mostrar título
-  title.style.opacity = 1;
+  // mostrar subtítulo
+  subtitle.style.opacity = 1;
 
-  title.addEventListener("animationend", () => {
-    // mostrar subtítulo
-    subtitle.style.opacity = 1;
+  subtitle.addEventListener("animationend", () => {
+    svg.style.opacity = 1;
 
-    subtitle.addEventListener("animationend", () => {
-      // mostrar el SVG
-      svg.style.opacity = 1;
+    // calcular longitud real del path
+    const length = path.getTotalLength();
+    path.style.strokeDasharray = length;
+    path.style.strokeDashoffset = length;
 
-      // calcular longitud real del path para la animación
-      const length = path.getTotalLength();
-      path.style.strokeDasharray = length;
-      path.style.strokeDashoffset = length;
-
-      // disparar animación CSS
-      path.style.animation = "draw 2.5s linear forwards";
-    });
+    // animar
+    path.style.animation = "draw 2.5s linear forwards";
   });
 });
+
 
 
 
