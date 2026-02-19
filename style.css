@@ -70,7 +70,7 @@ header {
 .caprasimo-regular {
   font-family: "Caprasimo", serif;
   font-weight: 400;
-  font-size: 3rem;          /* aprox Word 30 */
+  font-size: 8rem;          /* aprox Word 30 */
   line-height: 1.2;
   color: #222;
   text-shadow: 2px 2px 12px rgba(0,0,0,0.1);
@@ -84,7 +84,7 @@ header {
 .subtitle {
   font-family: 'Outfit', sans-serif;
   font-weight: 500;
-  font-size: 1.5rem;           /* un poco más pequeño */
+  font-size: 6rem;           /* un poco más pequeño */
   color: #333;
   margin: 0 0 40px 0;           /* separación hasta firma */
   opacity: 0;
@@ -96,12 +96,12 @@ header {
 #author-sign {
   width: 400px;                /* ancho visible */
   max-width: 90%;
-  margin: 0 auto;
+  margin: 3rem auto 0 auto;
   display: block;
 }
 
 #author-sign text {
-  font-size: 1.2rem;           /* tamaño proporcionado al subtítulo */
+  font-size: 3rem;           /* tamaño proporcionado al subtítulo */
   stroke: #333;                /* contorno */
   fill: #333;                  /* relleno */
   stroke-width: 0.8;           /* trazo fino */
