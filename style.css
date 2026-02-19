@@ -108,7 +108,7 @@ header {
   overflow: visible;
   opacity: 0;
   animation: fadeIn 1s forwards;
-  animation-delay: 3s;
+  animation-delay: 3.2s;
   text-align: center;
 }
 
@@ -210,8 +210,8 @@ header {
 
 /* ANIMACIONES */
 .fade-in { opacity:0; animation: fadeIn 1s forwards; }
-.fade-in-delay { opacity:0; animation: fadeIn 1s forwards; animation-delay:1s; }
-.fade-in-delay-2 { opacity: 0; animation: fadeIn 1s forwards; animation-delay: 2.5s;
+.fade-in-delay { opacity:0; animation: fadeIn 1s forwards; animation-delay:2s; }
+.fade-in-delay-2 { opacity: 0; animation: fadeIn 1s forwards; animation-delay: 3.2s;
 }
 
 
