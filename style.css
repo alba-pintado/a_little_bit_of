@@ -103,7 +103,9 @@ header {
   color: darkblue;
   display: inline-block;
   white-space: pre; /* conserva espacios */
-  margin-top: 20px; /* justo debajo del subtítulo */
+  margin-top: 20px;
+  width: auto;
+  overflow: visible;
 }
 
 
