@@ -59,14 +59,14 @@ header {
 
 /* HERO */
 #hero {
-  min-height: 85vh;
+  min-height: 75vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;         /* centrado horizontal */
   text-align: center;
   gap: 1.5rem;
-  padding: 180px 20px 80px 20px;          /* espacio suficiente arriba y abajo */
+  padding: 190px 20px 80px 20px;          /* espacio suficiente arriba y abajo */
 }
 
 /* TÍTULO */
