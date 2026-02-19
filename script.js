@@ -27,15 +27,6 @@ window.addEventListener("load", () => {
     subtitle.style.transition = "opacity 1s ease";
     subtitle.style.opacity = 1;
   }, 1200); // 1.2s delay
-
-  // Animar la firma SVG después del subtítulo
-  setTimeout(() => {
-    const length = path.getTotalLength();
-    path.style.strokeDasharray = length;
-    path.style.strokeDashoffset = length;
-    path.style.transition = "stroke-dashoffset 2.5s linear";
-    path.style.strokeDashoffset = 0;
-  }, 2500);
 });
 
 
