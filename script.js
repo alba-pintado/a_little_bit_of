@@ -16,23 +16,31 @@ function typeWriter(element, speed = 30) {
 window.addEventListener("load", () => {
   const title = document.querySelector(".caprasimo-regular");
   const subtitle = document.querySelector(".subtitle");
-  const svg = document.querySelector("#author-sign");
-  const path = document.querySelector("#signature-path");
+  const svg = document.querySelector(".signature");
+  const path = svg.querySelector("path"); // selecciona el path dentro del SVG
 
-  // mostrar título con blur
+  // mostrar título
   title.style.opacity = 1;
 
-  // esperar a que termine la animación de título
   title.addEventListener("animationend", () => {
+    // mostrar subtítulo
     subtitle.style.opacity = 1;
 
-    // mostrar firma después del subtítulo
     subtitle.addEventListener("animationend", () => {
+      // mostrar el SVG
       svg.style.opacity = 1;
+
+      // calcular longitud real del path para la animación
+      const length = path.getTotalLength();
+      path.style.strokeDasharray = length;
+      path.style.strokeDashoffset = length;
+
+      // disparar animación CSS
       path.style.animation = "draw 2.5s linear forwards";
     });
   });
 });
+
 
 
 

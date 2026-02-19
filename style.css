@@ -92,17 +92,19 @@ header {
 }
 
 /* FIRMA */
-#author-sign {
+.signature {
   width: 400px;                /* ancho visible */
   max-width: 90vw;
   margin: 3rem auto 0 auto;
   display: block;
-  opacity: 0;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw 3s forwads;
 }
 
-#signature-path {
-  animation: draw 2.5s linear forwards;
-  animation-delay: 2s; /* empieza después del subtítulo */
+.signature-path {
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 
