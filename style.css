@@ -66,7 +66,7 @@ header {
   align-items: center;         /* centrado horizontal */
   text-align: center;
   gap: 1.5rem;
-  padding: 190px 20px 80px 20px;          /* espacio suficiente arriba y abajo */
+  padding: 200px 20px 80px 20px;          /* espacio suficiente arriba y abajo */
 }
 
 /* TÍTULO */
@@ -108,9 +108,8 @@ header {
 .signature path {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
-  fill: navy;
-  animation: draw 2.5s linear forwards;
-  animation-delay: 2.5s;
+  animation: draw 2s forwards;
+  animation-delay: 1.5s;
 }
 
 
