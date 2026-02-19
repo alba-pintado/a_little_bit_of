@@ -80,8 +80,8 @@ header {
   margin-bottom: 15px;        
   opacity: 0;
   filter: blur(5px);
-  transition: opacity 1s ease, filter 1s ease;
   animation: blurIn 1s forwards 0s;
+  text-align: center;
 }
 
 /* SUBTÍTULO */
@@ -93,8 +93,9 @@ header {
   margin: 0 0 40px 0;           
   opacity: 0;
   filter: blur(5px);
-  transition: opacity 1s ease. filter 1s ease;
+  transition: opacity 1s ease, filter 1s ease;
   animation: blurIn 1s forwards 1s;
+  text-align: center;
 }
 
 /* FIRMA */
@@ -216,9 +217,7 @@ header {
 .fade-in-delay { opacity:0; animation: fadeIn 1s forwards; animation-delay:1s; }
 
 @keyframes blurIn {
-  to { opacity: 1;
-       filter: blur(0);
-  }
+  to { opacity: 1; filter: blur(0); }
 }
 
 @keyframes draw {

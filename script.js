@@ -14,25 +14,22 @@ function typeWriter(element, speed = 30) {
 }
 
 window.addEventListener("load", () => {
+  const title = document.querySelector(".caprasimo-regular");
   const subtitle = document.querySelector(".subtitle");
   const svg = document.querySelector(".signature");
   const path = svg.querySelector("path");
 
-  // mostrar subtítulo
+  // Mostrar título y subtítulo (aunque la animación CSS ya lo hace)
+  title.style.opacity = 1;
   subtitle.style.opacity = 1;
 
-  subtitle.addEventListener("animationend", () => {
-    svg.style.opacity = 1;
-
-    // calcular longitud real del path
-    const length = path.getTotalLength();
-    path.style.strokeDasharray = length;
-    path.style.strokeDashoffset = length;
-
-    // animar
-    path.style.animation = "draw 2.5s linear forwards";
-  });
+  // Animar la firma SVG
+  const length = path.getTotalLength();
+  path.style.strokeDasharray = length;
+  path.style.strokeDashoffset = length;
+  path.style.animation = "draw 2.5s linear forwards";
 });
+
 
 
 
