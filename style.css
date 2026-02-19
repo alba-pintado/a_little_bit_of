@@ -66,14 +66,14 @@ header {
   align-items: center;         /* centrado horizontal */
   text-align: center;
   gap: 1.5rem;
-  padding: 160px 20px 80px 20px;          /* espacio suficiente arriba y abajo */
+  padding: 180px 20px 80px 20px;          /* espacio suficiente arriba y abajo */
 }
 
 /* TÍTULO */
 .caprasimo-regular {
   font-family: "Caprasimo", serif;
   font-weight: 400;
-  font-size: 10rem;          /* aprox Word 30 */
+  font-size: 9rem;          
   line-height: 1.2;
   color: #222;
   text-shadow: 2px 2px 12px rgba(0,0,0,0.1);
@@ -87,7 +87,7 @@ header {
 .subtitle {
   font-family: 'Outfit', sans-serif;
   font-weight: 500;
-  font-size: 6rem;           /* un poco más pequeño */
+  font-size: 4rem;           /* un poco más pequeño */
   color: #333;
   margin: 0 0 40px 0;           /* separación hasta firma */
   opacity: 0;
@@ -98,7 +98,7 @@ header {
 /* FIRMA */
 #author-sign {
   width: 400px;                /* ancho visible */
-  max-width: 90%;
+  max-width: 90vw;
   margin: 3rem auto 0 auto;
   display: block;
   opacity: 0;
@@ -111,9 +111,10 @@ header {
   stroke-width: 0.8;           /* trazo fino */
   stroke-dasharray: 800;       /* longitud total del trazo */
   stroke-dashoffset: 800;      /* inicio oculto */
-  animation: draw 2s ease forwards;
-  animation-delay: 2s;       /* empieza después del subtítulo */
+   animation: draw 2.5s linear forwards;
+  animation-delay: 2s;   /* espera 2s antes de empezar, justo después del subtitulo */
 }
+
 
 
 /* PERFIL Y OBJETIVO */

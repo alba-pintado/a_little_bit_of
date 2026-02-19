@@ -14,21 +14,27 @@ function typeWriter(element, speed = 30) {
 }
 
 window.addEventListener("load", () => {
-  // Título y subtitulo difuminados
   const title = document.querySelector(".caprasimo-regular");
   const subtitle = document.querySelector(".subtitle");
-  title.classList.add("fade-in");
-  subtitle.classList.add("fade-in-delay");
-
-  // Firma
   const authorSign = document.querySelector("#author-sign text");
 
-  // Esperamos a que termine la animación del subtitulo
+  // mostrar título
+  title.style.opacity = 1;
+
+  // mostrar subtitulo después del título
   subtitle.addEventListener("animationend", () => {
-    document.querySelector("#author-sign").style.opacity = 1;
-    authorSign.style.animation = "draw 2.5s linear forwards"; // trazo desde la izquierda
+    subtitle.style.opacity = 1;
+
+    // mostrar y animar firma justo después del subtitulo
+    const svg = document.querySelector("#author-sign");
+    svg.style.opacity = 1;
+    authorSign.style.animation = "draw 2.5s linear forwards";
   });
+
+  // activar la animación de fade-in del subtitulo
+  subtitle.style.animation = "fadeIn 1s forwards";
 });
+
 
 
 /* EJECUCIÓN AL CARGAR LA PÁGINA */
