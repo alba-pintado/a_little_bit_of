@@ -16,7 +16,7 @@ function typeWriter(element, speed = 30) {
 window.addEventListener("load", () => {
   const title = document.querySelector(".caprasimo-regular");
   const subtitle = document.querySelector(".subtitle");
-  const svg = document.querySelector(".signature path");
+  const signature = document.querySelector(".signature");
 
   // Fade-in del título
   title.style.transition = "opacity 1s ease";
@@ -26,8 +26,26 @@ window.addEventListener("load", () => {
   setTimeout(() => {
     subtitle.style.transition = "opacity 1s ease";
     subtitle.style.opacity = 1;
-  }, 1200); // 1.2s delay
-});
+  }, 1200); // 1.2s delay;
+
+  // Animar la firma letra por letra justo después del subtítulo
+    let text = signature.textContent;
+    signature.textContent = ""; // vaciar para ir escribiendo
+    let i = 0;
+
+    const interval = setInterval(() => {
+      signature.textContent += text[i];
+      i++;
+      if (i >= text.length) clearInterval(interval);
+    }, 150); // velocidad de escritura, ajusta ms por letra
+
+  }, 1200); // delay después del título
+
+  // Mostrar contenido al hacer scroll
+  window.addEventListener('scroll', () => {
+    content.classList.add('visible');
+  });
+
 
 
 
