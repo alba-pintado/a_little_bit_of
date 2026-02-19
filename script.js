@@ -16,8 +16,7 @@ function typeWriter(element, speed = 30) {
 window.addEventListener("load", () => {
   const title = document.querySelector(".caprasimo-regular");
   const subtitle = document.querySelector(".subtitle");
-  const svg = document.querySelector(".signature");
-  const path = svg.querySelector("path");
+  const svg = document.querySelector(".signature path");
 
   // Fade-in del título
   title.style.transition = "opacity 1s ease";
@@ -34,16 +33,9 @@ window.addEventListener("load", () => {
     const length = path.getTotalLength();
     path.style.strokeDasharray = length;
     path.style.strokeDashoffset = length;
-    path.style.stroke = "black";           // color del trazo
-    path.style.strokeWidth = "1.5";        // grosor
-    path.style.fill = "none";              // sin relleno, pon "black" si quieres rellenar
-    path.style.strokeLinecap = "round";
-    path.style.strokeLinejoin = "round";
-
-    // Animación de trazo
     path.style.transition = "stroke-dashoffset 2.5s linear";
-    path.style.strokeDashoffset = 0;       // se dibuja la firma
-  }, 2500); // 2.5s delay (después del subtítulo)
+    path.style.strokeDashoffset = 0;
+  }, 2500);
 });
 
 
