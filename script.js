@@ -19,15 +19,31 @@ window.addEventListener("load", () => {
   const svg = document.querySelector(".signature");
   const path = svg.querySelector("path");
 
-  // Mostrar título y subtítulo (aunque la animación CSS ya lo hace)
+  // Fade in del título
   title.style.opacity = 1;
-  subtitle.style.opacity = 1;
+  title.style.transition = "opacity 1s ease";
 
-  // Animar la firma SVG
-  const length = path.getTotalLength();
-  path.style.strokeDasharray = length;
-  path.style.strokeDashoffset = length;
-  path.style.animation = "draw 2.5s linear forwards";
+  // Fade in del subtítulo después del título
+  setTimeout(() => {
+    subtitle.style.opacity = 1;
+    subtitle.style.transition = "opacity 1s ease";
+  }, 1200); // 1.2s delay
+
+  // Animar la firma SVG después del subtítulo
+  setTimeout(() => {
+    const length = path.getTotalLength();
+    path.style.strokeDasharray = length;
+    path.style.strokeDashoffset = length;
+    path.style.stroke = "black";
+    path.style.strokeWidth = "1.5";
+    path.style.fill = "none";
+    path.style.strokeLinecap = "round";
+    path.style.strokeLinejoin = "round";
+
+    // Animación de trazo
+    path.style.transition = "stroke-dashoffset 2.5s linear";
+    path.style.strokeDashoffset = "0";
+  }, 2500); // 2.5s delay (después del subtítulo)
 });
 
 
