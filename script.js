@@ -29,7 +29,7 @@ window.addEventListener("load", () => {
   }, 1200); // 1.2s delay;
 
   // Animar la firma letra por letra justo después del subtítulo
-    let text = signature.textContent;
+    const text = signature.textContent;
     signature.textContent = ""; // vaciar para ir escribiendo
     let i = 0;
     setTimeout(() => {
