@@ -59,10 +59,13 @@ header {
 
 /* HERO */
 #hero {
+  min-height: 75vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;         /* centrado horizontal */
   text-align: center;
+  gap: 1.5rem;
   padding: 120px 20px 80px 20px;          /* espacio suficiente arriba y abajo */
 }
 
@@ -70,21 +73,21 @@ header {
 .caprasimo-regular {
   font-family: "Caprasimo", serif;
   font-weight: 400;
-  font-size: 8rem;          /* aprox Word 30 */
+  font-size: 10rem;          /* aprox Word 30 */
   line-height: 1.2;
   color: #222;
   text-shadow: 2px 2px 12px rgba(0,0,0,0.1);
   margin-bottom: 15px;        /* separación hasta subtítulo */
   opacity: 0;
   animation: fadeInText 1s forwards;
-  animation-delay: 0.5s;
+  animation-delay: 1s;
 }
 
 /* SUBTÍTULO */
 .subtitle {
   font-family: 'Outfit', sans-serif;
   font-weight: 500;
-  font-size: 6rem;           /* un poco más pequeño */
+  font-size: 8rem;           /* un poco más pequeño */
   color: #333;
   margin: 0 0 40px 0;           /* separación hasta firma */
   opacity: 0;
@@ -101,14 +104,14 @@ header {
 }
 
 #author-sign text {
-  font-size: 3rem;           /* tamaño proporcionado al subtítulo */
+  font-size: 5rem;           /* tamaño proporcionado al subtítulo */
   stroke: #333;                /* contorno */
   fill: #333;                  /* relleno */
   stroke-width: 0.8;           /* trazo fino */
   stroke-dasharray: 800;       /* longitud total del trazo */
   stroke-dashoffset: 800;      /* inicio oculto */
-  animation: draw 2s linear forwards;
-  animation-delay: 1.5s;       /* empieza después del subtítulo */
+  animation: draw 2s ease forwards;
+  animation-delay: 2s;       /* empieza después del subtítulo */
 }
 
 
@@ -208,12 +211,11 @@ header {
 
 /* ANIMACIONES */
 @keyframes fadeInText {
-  from { opacity: 0; filter: blur(4px); }
+  from { opacity: 0; filter: blur(6px); }
   to { opacity: 1; filter: blur(0); }
 }
 
 @keyframes draw {
-  from { stroke-dashoffset: 800; }
   to { stroke-dashoffset: 0; }
 }
 
