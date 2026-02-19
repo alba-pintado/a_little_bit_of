@@ -32,19 +32,16 @@ window.addEventListener("load", () => {
     let text = signature.textContent;
     signature.textContent = ""; // vaciar para ir escribiendo
     let i = 0;
-
-    const interval = setInterval(() => {
+    setTimeout(() => {
+     const interval = setInterval(() => {
       signature.textContent += text[i];
       i++;
       if (i >= text.length) clearInterval(interval);
-    }, 150); // velocidad de escritura, ajusta ms por letra
+    }, 150);
+  }, 1000);
+});
 
-  }, 1200); // delay después del título
-
-  // Mostrar contenido al hacer scroll
-  window.addEventListener('scroll', () => {
-    content.classList.add('visible');
-  });
+  
 
 
 
