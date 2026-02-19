@@ -13,22 +13,23 @@ function typeWriter(element, speed = 30) {
   typing();
 }
 
-/* TYPEWRITER PARA FIRMA */
-function typeSignature(element, speed = 100, delay = 1500) {
-  const text = element.innerText;
-  element.innerText = "";
-  let i = 0;
-  setTimeout(() => {
-    function typing() {
-      if (i < text.length) {
-        element.innerText += text.charAt(i);
-        i++;
-        setTimeout(typing, speed);
-      }
-    }
-    typing();
-  }, delay);
-}
+window.addEventListener("load", () => {
+  // Título y subtitulo difuminados
+  const title = document.querySelector(".caprasimo-regular");
+  const subtitle = document.querySelector(".subtitle");
+  title.classList.add("fade-in");
+  subtitle.classList.add("fade-in-delay");
+
+  // Firma
+  const authorSign = document.querySelector("#author-sign text");
+
+  // Esperamos a que termine la animación del subtitulo
+  subtitle.addEventListener("animationend", () => {
+    document.querySelector("#author-sign").style.opacity = 1;
+    authorSign.style.animation = "draw 2.5s linear forwards"; // trazo desde la izquierda
+  });
+});
+
 
 /* EJECUCIÓN AL CARGAR LA PÁGINA */
 window.addEventListener("load", () => {
