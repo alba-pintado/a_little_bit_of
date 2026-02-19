@@ -31,9 +31,9 @@ window.addEventListener("load", () => {
   // Animar la firma letra por letra justo después del subtítulo
     const text = signature.textContent;
     signature.textContent = ""; // vaciar para ir escribiendo
-    let i = 0;
     setTimeout(() => {
-     const interval = setInterval(() => {
+      let i = 0;
+      const interval = setInterval(() => {
       signature.textContent += text[i];
       i++;
       if (i >= text.length) clearInterval(interval);

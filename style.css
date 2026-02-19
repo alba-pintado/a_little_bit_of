@@ -106,6 +106,8 @@ header {
   margin-top: 20px;
   width: auto;
   overflow: visible;
+  animation-delay: 2.5s;
+  text-align: center;
 }
 
 
@@ -207,14 +209,10 @@ header {
 /* ANIMACIONES */
 .fade-in { opacity:0; animation: fadeIn 1s forwards; }
 .fade-in-delay { opacity:0; animation: fadeIn 1s forwards; animation-delay:1s; }
-
-@keyframes typing {
-  to { width: 23ch; } /* ajusta según el número de caracteres */
+.fade-in-delay-2 { opacity: 0; animation: fadeIn 1s forwards; animation-delay: 2.5s;
 }
 
-@keyframes blink {
-  50% { border-color: transparent; }
-}
+
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
