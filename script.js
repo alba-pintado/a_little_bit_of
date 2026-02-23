@@ -18,29 +18,28 @@ window.addEventListener("load", () => {
   const subtitle = document.querySelector(".subtitle");
   const signature = document.querySelector(".signature");
 
-  // Fade-in del título
-  title.style.transition = "opacity 1s ease";
+  // Título
   title.style.opacity = 1;
 
-  // Fade-in del subtítulo después del título
+  // Subtítulo
   setTimeout(() => {
-    subtitle.style.transition = "opacity 1s ease";
     subtitle.style.opacity = 1;
-  }, 1200); // 1.2s delay;
+  }, 1200);
 
-  // Animar la firma letra por letra justo después del subtítulo
+  // Firma con efecto máquina de escribir
+  setTimeout(() => {
     const text = signature.textContent;
-    signature.textContent = ""; // vaciar para ir escribiendo
-    setTimeout(() => {
-      let i = 0;
-      const interval = setInterval(() => {
+    signature.textContent = "";
+    signature.style.opacity = 1; // 👈 ahora sí aparece
+
+    let i = 0;
+    const interval = setInterval(() => {
       signature.textContent += text[i];
       i++;
       if (i >= text.length) clearInterval(interval);
-    }, 150);
-  }, 1000);
+    }, 120);
+  }, 2500); // empieza después del subtítulo
 });
-
   
 
 
