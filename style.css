@@ -79,8 +79,8 @@ header {
   text-shadow: 2px 2px 12px rgba(0,0,0,0.1);
   margin-bottom: 15px;        
   opacity: 0;
-  animation: fadeIn 1s forwards;
-  animation-delay: 1s;
+  animation: fadeIn 1.5s forwards;
+  animation-delay: 0s;
   text-align: center;
   margin: 0;
 }
@@ -93,10 +93,9 @@ header {
   color: #333;
   margin: 0 0 40px 0;           
   opacity: 0;
-  animation: fadeIn 1s forwards;
+  animation: fadeIn 1.5s forwards;
   animation-delay: 2s;
   text-align: center;
-  margin: 0;
 }
 
 /* FIRMA */
@@ -113,6 +112,10 @@ header {
   text-align: center;
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
 
 /* PERFIL Y OBJETIVO */
@@ -206,18 +209,6 @@ header {
   .profile-box { max-width:300px; font-size:1rem; }
 
   .icon-section img { width:150px; height:150px; }
-}
-
-
-/* ANIMACIONES */
-.fade-in { opacity:0; animation: fadeIn 1s forwards; }
-.fade-in-delay { opacity:0; animation: fadeIn 1s forwards; animation-delay:2s; }
-.fade-in-delay-2 { opacity: 0; animation: fadeIn 1s forwards; animation-delay: 3.2s;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
 }
 
 /* RESPONSIVE */
