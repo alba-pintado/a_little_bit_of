@@ -18,7 +18,9 @@ window.addEventListener("load", () => {
   const signature = document.querySelector(".signature");
 
   // Mostrar título
-  title.style.opacity = 1;
+  setTimeout(() => {
+    title.style.opacity = 1;
+  }, 1200);  
 
   // Mostrar subtítulo
   setTimeout(() => {
