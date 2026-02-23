@@ -81,6 +81,7 @@ header {
   opacity: 0;
   animation: blurIn 1s forwards;
   text-align: center;
+  margin: 0;
 }
 
 /* SUBTÍTULO */
@@ -94,6 +95,7 @@ header {
   animation: fadeIn 1s forwards;
   animation-delay: 2s;
   text-align: center;
+  margin: 0;
 }
 
 /* FIRMA */
@@ -212,7 +214,10 @@ header {
 .fade-in-delay-2 { opacity: 0; animation: fadeIn 1s forwards; animation-delay: 3.2s;
 }
 
-
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
 /* RESPONSIVE */
 @media (max-width: 900px) {

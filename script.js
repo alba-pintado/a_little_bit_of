@@ -12,33 +12,36 @@ function typeWriter(element, speed = 30) {
   }
   typing();
 }
-
 window.addEventListener("load", () => {
   const title = document.querySelector(".caprasimo-regular");
   const subtitle = document.querySelector(".subtitle");
   const signature = document.querySelector(".signature");
 
-  // Título
+  // Mostrar título
   title.style.opacity = 1;
 
-  // Subtítulo
+  // Mostrar subtítulo
   setTimeout(() => {
     subtitle.style.opacity = 1;
   }, 1200);
 
-  // Firma con efecto máquina de escribir
+  // Firma letra a letra
   setTimeout(() => {
     const text = signature.textContent;
     signature.textContent = "";
-    signature.style.opacity = 1; // 👈 ahora sí aparece
+    signature.style.opacity = 1;
 
     let i = 0;
-    const interval = setInterval(() => {
+    const typeLetter = () => {
       signature.textContent += text[i];
       i++;
-      if (i >= text.length) clearInterval(interval);
-    }, 120);
-  }, 2500); // empieza después del subtítulo
+      if (i < text.length) {
+        // tiempo aleatorio entre 80 y 180ms por letra
+        setTimeout(typeLetter, 80 + Math.random() * 100);
+      }
+    };
+    typeLetter();
+  }, 2500);
 });
   
 
