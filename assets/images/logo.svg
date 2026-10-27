@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="t">
+  <title id="t">Alba Pintado Rodrigo</title>
+  <rect width="120" height="120" rx="30" fill="#1c1a47"/>
+  <g fill="none" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" transform="translate(1 0)">
+    <path d="M59 29H70a16 16 0 0 1 0 32H59" stroke="#ff9a9e"/>
+    <path d="M30 91L59 29V91" stroke="#fffaf6"/>
+    <path d="M40.5 71H59" stroke="#fffaf6"/>
+  </g>
+</svg>

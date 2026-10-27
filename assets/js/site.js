@@ -267,7 +267,7 @@
     header.className = "site-header";
     header.innerHTML = `
       <div class="wrap">
-        <a class="brand" href="${pageUrl("index")}"><img src="${url("assets/images/favicon.png")}" alt="">${esc(C.title || "A Little Bit Of…")}</a>
+        <a class="brand" href="${pageUrl("index")}"><img src="${url("assets/images/logo.svg")}" alt="">${esc(C.title || "A Little Bit Of…")}</a>
         <button class="icon-btn menu-btn" aria-expanded="false" aria-controls="site-nav">${ICON_MENU}<span>${t("Menu")}</span></button>
         <nav class="site-nav" id="site-nav" aria-label="Main">
           <ul>${(S.sections || []).map((s) => `<li><a href="${pageUrl(s.key)}"${s.key === activeKey ? ' aria-current="page"' : ""}>${esc(f(s, "short"))}</a></li>`).join("")}</ul>

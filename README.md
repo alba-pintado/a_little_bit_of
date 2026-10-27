@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/images/perfil.jpg" alt="Alba Pintado Rodrigo" width="140">
+  <img src="assets/images/logo.svg" alt="AP logo" width="110">
 </p>
 
 <h1 align="center">A Little Bit Of…</h1>
