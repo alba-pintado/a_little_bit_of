@@ -23,13 +23,13 @@ books, travel, films and podcasts on the other.
 | Section | Content |
 |---|---|
 | **Science & Bioinformatics** | Papers and science news with their DOI (title, journal and authors are fetched automatically from Crossref), step-by-step bioinformatics tutorials, and courses in **R**, **Python** and **machine learning** |
-| **Tutoring** | Classes and materials from 1º ESO to 2º Bachillerato (maths, physics, chemistry, biology) |
+| **Tutoring** | High-level exercises and model exams (PDF) for maths, physics, chemistry and biology, from 1º ESO to 2º Bachillerato |
 | **Lifestyle** | Staying active, eating well, everyday adventures |
 | **Books** · **Movies, Series & Documentaries** | Reviews with ratings |
 | **Travel** | Trips and itineraries |
 | **Music & Podcasts** | Podcast episodes and recommendations |
 
-Every page has a search over the whole site (press <kbd>/</kbd>) and tag filters.
+The whole site is available in **English and Spanish** (switch with the ES / EN button). Every page has a search over the whole site (press <kbd>/</kbd>) and tag filters.
 
 ## How it's built
 
@@ -46,6 +46,7 @@ hosted on GitHub Pages.
 │   └── lifestyle.js  music.js   tutoring.js
 ├── assets/css/style.css                      design
 ├── assets/js/site.js                         menu, search, filters, Markdown, DOI lookup
+├── materials/                                tutoring PDFs, one folder per level and subject
 ├── icons/                                    section stickers
 └── images/                                   photos, signature, favicon
 ```

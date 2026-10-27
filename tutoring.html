@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Alba Pintado Rodrigo">
   <title>Tutoring · A Little Bit Of…</title>
-  <meta name="description" content="Private classes in maths, physics, chemistry and biology from 1º ESO to 2º Bachillerato, with downloadable materials.">
+  <meta name="description" content="Classes in maths, physics, chemistry and biology from 1º ESO to 2º Bachillerato, with high-level exercises and model exams to download.">
   <link rel="icon" href="images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,17 +17,52 @@
   <script src="assets/js/site.js"></script>
   <script>
     Site.ready().then(function (S) {
-      var esc = Site.esc, T = S.tutoring || { levels: [] }, C = S.config;
-      document.getElementById("main").innerHTML = Site.pageHead("tutoring", null, esc(T.intro || "")) +
-        (T.note ? '<p class="callout">' + esc(T.note) + (C.email ? ' <a href="mailto:' + esc(C.email) + '">Write to me</a>.' : '') + '</p>' : '') +
+      var esc = Site.esc, tx = Site.tx, f = Site.f, es = Site.lang === "es";
+      var T = S.tutoring || { levels: [], subjects: {} }, C = S.config;
+      var L = es
+        ? { all: "Todas", ex: "Ejercicios de alto nivel", exam: "Exámenes modelo", sol: "Soluciones", soon: "Próximamente", pdfs: " PDF", write: "Escríbeme" }
+        : { all: "All", ex: "High-level exercises", exam: "Model exams", sol: "Solutions", soon: "Coming soon", pdfs: " PDFs", write: "Write to me" };
+
+      function files(list) {
+        if (!list || !list.length) return '<p class="none">' + L.soon + '</p>';
+        return '<ul>' + list.map(function (x) {
+          return '<li><a class="pdf" href="' + esc(x.url) + '" target="_blank" rel="noopener">' + esc(f(x, "title")) + '</a>' +
+            (x.solutions ? '<a class="sol" href="' + esc(x.solutions) + '" target="_blank" rel="noopener">' + L.sol + '</a>' : '') + '</li>';
+        }).join("") + '</ul>';
+      }
+
+      var note = tx(T.note);
+      document.getElementById("main").innerHTML = Site.pageHead("tutoring", null, esc(tx(T.intro))) +
+        (note ? '<p class="callout">' + esc(note) + (C.email ? ' <a href="mailto:' + esc(C.email) + '">' + L.write + '</a>.' : '') + '</p>' : '') +
+        '<div class="toolbar subject-filter">' +
+          '<button class="chip" type="button" aria-pressed="true" data-subject="">' + L.all + '</button>' +
+          Object.keys(T.subjects).map(function (k) {
+            return '<button class="chip" type="button" aria-pressed="false" data-subject="' + k + '">' + esc(tx(T.subjects[k])) + '</button>';
+          }).join("") +
+        '</div>' +
         '<div class="levels">' + T.levels.map(function (lv) {
-          return '<article class="level"><h3>' + esc(lv.name) + '</h3><ul>' + lv.subjects.map(function (s) {
-            var m = s.materials || [];
-            return '<li><div>' + esc(s.name) +
-              (m.length ? '<ul>' + m.map(function (x) { return '<li><a href="' + esc(x.url) + '">' + esc(x.title) + '</a></li>'; }).join("") + '</ul>' : '') +
-              '</div>' + (m.length ? '' : '<span>materials soon</span>') + '</li>';
-          }).join("") + '</ul></article>';
+          return '<article class="level"><h3>' + esc(lv.name) + '</h3><ul class="subjects">' +
+            Object.keys(lv.subjects).map(function (k) {
+              var m = lv.subjects[k], n = (m.exercises || []).length + (m.exams || []).length;
+              return '<li data-subject="' + k + '"><details><summary>' + esc(tx(T.subjects[k]) || k) +
+                '<span class="count">' + (n ? n + L.pdfs : L.soon) + '</span></summary>' +
+                '<div class="group"><h4>' + L.ex + '</h4>' + files(m.exercises) + '<h4>' + L.exam + '</h4>' + files(m.exams) + '</div>' +
+                '</details></li>';
+            }).join("") + '</ul></article>';
         }).join("") + '</div>';
+
+      // show only one subject across all levels
+      var chips = document.querySelectorAll(".subject-filter .chip");
+      chips.forEach(function (b) {
+        b.addEventListener("click", function () {
+          var k = b.dataset.subject;
+          chips.forEach(function (c) { c.setAttribute("aria-pressed", c === b); });
+          document.querySelectorAll(".subjects > li").forEach(function (li) {
+            li.hidden = k && li.dataset.subject !== k;
+            if (k && !li.hidden) li.querySelector("details").open = true;
+          });
+        });
+      });
     });
   </script>
 </body>

@@ -27,6 +27,58 @@
     music:     { section: "music",     label: "Recommendation" }
   };
 
+  /* ---------- language (English / Español) ----------
+     The choice is remembered in the browser. First visit:
+     Spanish if the browser is in Spanish, English otherwise. */
+  let LANG = "en";
+  try { LANG = localStorage.getItem("lang") || ""; } catch (e) { /* storage blocked */ }
+  if (LANG !== "en" && LANG !== "es") LANG = /^es\b/i.test(navigator.language || "") ? "es" : "en";
+  document.documentElement.lang = LANG;
+
+  function setLang(l) {
+    try { localStorage.setItem("lang", l); } catch (e) { /* ignore */ }
+    location.reload();
+  }
+
+  /* Interface texts. Add a line here if you add new buttons or labels. */
+  const UI = {
+    "Search the site": "Buscar en la web",
+    "Search everything": "Buscar en todo",
+    "Search papers, reviews, trips, lessons…": "Busca papers, reseñas, viajes, lecciones…",
+    "Type to search across every section.": "Escribe para buscar en todas las secciones.",
+    "Nothing matches": "No hay resultados para",
+    "Try a shorter word or a tag like “genomics”.": "Prueba con una palabra más corta o una etiqueta como “genomics”.",
+    "Close search": "Cerrar búsqueda",
+    "Menu": "Menú",
+    "Skip to content": "Saltar al contenido",
+    "Made in Madrid": "Hecho en Madrid",
+    "Nothing matches that filter.": "Nada coincide con ese filtro.",
+    "Nothing here yet.": "Todavía no hay nada aquí.",
+    "Filter…": "Filtrar…",
+    "example": "ejemplo",
+    "Placeholder: replace with your own content": "Ejemplo: sustitúyelo por tu propio contenido",
+    "Paper": "Paper", "News": "Noticia", "Tutorial": "Tutorial", "Lesson": "Lección",
+    "Lifestyle": "Lifestyle", "Book review": "Reseña de libro", "Trip": "Viaje", "Review": "Reseña",
+    "Podcast episode": "Episodio del podcast", "Recommendation": "Recomendación",
+    "My take": "Mi opinión", "Copy DOI link": "Copiar enlace DOI", "Copied": "Copiado", "Added": "Añadido el",
+    "out of": "de",
+    "English": "English", "Español": "Español", "Change language": "Cambiar idioma",
+    "This entry is only available in English for now.": "Esta entrada de momento solo está disponible en inglés.",
+    "This entry is only available in Spanish for now.": "Esta entrada de momento solo está disponible en español."
+  };
+  const t = (s) => (LANG === "es" && UI[s] != null ? UI[s] : s);
+
+  /* Pick the right language of a content field:
+     item.title in English, item.title_es in Spanish (falls back to English). */
+  function f(item, field) {
+    if (!item) return "";
+    if (LANG === "es" && (field + "_es") in item) return item[field + "_es"];
+    if (LANG === "en" && !(field in item) && (field + "_es") in item) return item[field + "_es"];
+    return item[field];
+  }
+  /* Pick from a {en: "...", es: "..."} pair, or return a plain string as is */
+  const tx = (v) => (v && typeof v === "object" && !Array.isArray(v) ? (v[LANG] ?? v.en ?? v.es ?? "") : v ?? "");
+
   /* ---------- small helpers ---------- */
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const $ = (sel, root = document) => root.querySelector(sel);
@@ -35,22 +87,22 @@
     if (!d) return "";
     const date = new Date(d + (String(d).length === 10 ? "T12:00:00" : ""));
     if (isNaN(date)) return esc(d);
-    return date.toLocaleDateString("en-GB", opts || { day: "numeric", month: "short", year: "numeric" });
+    return date.toLocaleDateString(LANG === "es" ? "es-ES" : "en-GB", opts || { day: "numeric", month: "short", year: "numeric" });
   }
 
   function stars(n, max = 5) {
     if (n == null) return "";
     const full = Math.round(n);
-    return `<span class="stars" aria-label="${n} out of ${max}">` +
+    return `<span class="stars" aria-label="${n} ${t("out of")} ${max}">` +
       "★".repeat(full) + `<span class="off">${"★".repeat(Math.max(0, max - full))}</span></span>`;
   }
 
   function tagList(tags, extraClass = "") {
     if (!tags || !tags.length) return "";
-    return `<div class="tags">${tags.map((t) => `<span class="tag ${extraClass}">${esc(t)}</span>`).join("")}</div>`;
+    return `<div class="tags">${tags.map((x) => `<span class="tag ${extraClass}">${esc(x)}</span>`).join("")}</div>`;
   }
 
-  const exampleTag = (item) => (item && item.example ? `<span class="tag example" title="Placeholder: replace with your own content">example</span>` : "");
+  const exampleTag = (item) => (item && item.example ? `<span class="tag example" title="${t("Placeholder: replace with your own content")}">${t("example")}</span>` : "");
 
   const postUrl = (collection, id) => `post.html?c=${encodeURIComponent(collection)}&id=${encodeURIComponent(id)}`;
 
@@ -133,9 +185,9 @@
         out.push({
           collection: key,
           item,
-          title: item.title || item.doi || "",
+          title: f(item, "title") || item.doi || "",
           date: item.date || "",
-          text: [item.title, item.author, item.authors, item.journal, item.summary, item.note, item.place, item.artist, item.doi, (item.tags || []).join(" ")].join(" ")
+          text: [item.title, item.title_es, item.author, item.authors, item.journal, item.summary, item.summary_es, item.note, item.note_es, item.place, item.place_es, item.artist, item.doi, item.courseTitle, (item.tags || []).join(" ")].join(" ")
         });
       }
     }
@@ -145,7 +197,7 @@
   function flattenLessons() {
     const out = [];
     (window.SITE.courses || []).forEach((course) =>
-      (course.lessons || []).forEach((l) => out.push(Object.assign({ course: course.key, courseTitle: course.title, tags: [course.title] }, l))));
+      (course.lessons || []).forEach((l) => out.push(Object.assign({ course: course.key, courseTitle: f(course, "title"), tags: [f(course, "title")] }, l))));
     return out;
   }
 
@@ -196,16 +248,17 @@
     header.innerHTML = `
       <div class="wrap">
         <a class="brand" href="index.html"><img src="images/favicon.png" alt="">${esc(C.title || "A Little Bit Of…")}</a>
-        <button class="icon-btn menu-btn" aria-expanded="false" aria-controls="site-nav">${ICON_MENU}<span>Menu</span></button>
+        <button class="icon-btn menu-btn" aria-expanded="false" aria-controls="site-nav">${ICON_MENU}<span>${t("Menu")}</span></button>
         <nav class="site-nav" id="site-nav" aria-label="Main">
-          <ul>${(S.sections || []).map((s) => `<li><a href="${s.key}.html"${s.key === activeKey ? ' aria-current="page"' : ""}>${esc(s.short)}</a></li>`).join("")}</ul>
+          <ul>${(S.sections || []).map((s) => `<li><a href="${s.key}.html"${s.key === activeKey ? ' aria-current="page"' : ""}>${esc(f(s, "short"))}</a></li>`).join("")}</ul>
         </nav>
-        <button class="icon-btn search-btn" aria-label="Search the site">${ICON_SEARCH}<kbd>/</kbd></button>
+        <button class="icon-btn lang-btn" lang="${LANG === "es" ? "en" : "es"}" aria-label="${t("Change language")}: ${LANG === "es" ? "English" : "Español"}">${LANG === "es" ? "EN" : "ES"}</button>
+        <button class="icon-btn search-btn" aria-label="${t("Search the site")}">${ICON_SEARCH}<kbd>/</kbd></button>
       </div>`;
     document.body.prepend(header);
 
     const skip = document.createElement("a");
-    skip.href = "#main"; skip.className = "sr-only"; skip.textContent = "Skip to content";
+    skip.href = "#main"; skip.className = "sr-only"; skip.textContent = t("Skip to content");
     skip.addEventListener("focus", () => skip.classList.remove("sr-only"));
     skip.addEventListener("blur", () => skip.classList.add("sr-only"));
     document.body.prepend(skip);
@@ -215,6 +268,7 @@
       const open = nav.classList.toggle("open");
       menuBtn.setAttribute("aria-expanded", open);
     });
+    $(".lang-btn").addEventListener("click", () => setLang(LANG === "es" ? "en" : "es"));
 
     const links = [
       C.email && `<li><a href="mailto:${esc(C.email)}">Email</a></li>`,
@@ -231,7 +285,7 @@
       <div class="wrap">
         <div>
           <img class="sig" src="images/signature.svg" alt="by ${esc(C.name)}">
-          <small>© ${new Date().getFullYear()} ${esc(C.name)} · Made in Madrid</small>
+          <small>© ${new Date().getFullYear()} ${esc(C.name)} · ${t("Made in Madrid")}</small>
         </div>
         <ul>${links}</ul>
       </div>`;
@@ -243,13 +297,13 @@
   function buildSearch() {
     const dlg = document.createElement("dialog");
     dlg.className = "search-dialog";
-    dlg.setAttribute("aria-label", "Search");
+    dlg.setAttribute("aria-label", t("Search everything"));
     dlg.innerHTML = `
       <form method="dialog" role="search">
         ${ICON_SEARCH.replace("<svg", '<svg width="20" height="20"')}
-        <label class="sr-only" for="site-search">Search everything</label>
-        <input id="site-search" type="search" placeholder="Search papers, reviews, trips, lessons…" autocomplete="off">
-        <button class="icon-btn" value="close" aria-label="Close search">Esc</button>
+        <label class="sr-only" for="site-search">${t("Search everything")}</label>
+        <input id="site-search" type="search" placeholder="${t("Search papers, reviews, trips, lessons…")}" autocomplete="off">
+        <button class="icon-btn" value="close" aria-label="${t("Close search")}">Esc</button>
       </form>
       <ul class="search-results" aria-live="polite"></ul>`;
     document.body.appendChild(dlg);
@@ -259,12 +313,12 @@
 
     function render(q) {
       q = q.trim().toLowerCase();
-      if (!q) { results.innerHTML = `<li class="none">Type to search across every section.</li>`; return; }
+      if (!q) { results.innerHTML = `<li class="none">${t("Type to search across every section.")}</li>`; return; }
       const words = q.split(/\s+/);
       const hits = items.filter((it) => words.every((w) => it.text.toLowerCase().includes(w))).slice(0, 30);
       results.innerHTML = hits.length
-        ? hits.map((h) => `<li><a href="${esc(itemHref(h.collection, h.item))}">${esc(h.title)}<small>${esc(COLLECTIONS[h.collection].label)} · ${esc(sectionOf(h.collection)?.label || "")}</small></a></li>`).join("")
-        : `<li class="none">Nothing matches “${esc(q)}”. Try a shorter word or a tag like “genomics”.</li>`;
+        ? hits.map((h) => `<li><a href="${esc(itemHref(h.collection, h.item))}">${esc(h.title)}<small>${esc(t(COLLECTIONS[h.collection].label))} · ${esc(f(sectionOf(h.collection), "label") || "")}</small></a></li>`).join("")
+        : `<li class="none">${t("Nothing matches")} “${esc(q)}”. ${t("Try a shorter word or a tag like “genomics”.")}</li>`;
     }
     input.addEventListener("input", () => render(input.value));
     input.addEventListener("keydown", (e) => {
@@ -283,10 +337,12 @@
   /* ---------- section header ---------- */
   function pageHead(key, title, lead) {
     const s = (window.SITE.sections || []).find((x) => x.key === key) || {};
-    document.title = `${title || s.label} · ${window.SITE.config.title}`;
+    const h = tx(title) || f(s, "label");
+    lead = tx(lead);
+    document.title = `${h} · ${window.SITE.config.title}`;
     return `
       <div class="page-head">
-        <div><h1>${esc(title || s.label)}</h1>${lead ? `<p class="lead">${lead}</p>` : ""}</div>
+        <div><h1>${esc(h)}</h1>${lead ? `<p class="lead">${lead}</p>` : ""}</div>
         ${s.icon ? `<img src="${esc(s.icon)}" alt="">` : ""}
       </div>`;
   }
@@ -297,9 +353,9 @@
     let active = null, query = "";
     mount.innerHTML = `
       <div class="toolbar">
-        <label class="sr-only" for="f-${opts.id}">Filter</label>
-        <input id="f-${opts.id}" type="search" placeholder="${esc(opts.placeholder || "Filter…")}">
-        ${tags.map((t) => `<button class="chip" type="button" aria-pressed="false" data-tag="${esc(t)}">${esc(t)}</button>`).join("")}
+        <label class="sr-only" for="f-${opts.id}">${t("Filter…")}</label>
+        <input id="f-${opts.id}" type="search" placeholder="${esc(tx(opts.placeholder) || t("Filter…"))}">
+        ${tags.map((x) => `<button class="chip" type="button" aria-pressed="false" data-tag="${esc(x)}">${esc(x)}</button>`).join("")}
       </div>
       <div class="list-out"></div>`;
     const out = $(".list-out", mount);
@@ -308,7 +364,7 @@
       const shown = list.filter((i) =>
         (!active || (i.tags || []).includes(active)) &&
         (!q || JSON.stringify(i).toLowerCase().includes(q)));
-      out.innerHTML = shown.length ? renderList(shown) : `<div class="empty">${list.length ? "Nothing matches that filter." : esc(opts.empty || "Nothing here yet.")}</div>`;
+      out.innerHTML = shown.length ? renderList(shown) : `<div class="empty">${list.length ? t("Nothing matches that filter.") : esc(tx(opts.empty) || t("Nothing here yet."))}</div>`;
       if (opts.after) opts.after(out, shown);
     }
     $("input", mount).addEventListener("input", (e) => { query = e.target.value; draw(); });
@@ -359,13 +415,13 @@
     return `
       <article class="paper" data-kind="${esc(p.kind || "paper")}" data-doi="${esc(p.doi || "")}" ${known ? "" : 'data-fetch="1"'}>
         <div class="inner">
-          <div class="ref">${p.kind === "news" ? "News" : "Paper"} · <span class="j">${esc(p.journal || "")}</span>${p.year ? ` · <span class="y">${esc(p.year)}</span>` : '<span class="y"></span>'} ${exampleTag(p)}</div>
-          <h3>${titleHref ? `<a href="${esc(titleHref)}">` : ""}<span class="t">${p.title ? esc(p.title) : '<span class="loading-line"></span>'}</span>${titleHref ? "</a>" : ""}</h3>
+          <div class="ref">${t(p.kind === "news" ? "News" : "Paper")} · <span class="j">${esc(p.journal || "")}</span>${p.year ? ` · <span class="y">${esc(p.year)}</span>` : '<span class="y"></span>'} ${exampleTag(p)}</div>
+          <h3>${titleHref ? `<a href="${esc(titleHref)}">` : ""}<span class="t">${f(p, "title") ? esc(f(p, "title")) : '<span class="loading-line"></span>'}</span>${titleHref ? "</a>" : ""}</h3>
           <div class="ref a">${esc(authorLine(p.authors))}</div>
-          ${p.note ? `<p class="take">${esc(p.note)}</p>` : ""}
+          ${f(p, "note") ? `<p class="take"><strong>${t("My take")}:</strong> ${esc(f(p, "note"))}</p>` : ""}
           <div class="foot">
-            ${p.doi ? `<a class="doi" href="https://doi.org/${esc(p.doi)}">doi:${esc(p.doi)}</a><button class="copy-btn" type="button" data-copy="https://doi.org/${esc(p.doi)}">Copy DOI link</button>` : ""}
-            ${p.date ? `<span class="muted">Added ${fmtDate(p.date)}</span>` : ""}
+            ${p.doi ? `<a class="doi" href="https://doi.org/${esc(p.doi)}">doi:${esc(p.doi)}</a><button class="copy-btn" type="button" data-copy="https://doi.org/${esc(p.doi)}">${t("Copy DOI link")}</button>` : ""}
+            ${p.date ? `<span class="muted">${t("Added")} ${fmtDate(p.date)}</span>` : ""}
             ${tagList(p.tags)}
           </div>
         </div>
@@ -374,7 +430,7 @@
 
   function hydratePapers(root) {
     root.querySelectorAll(".copy-btn").forEach((b) => b.addEventListener("click", () => {
-      navigator.clipboard?.writeText(b.dataset.copy).then(() => { b.textContent = "Copied"; setTimeout(() => (b.textContent = "Copy DOI link"), 1600); });
+      navigator.clipboard?.writeText(b.dataset.copy).then(() => { b.textContent = t("Copied"); setTimeout(() => (b.textContent = t("Copy DOI link")), 1600); });
     }));
     root.querySelectorAll('.paper[data-fetch="1"]').forEach((el) => {
       const doi = el.dataset.doi;
@@ -396,9 +452,9 @@
 
     entries: (collection) => (list) => `<div class="entries">${list.map((e) => `
       <article class="entry">
-        <div class="meta">${fmtDate(e.date)}${e.level ? ` · ${esc(e.level)}` : ""} ${exampleTag(e)}</div>
-        <h3><a href="${postUrl(collection, e.id)}">${esc(e.title)}</a></h3>
-        <p>${esc(e.summary || "")}</p>
+        <div class="meta">${fmtDate(e.date)}${f(e, "level") ? ` · ${esc(f(e, "level"))}` : ""} ${exampleTag(e)}</div>
+        <h3><a href="${postUrl(collection, e.id)}">${esc(f(e, "title"))}</a></h3>
+        <p>${esc(f(e, "summary") || "")}</p>
         ${tagList(e.tags)}
       </article>`).join("")}</div>`,
 
@@ -406,19 +462,19 @@
       <article class="review">
         <div class="cover">${r.image ? `<img src="${esc(r.image)}" alt="" loading="lazy">` : `<span>${esc((r.title || "?").trim()[0])}</span>`}</div>
         <div class="body">
-          <div class="tags">${r.type ? `<span class="tag blush">${esc(r.type)}</span>` : ""}${exampleTag(r)}</div>
-          <h3><a href="${postUrl(collection, r.id)}">${esc(r.title)}</a></h3>
+          <div class="tags">${f(r, "type") ? `<span class="tag blush">${esc(f(r, "type"))}</span>` : ""}${exampleTag(r)}</div>
+          <h3><a href="${postUrl(collection, r.id)}">${esc(f(r, "title"))}</a></h3>
           <div class="by">${esc(r.author || r.director || r.creator || "")}${r.year ? ` (${esc(r.year)})` : ""}</div>
           ${stars(r.rating)}
-          <p>${esc(r.summary || "")}</p>
+          <p>${esc(f(r, "summary") || "")}</p>
         </div>
       </article>`).join("")}</div>`,
 
     trips: (list) => `<div class="trips">${list.map((t) => `
       <article class="trip tape">
-        <div class="photo">${t.image ? `<img src="${esc(t.image)}" alt="${esc(t.title)}" loading="lazy">` : `<span aria-hidden="true">${esc(t.emoji || "✈︎")}</span>`}</div>
-        <h3><a href="${postUrl("travel", t.id)}">${esc(t.title)}</a></h3>
-        <p>${esc(t.place || "")}${t.date ? ` · ${fmtDate(t.date, { month: "long", year: "numeric" })}` : ""} ${exampleTag(t)}</p>
+        <div class="photo">${t.image ? `<img src="${esc(t.image)}" alt="${esc(f(t, "title"))}" loading="lazy">` : `<span aria-hidden="true">${esc(t.emoji || "✈︎")}</span>`}</div>
+        <h3><a href="${postUrl("travel", t.id)}">${esc(f(t, "title"))}</a></h3>
+        <p>${esc(f(t, "place") || "")}${t.date ? ` · ${fmtDate(t.date, { month: "long", year: "numeric" })}` : ""} ${exampleTag(t)}</p>
       </article>`).join("")}</div>`
   };
 
@@ -427,6 +483,6 @@
     return allItems().filter((x) => x.date).slice(0, n);
   }
 
-  window.Site = { ready, esc, fmtDate, stars, tagList, exampleTag, md, highlight, postUrl, pageHead, filterable,
+  window.Site = { lang: LANG, setLang, t, f, tx, ready, esc, fmtDate, stars, tagList, exampleTag, md, highlight, postUrl, pageHead, filterable,
     paperCard, hydratePapers, crossref, authorLine, R, latest, itemHref, sectionOf, COLLECTIONS, flattenLessons, $ };
 })();

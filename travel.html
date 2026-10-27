@@ -17,9 +17,9 @@
   <script src="assets/js/site.js"></script>
   <script>
     Site.ready().then(function (S) {
-      document.getElementById("main").innerHTML = Site.pageHead("travel", null, "Trips, routes and the places worth the detour.") + '<div id="list"></div>';
+      document.getElementById("main").innerHTML = Site.pageHead("travel", null, { en: "Trips, routes and the places worth the detour.", es: "Viajes, rutas y los sitios que merecen el desvío." }) + '<div id="list"></div>';
       var list = (S.travel || []).slice().sort(function (a, b) { return String(b.date).localeCompare(String(a.date)); });
-      Site.filterable(document.getElementById("list"), list, Site.R.trips, { id: "travel", placeholder: "Filter trips…", empty: "No trips yet." });
+      Site.filterable(document.getElementById("list"), list, Site.R.trips, { id: "travel", placeholder: { en: "Filter trips…", es: "Filtrar viajes…" }, empty: { en: "No trips yet.", es: "Todavía no hay viajes." } });
     });
   </script>
 </body>

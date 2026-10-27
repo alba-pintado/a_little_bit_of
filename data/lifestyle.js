@@ -10,8 +10,10 @@ SITE.lifestyle = [
   {
     id: "example-weekly-routine",
     title: "Example post: my weekly training routine",
+    title_es: "Post de ejemplo: mi rutina semanal de entreno",
     date: "2026-10-10",
     summary: "A template post. Replace it with how you stay active, what you eat in a busy week, or a small adventure.",
+    summary_es: "Un post de plantilla. Cámbialo por cómo te mantienes activa, qué comes en una semana liada o una pequeña aventura.",
     tags: ["Sport", "Routine"],
     example: true,
     body: `

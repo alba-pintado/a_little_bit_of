@@ -17,9 +17,9 @@
   <script src="assets/js/site.js"></script>
   <script>
     Site.ready().then(function (S) {
-      document.getElementById("main").innerHTML = Site.pageHead("books", null, "What I'm reading and what I thought of it. Science books, novels and everything in between.") + '<div id="list"></div>';
+      document.getElementById("main").innerHTML = Site.pageHead("books", null, { en: "What I'm reading and what I thought of it. Science books, novels and everything in between.", es: "Lo que estoy leyendo y lo que me ha parecido. Divulgación, novelas y todo lo que hay entre medias." }) + '<div id="list"></div>';
       var list = (S.books || []).slice().sort(function (a, b) { return String(b.date).localeCompare(String(a.date)); });
-      Site.filterable(document.getElementById("list"), list, Site.R.reviews("books"), { id: "books", placeholder: "Filter by title, author…", empty: "No reviews yet." });
+      Site.filterable(document.getElementById("list"), list, Site.R.reviews("books"), { id: "books", placeholder: { en: "Filter by title, author…", es: "Filtrar por título, autor…" }, empty: { en: "No reviews yet.", es: "Todavía no hay reseñas." } });
     });
   </script>
 </body>

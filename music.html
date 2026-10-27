@@ -17,28 +17,28 @@
   <script src="assets/js/site.js"></script>
   <script>
     Site.ready().then(function (S) {
-      var esc = Site.esc, C = S.config;
+      var esc = Site.esc, f = Site.f, es = Site.lang === "es", C = S.config;
       var eps = (S.podcast || []).slice().sort(function (a, b) { return (b.number || 0) - (a.number || 0); });
       var recs = (S.music || []).slice().sort(function (a, b) { return String(b.date).localeCompare(String(a.date)); });
 
-      document.getElementById("main").innerHTML = Site.pageHead("music", null, "Episodes of my podcast, and the music and shows I keep coming back to.") +
-        '<div class="board-head"><h2>My podcast</h2>' + (C.podcastFeed ? '<a href="' + esc(C.podcastFeed) + '">Follow the podcast</a>' : '') + '</div>' +
+      document.getElementById("main").innerHTML = Site.pageHead("music", null, { en: "Episodes of my podcast, and the music and shows I keep coming back to.", es: "Los episodios de mi podcast, y la música y los programas a los que siempre vuelvo." }) +
+        '<div class="board-head"><h2>' + (es ? 'Mi podcast' : 'My podcast') + '</h2>' + (C.podcastFeed ? '<a href="' + esc(C.podcastFeed) + '">' + (es ? 'Seguir el podcast' : 'Follow the podcast') + '</a>' : '') + '</div>' +
         (eps.length ? '<ol class="episodes">' + eps.map(function (e) {
           var href = e.body ? Site.postUrl("podcast", e.id) : e.url;
-          return '<li class="episode"><span class="num" aria-label="Episode">' + esc(e.number) + '</span><div>' +
-            '<h3>' + (href ? '<a href="' + esc(href) + '">' + esc(e.title) + '</a>' : esc(e.title)) + ' ' + Site.exampleTag(e) + '</h3>' +
-            '<p>' + Site.fmtDate(e.date) + (e.summary ? ' · ' + esc(e.summary) : '') + '</p></div>' +
-            (e.url ? '<a class="listen" href="' + esc(e.url) + '">Listen</a>' : '') + '</li>';
-        }).join("") + '</ol>' : '<div class="empty">The first episode is on its way.</div>') +
-        '<div class="board-head section-gap"><h2>On repeat</h2></div><div id="recs"></div>';
+          return '<li class="episode"><span class="num" aria-label="' + (es ? 'Episodio' : 'Episode') + '">' + esc(e.number) + '</span><div>' +
+            '<h3>' + (href ? '<a href="' + esc(href) + '">' + esc(f(e, "title")) + '</a>' : esc(f(e, "title"))) + ' ' + Site.exampleTag(e) + '</h3>' +
+            '<p>' + Site.fmtDate(e.date) + (f(e, "summary") ? ' · ' + esc(f(e, "summary")) : '') + '</p></div>' +
+            (e.url ? '<a class="listen" href="' + esc(e.url) + '">' + (es ? 'Escuchar' : 'Listen') + '</a>' : '') + '</li>';
+        }).join("") + '</ol>' : '<div class="empty">' + (es ? 'El primer episodio está de camino.' : 'The first episode is on its way.') + '</div>') +
+        '<div class="board-head section-gap"><h2>' + (es ? 'En bucle' : 'On repeat') + '</h2></div><div id="recs"></div>';
 
       Site.filterable(document.getElementById("recs"), recs, function (list) {
         return '<div class="entries">' + list.map(function (m) {
-          return '<article class="entry"><div class="meta"><span class="tag blush">' + esc(m.type || "") + '</span> ' + Site.exampleTag(m) + '</div>' +
-            '<h3>' + (m.url ? '<a href="' + esc(m.url) + '">' + esc(m.title) + '</a>' : esc(m.title)) + '</h3>' +
-            '<div class="meta">' + esc(m.artist || "") + '</div><p>' + esc(m.note || "") + '</p></article>';
+          return '<article class="entry"><div class="meta"><span class="tag blush">' + esc(f(m, "type") || "") + '</span> ' + Site.exampleTag(m) + '</div>' +
+            '<h3>' + (m.url ? '<a href="' + esc(m.url) + '">' + esc(f(m, "title")) + '</a>' : esc(f(m, "title"))) + '</h3>' +
+            '<div class="meta">' + esc(m.artist || "") + '</div><p>' + esc(f(m, "note") || "") + '</p></article>';
         }).join("") + '</div>';
-      }, { id: "music", placeholder: "Filter recommendations…", empty: "No recommendations yet." });
+      }, { id: "music", placeholder: { en: "Filter recommendations…", es: "Filtrar recomendaciones…" }, empty: { en: "No recommendations yet.", es: "Todavía no hay recomendaciones." } });
     });
   </script>
 </body>

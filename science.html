@@ -17,13 +17,14 @@
   <script src="assets/js/site.js"></script>
   <script>
     Site.ready().then(function (S) {
-      var esc = Site.esc, main = document.getElementById("main");
-      main.innerHTML = Site.pageHead("science", null,
-          "Papers and news I found worth reading, step-by-step bioinformatics tutorials, and my courses in R, Python and machine learning.") +
+      var esc = Site.esc, f = Site.f, es = Site.lang === "es", main = document.getElementById("main");
+      main.innerHTML = Site.pageHead("science", null, {
+          en: "Papers and news I found worth reading, step-by-step bioinformatics tutorials, and my courses in R, Python and machine learning.",
+          es: "Papers y noticias que me han parecido interesantes, tutoriales de bioinformática paso a paso y mis cursos de R, Python y machine learning." }) +
         '<div class="tabs" role="tablist">' +
-          '<button role="tab" id="tab-papers" aria-controls="papers">Papers &amp; news</button>' +
-          '<button role="tab" id="tab-tutorials" aria-controls="tutorials">Tutorials</button>' +
-          '<button role="tab" id="tab-courses" aria-controls="courses">Courses</button>' +
+          '<button role="tab" id="tab-papers" aria-controls="papers">' + (es ? 'Papers y noticias' : 'Papers &amp; news') + '</button>' +
+          '<button role="tab" id="tab-tutorials" aria-controls="tutorials">' + (es ? 'Tutoriales' : 'Tutorials') + '</button>' +
+          '<button role="tab" id="tab-courses" aria-controls="courses">' + (es ? 'Cursos' : 'Courses') + '</button>' +
         '</div>' +
         '<section role="tabpanel" id="papers" aria-labelledby="tab-papers"></section>' +
         '<section role="tabpanel" id="tutorials" aria-labelledby="tab-tutorials"></section>' +
@@ -32,17 +33,17 @@
       var byDate = function (a, b) { return String(b.date).localeCompare(String(a.date)); };
 
       Site.filterable(document.getElementById("papers"), (S.papers || []).slice().sort(byDate), Site.R.papers,
-        { id: "papers", placeholder: "Filter papers…", empty: "No papers yet.", after: Site.hydratePapers });
+        { id: "papers", placeholder: { en: "Filter papers…", es: "Filtrar papers…" }, empty: { en: "No papers yet.", es: "Todavía no hay papers." }, after: Site.hydratePapers });
 
       Site.filterable(document.getElementById("tutorials"), (S.tutorials || []).slice().sort(byDate), Site.R.entries("tutorials"),
-        { id: "tutorials", placeholder: "Filter tutorials…", empty: "No tutorials yet." });
+        { id: "tutorials", placeholder: { en: "Filter tutorials…", es: "Filtrar tutoriales…" }, empty: { en: "No tutorials yet.", es: "Todavía no hay tutoriales." } });
 
       document.getElementById("courses").innerHTML = '<div class="courses">' + (S.courses || []).map(function (c) {
-        return '<article class="course" data-lang="' + esc(c.key) + '"><h2>' + esc(c.title) + '</h2><p>' + esc(c.description) + '</p><ol>' +
+        return '<article class="course" data-lang="' + esc(c.key) + '"><h2>' + esc(f(c, "title")) + '</h2><p>' + esc(f(c, "description")) + '</p><ol>' +
           (c.lessons || []).map(function (l) {
             return l.soon || !l.body
-              ? '<li><span class="soon">' + esc(l.title) + ' (coming soon)</span></li>'
-              : '<li><a href="' + Site.postUrl("lessons", l.id) + '">' + esc(l.title) + '</a> ' + Site.exampleTag(l) + '</li>';
+              ? '<li><span class="soon">' + esc(f(l, "title")) + (es ? ' (próximamente)' : ' (coming soon)') + '</span></li>'
+              : '<li><a href="' + Site.postUrl("lessons", l.id) + '">' + esc(f(l, "title")) + '</a> ' + Site.exampleTag(l) + '</li>';
           }).join("") + '</ol></article>';
       }).join("") + '</div>';
 

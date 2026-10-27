@@ -6,9 +6,9 @@
   <meta name="author" content="Alba Pintado Rodrigo">
   <title>A Little Bit Of… · Alba Pintado Rodrigo</title>
   <meta name="description" content="Science, bioinformatics, tutoring, books, travel, films and podcasts, by Alba Pintado Rodrigo, biologist and bioinformatician from Madrid.">
+  <meta property="og:image" content="images/perfil.jpg">
   <meta property="og:title" content="A Little Bit Of…">
   <meta property="og:description" content="For the curious and weird ones. Science, bioinformatics and everyday life by Alba Pintado Rodrigo.">
-  <meta property="og:image" content="images/phage.png">
   <link rel="icon" href="images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,18 +20,19 @@
 
     <section class="hero">
       <h1>A Little Bit Of…</h1>
-      <p class="tagline">For the curious and weird ones</p>
+      <p class="tagline"><span data-lang="en">For the curious and weird ones</span><span data-lang="es">Para las mentes curiosas y raritas</span></p>
       <img class="signature reveal" src="images/signature.svg" alt="by Alba Pintado Rodrigo" width="656" height="91">
     </section>
 
     <section class="about" aria-labelledby="about-title">
       <div>
         <figure class="polaroid tape">
-          <img id="profile-photo" src="images/phage.png" alt="Alba Pintado Rodrigo">
-          <figcaption class="hand">that's me (ish)</figcaption>
+          <img id="profile-photo" src="images/perfil.jpg" alt="Alba Pintado Rodrigo" width="216" height="216">
+          <figcaption class="hand"><span data-lang="en">that's me!</span><span data-lang="es">¡esta soy yo!</span></figcaption>
         </figure>
       </div>
-      <div class="note">
+
+      <div class="note" data-lang="en">
         <h2 id="about-title">Hi there, and welcome!</h2>
         <p>I’m Alba Pintado Rodrigo, a biologist and bioinformatician from Madrid, Spain.</p>
         <p>I enjoy staying active, following a healthy lifestyle, and exploring new ways to make science accessible and engaging for curious minds.</p>
@@ -40,20 +41,30 @@
         <p>Thank you for stopping by. I hope you enjoy reading and learning as much as I enjoy creating this content.</p>
         <span class="hand">— Alba</span>
       </div>
+
+      <div class="note" data-lang="es">
+        <h2>¡Hola, y bienvenida o bienvenido!</h2>
+        <p>Soy Alba Pintado Rodrigo, bióloga y bioinformática de Madrid.</p>
+        <p>Me encanta mantenerme activa, llevar una vida sana y buscar nuevas formas de hacer que la ciencia sea accesible y atractiva para las mentes curiosas.</p>
+        <p>Este espacio nació de la curiosidad y de las ganas de compartir lo que sé de una forma auténtica, mezclando lo personal y lo profesional. Aquí encontrarás ideas, descubrimientos y herramientas que espero que te inspiren, te orienten y te ayuden a aprender un poquito más cada día.</p>
+        <p>Mi objetivo es crear un lugar donde te sientas a gusto explorando ideas, haciendo preguntas y descubriendo nuevas perspectivas, tanto en mi trabajo como en las pequeñas aventuras del día a día que tanto nos enseñan.</p>
+        <p>Gracias por pasarte. Espero que disfrutes leyendo y aprendiendo tanto como yo disfruto creando este contenido.</p>
+        <span class="hand">— Alba</span>
+      </div>
     </section>
 
     <section class="board" aria-labelledby="board-title">
       <div class="board-head">
-        <h2 id="board-title">Pick a corner</h2>
-        <p class="muted">Seven sections, one curious person.</p>
+        <h2 id="board-title"><span data-lang="en">Pick a corner</span><span data-lang="es">Elige un rincón</span></h2>
+        <p class="muted"><span data-lang="en">Seven sections, one curious person.</span><span data-lang="es">Siete secciones, una persona curiosa.</span></p>
       </div>
       <div class="stickers" id="stickers"></div>
     </section>
 
     <section class="section-gap" aria-labelledby="latest-title">
       <div class="board-head">
-        <h2 id="latest-title">Recently added</h2>
-        <button class="chip" type="button" onclick="document.querySelector('.search-btn').click()">Search everything</button>
+        <h2 id="latest-title"><span data-lang="en">Recently added</span><span data-lang="es">Lo último</span></h2>
+        <button class="chip" type="button" onclick="document.querySelector('.search-btn').click()"><span data-lang="en">Search everything</span><span data-lang="es">Buscar en todo</span></button>
       </div>
       <ul class="latest" id="latest"></ul>
     </section>
@@ -63,29 +74,25 @@
   <script src="assets/js/site.js"></script>
   <script>
     Site.ready().then(function (S) {
-      var esc = Site.esc;
-
-      // Your photo: uses config.photo if that file exists, otherwise keeps the phage
-      var probe = new Image();
-      probe.onload = function () { document.getElementById("profile-photo").src = S.config.photo; };
-      if (S.config.photo) probe.src = S.config.photo;
+      var esc = Site.esc, t = Site.t, f = Site.f;
 
       document.getElementById("stickers").innerHTML = S.sections.map(function (s) {
         return '<a class="sticker" href="' + s.key + '.html">' +
           '<img src="' + esc(s.icon) + '" alt="" loading="lazy">' +
-          '<strong>' + esc(s.label) + '</strong><span>' + esc(s.blurb) + '</span></a>';
+          '<strong>' + esc(f(s, "label")) + '</strong><span>' + esc(f(s, "blurb")) + '</span></a>';
       }).join("");
 
-      document.getElementById("latest").innerHTML = Site.latest(8).map(function (x) {
-        var sec = Site.sectionOf(x.collection);
-        return '<li><span class="sec">' + esc(Site.COLLECTIONS[x.collection].label === (sec && sec.short) ? sec.short : Site.COLLECTIONS[x.collection].label + ' · ' + (sec ? sec.short : "")) + '</span>' +
+      var items = Site.latest(8);
+      document.getElementById("latest").innerHTML = items.map(function (x) {
+        var sec = Site.sectionOf(x.collection), kind = t(Site.COLLECTIONS[x.collection].label), where = sec ? f(sec, "short") : "";
+        return '<li><span class="sec">' + esc(kind === where ? where : kind + ' · ' + where) + '</span>' +
           '<a href="' + esc(Site.itemHref(x.collection, x.item)) + '">' + esc(x.title) + '</a>' +
           '<time datetime="' + esc(x.date) + '">' + Site.fmtDate(x.date) + '</time></li>';
       }).join("");
 
       // Paper titles are fetched from the DOI, so update those rows when they arrive
       document.querySelectorAll("#latest li").forEach(function (li, i) {
-        var x = Site.latest(8)[i];
+        var x = items[i];
         if (x.collection === "papers" && !x.item.title && x.item.doi) {
           Site.crossref(x.item.doi).then(function (m) { if (m && m.title) li.querySelector("a").textContent = m.title; });
         }

@@ -11,10 +11,13 @@ SITE.travel = [
   {
     id: "example-trip",
     title: "Example trip: a long weekend",
+    title_es: "Viaje de ejemplo: un puente largo",
     place: "Somewhere worth the detour",
+    place_es: "Algún sitio que merezca el desvío",
     date: "2026-08-15",
     emoji: "🧭",
     summary: "A template for your travel posts.",
+    summary_es: "Una plantilla para tus posts de viajes.",
     tags: ["Europe"],
     example: true,
     body: `

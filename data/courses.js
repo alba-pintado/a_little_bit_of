@@ -4,6 +4,7 @@
    A lesson with a "body" gets its own page.
    A lesson with only a title (and soon: true) shows as "coming soon".
    Lesson fields: id, title, date, summary, body (Markdown), soon
+   Spanish versions: title_es, description_es, summary_es, body_es
    ========================================================= */
 window.SITE = window.SITE || {};
 
@@ -11,13 +12,17 @@ SITE.courses = [
   {
     key: "r",
     title: "R for biologists",
+    title_es: "R para biólogos",
     description: "From your first data frame to publication-ready plots, always with biological data.",
+    description_es: "Desde tu primer data frame hasta gráficos listos para publicar, siempre con datos biológicos.",
     lessons: [
       {
         id: "r-01-data-frames",
         title: "Your first data frame: a tiny expression table",
+        title_es: "Tu primer data frame: una pequeña tabla de expresión",
         date: "2026-10-22",
         summary: "Create a data frame, add a log2 fold-change column, filter and sort it.",
+        summary_es: "Crea un data frame, añade una columna de log2 fold change, fíltralo y ordénalo.",
         example: true,
         body: `
           In this first lesson we build a small table of gene expression values and
@@ -67,21 +72,25 @@ SITE.courses = [
           **Exercise:** add a fifth gene of your choice and check whether it passes the filter.
         `
       },
-      { id: "r-02-tidyverse", title: "Reading real data with readr and dplyr", soon: true },
-      { id: "r-03-ggplot", title: "ggplot2: the grammar of graphics", soon: true },
-      { id: "r-04-deseq2", title: "Differential expression with DESeq2", soon: true }
+      { id: "r-02-tidyverse", title: "Reading real data with readr and dplyr", soon: true, title_es: "Leer datos reales con readr y dplyr" },
+      { id: "r-03-ggplot", title: "ggplot2: the grammar of graphics", soon: true, title_es: "ggplot2: la gramática de los gráficos" },
+      { id: "r-04-deseq2", title: "Differential expression with DESeq2", soon: true, title_es: "Expresión diferencial con DESeq2" }
     ]
   },
   {
     key: "python",
     title: "Python for bioinformatics",
+    title_es: "Python para bioinformática",
     description: "Sequences, files and automation: the Python you actually need in the lab.",
+    description_es: "Secuencias, archivos y automatización: el Python que de verdad necesitas en el laboratorio.",
     lessons: [
       {
         id: "py-01-fasta",
         title: "Reading a FASTA file and computing GC content",
+        title_es: "Leer un archivo FASTA y calcular el contenido en GC",
         date: "2026-10-15",
         summary: "Write a FASTA parser from scratch, then do the same in two lines with Biopython.",
+        summary_es: "Escribe un lector de FASTA desde cero y luego haz lo mismo en dos líneas con Biopython.",
         example: true,
         body: `
           FASTA is the most common format for sequences. Each record has a header
@@ -131,21 +140,25 @@ SITE.courses = [
           **Exercise:** modify \`read_fasta\` so it skips sequences shorter than 100 bp.
         `
       },
-      { id: "py-02-pandas", title: "Tables with pandas", soon: true },
-      { id: "py-03-plots", title: "Plotting with matplotlib and seaborn", soon: true },
-      { id: "py-04-scripts", title: "Turning notebooks into command-line scripts", soon: true }
+      { id: "py-02-pandas", title: "Tables with pandas", soon: true, title_es: "Tablas con pandas" },
+      { id: "py-03-plots", title: "Plotting with matplotlib and seaborn", soon: true, title_es: "Gráficos con matplotlib y seaborn" },
+      { id: "py-04-scripts", title: "Turning notebooks into command-line scripts", soon: true, title_es: "De notebooks a scripts de línea de comandos" }
     ]
   },
   {
     key: "ml",
     title: "Machine learning for life sciences",
+    title_es: "Machine learning para ciencias de la vida",
     description: "The core ideas of ML, explained with biological datasets and scikit-learn.",
+    description_es: "Las ideas clave del ML, explicadas con datos biológicos y scikit-learn.",
     lessons: [
       {
         id: "ml-01-first-classifier",
         title: "Your first classifier, done properly",
+        title_es: "Tu primer clasificador, bien hecho",
         date: "2026-10-08",
         summary: "Train/test split, scaling inside a pipeline and cross-validation, on a tumour dataset.",
+        summary_es: "Separación train/test, escalado dentro de un pipeline y validación cruzada, con datos de tumores.",
         example: true,
         body: `
           The most common mistake in ML for biology isn't choosing the wrong model,
@@ -204,9 +217,9 @@ SITE.courses = [
           negative or a false positive worse? Which metric in the report reflects that?
         `
       },
-      { id: "ml-02-trees", title: "Decision trees and random forests", soon: true },
-      { id: "ml-03-unsupervised", title: "PCA and clustering of expression data", soon: true },
-      { id: "ml-04-pitfalls", title: "Pitfalls: leakage, batch effects and small n", soon: true }
+      { id: "ml-02-trees", title: "Decision trees and random forests", soon: true, title_es: "Árboles de decisión y random forests" },
+      { id: "ml-03-unsupervised", title: "PCA and clustering of expression data", soon: true, title_es: "PCA y clustering de datos de expresión" },
+      { id: "ml-04-pitfalls", title: "Pitfalls: leakage, batch effects and small n", soon: true, title_es: "Trampas habituales: fugas de datos, efectos de lote y n pequeña" }
     ]
   }
 ];

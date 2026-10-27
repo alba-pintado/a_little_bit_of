@@ -8,7 +8,7 @@ editas un archivo, guardas, haces commit y en un minuto está publicado.
 | Un paper o una noticia científica | `data/papers.js` |
 | Un tutorial de bioinformática | `data/tutorials.js` |
 | Una lección de R, Python o ML | `data/courses.js` |
-| Material de tutorías (PDF) | `data/tutoring.js` + carpeta `materials/` |
+| Ejercicios de alto nivel o exámenes modelo (PDF) | `data/tutoring.js` + carpeta `materials/` |
 | Un post de lifestyle | `data/lifestyle.js` |
 | Una reseña de libro | `data/books.js` |
 | Una reseña de peli, serie o documental | `data/movies.js` |
@@ -23,8 +23,8 @@ editas un archivo, guardas, haces commit y en un minuto está publicado.
 
 ## Lo primero: tu foto y tus enlaces
 
-1. Guarda tu foto como **`images/perfil.jpg`** (cuadrada queda mejor).
-   Mientras no exista, sale el peluche del fago.
+1. Tu foto está en **`images/perfil.jpg`**. Para cambiarla, sustituye ese archivo
+   por otra foto cuadrada con el mismo nombre.
 2. Abre `data/config.js` y rellena `email`, `linkedin`, `orcid`, `googleScholar`
    y `podcastFeed`. Lo que dejes en `""` no aparece.
 
@@ -98,17 +98,61 @@ Para un curso nuevo (por ejemplo, Bash), copia un bloque de curso entero y cambi
 
 ---
 
-## Subir material de tutorías
+## Subir ejercicios de alto nivel y exámenes modelo
 
-1. Crea la carpeta `materials/` y mete ahí los PDF (sin espacios ni tildes en el
-   nombre del archivo: `biologia-tema1.pdf`).
-2. En `data/tutoring.js`, en la asignatura que toque:
+Cada curso y asignatura ya tiene su carpeta dentro de `materials/`
+(`materials/2bach/quimica/`, `materials/1eso/matematicas/`…).
+
+1. Guarda el PDF en su carpeta, con un nombre sin espacios, tildes ni ñ:
+   `materials/2bach/quimica/examen-modelo-1.pdf`
+2. En `data/tutoring.js`, busca el curso y la asignatura
+   (`mat` = Matemáticas, `fis` = Física, `qui` = Química, `bio` = Biología)
+   y añade el PDF en `exercises` (ejercicios de alto nivel) o en `exams` (exámenes modelo):
 
 ```js
-{ name: "Biología", materials: [
-    { title: "Tema 1 – La célula", url: "materials/biologia-tema1.pdf" }
-] }
+qui: {
+  exercises: [
+    { title: "Equilibrium – advanced problems", title_es: "Equilibrio – problemas avanzados",
+      url: "materials/2bach/quimica/equilibrio-avanzado.pdf",
+      solutions: "materials/2bach/quimica/equilibrio-avanzado-soluciones.pdf" }
+  ],
+  exams: [
+    { title: "Model exam 1", title_es: "Examen modelo 1",
+      url: "materials/2bach/quimica/examen-modelo-1.pdf" }
+  ]
+},
 ```
+
+`solutions` es opcional: si lo pones, aparece un enlace "Soluciones" al lado del PDF.
+Más detalles en `materials/LEEME.md`.
+
+---
+
+## Web en dos idiomas (inglés / español)
+
+Arriba a la derecha hay un botón **ES / EN**. La web recuerda el idioma que eligió
+cada visitante; la primera vez usa el del navegador.
+
+Para que un texto salga en español, añade el mismo campo terminado en **`_es`**:
+
+```js
+  {
+    id: "el-gen",
+    title: "The Gene",
+    title_es: "El gen",
+    summary: "Two lines in English.",
+    summary_es: "Dos líneas en español.",
+    body: `Review in English…`,
+    body_es: `Reseña en español…`
+  },
+```
+
+- Funciona con cualquier campo de texto: `title`, `summary`, `body`, `note`, `place`, `type`, `level`…
+- Si un campo no tiene versión `_es`, se muestra en inglés (y al revés). Si falta el
+  `body` en un idioma, la página avisa: "solo disponible en inglés / en español".
+- Puedes escribir solo en español si quieres: pon únicamente los campos `_es`.
+- Los textos de la portada (presentación, subtítulo…) están en `index.html`,
+  dentro de bloques `data-lang="en"` y `data-lang="es"`.
 
 ---
 

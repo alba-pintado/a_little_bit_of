@@ -14,8 +14,10 @@ SITE.podcast = [
     id: "ep-01",
     number: 1,
     title: "Example episode: why this podcast exists",
+    title_es: "Episodio de ejemplo: por qué existe este podcast",
     date: "2026-10-01",
     summary: "Template for your first episode. Add the link to where it's published in the url field.",
+    summary_es: "Plantilla para tu primer episodio. Pon en el campo url el enlace donde esté publicado.",
     url: "",
     example: true,
     body: `
@@ -35,6 +37,7 @@ SITE.music = [
     type: "Podcast",
     url: "https://radiolab.org/",
     note: "Example recommendation. Write one line on why you like it.",
+    note_es: "Recomendación de ejemplo. Escribe una línea sobre por qué te gusta.",
     date: "2026-09-15",
     tags: ["Science"],
     example: true
@@ -46,6 +49,7 @@ SITE.music = [
     type: "Podcast",
     url: "https://thispodcastwillkillyou.com/",
     note: "Example recommendation: epidemiology and disease ecology told by two scientists.",
+    note_es: "Recomendación de ejemplo: epidemiología y ecología de las enfermedades contadas por dos científicas.",
     date: "2026-09-02",
     tags: ["Science", "Health"],
     example: true

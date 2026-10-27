@@ -14,8 +14,10 @@ SITE.books = [
     year: 2016,
     type: "Science",
     rating: 5,
+    type_es: "Divulgación",
     date: "2026-09-28",
     summary: "Example review card. Write two lines here about what the book is and who should read it.",
+    summary_es: "Tarjeta de reseña de ejemplo. Escribe aquí dos líneas sobre de qué va el libro y a quién se lo recomendarías.",
     tags: ["Genetics", "History of science"],
     example: true,
     body: `
@@ -36,8 +38,10 @@ SITE.books = [
     year: 2020,
     type: "Science",
     rating: 4,
+    type_es: "Divulgación",
     date: "2026-09-10",
     summary: "Example review card. Replace with your own review, or delete it.",
+    summary_es: "Tarjeta de reseña de ejemplo. Cámbiala por tu reseña o bórrala.",
     tags: ["Fungi", "Ecology"],
     example: true,
     body: `Example review. Write your thoughts here.`

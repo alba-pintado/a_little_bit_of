@@ -17,9 +17,9 @@
   <script src="assets/js/site.js"></script>
   <script>
     Site.ready().then(function (S) {
-      document.getElementById("main").innerHTML = Site.pageHead("movies", null, "Films, series and documentaries, with a soft spot for anything with a scientist in it.") + '<div id="list"></div>';
+      document.getElementById("main").innerHTML = Site.pageHead("movies", null, { en: "Films, series and documentaries, with a soft spot for anything with a scientist in it.", es: "Películas, series y documentales, con debilidad por cualquier cosa en la que salga una científica." }) + '<div id="list"></div>';
       var list = (S.movies || []).slice().sort(function (a, b) { return String(b.date).localeCompare(String(a.date)); });
-      Site.filterable(document.getElementById("list"), list, Site.R.reviews("movies"), { id: "movies", placeholder: "Filter by title, director…", empty: "No reviews yet." });
+      Site.filterable(document.getElementById("list"), list, Site.R.reviews("movies"), { id: "movies", placeholder: { en: "Filter by title, director…", es: "Filtrar por título, director…" }, empty: { en: "No reviews yet.", es: "Todavía no hay reseñas." } });
     });
   </script>
 </body>

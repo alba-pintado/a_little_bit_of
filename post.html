@@ -22,29 +22,36 @@
   <script>
     /* One page shows any entry: post.html?c=<collection>&id=<id> */
     Site.ready().then(function (S) {
-      var esc = Site.esc, main = document.getElementById("main");
+      var esc = Site.esc, f = Site.f, t = Site.t, es = Site.lang === "es", main = document.getElementById("main");
+      var L = es
+        ? { nf: "Esta página se ha perdido", nfText: 'Puede que el enlace sea antiguo o que la entrada haya cambiado de nombre. Prueba con el buscador o vuelve a la <a href="index.html">página de inicio</a>.',
+            back: "Volver a ", tutorials: "Tutoriales", ep: "Episodio ", prev: "Anterior: ", next: "Siguiente: ", soon: "La siguiente lección, muy pronto", listen: "Escuchar este episodio", lessons: "Lecciones" }
+        : { nf: "This page wandered off", nfText: 'The link may be old, or the entry was renamed. Try the search, or go back to the <a href="index.html">home page</a>.',
+            back: "Back to ", tutorials: "Tutorials", ep: "Episode ", prev: "Previous: ", next: "Next: ", soon: "Next lesson coming soon", listen: "Listen to this episode", lessons: "Lessons" };
+
       var q = new URLSearchParams(location.search), c = q.get("c"), id = q.get("id");
       var list = c === "lessons" ? Site.flattenLessons() : (S[c] || []);
       var item = Array.isArray(list) ? list.find(function (x) { return x.id === id; }) : null;
       var info = Site.COLLECTIONS[c];
 
       if (!item || !info) {
-        document.title = "Not found · A Little Bit Of…";
-        main.innerHTML = '<article class="article"><h1>This page wandered off</h1><p class="lead">The link may be old, or the entry was renamed. Try the search, or go back to the <a href="index.html">home page</a>.</p></article>';
+        document.title = L.nf + " · A Little Bit Of…";
+        main.innerHTML = '<article class="article"><h1>' + L.nf + '</h1><p class="lead">' + L.nfText + '</p></article>';
         return;
       }
 
       var sec = Site.sectionOf(c);
       var backHref = sec.key + ".html" + (info.tab ? "#" + info.tab : "");
-      var backLabel = c === "lessons" ? item.courseTitle : (info.tab === "tutorials" ? "Tutorials" : sec.label);
-      document.title = (item.title || item.doi) + " · A Little Bit Of…";
+      var backLabel = c === "lessons" ? item.courseTitle : (info.tab === "tutorials" ? L.tutorials : f(sec, "label"));
+      var title = f(item, "title") || "doi:" + item.doi;
+      document.title = title + " · A Little Bit Of…";
 
       var meta = [];
       if (item.date) meta.push('<time datetime="' + esc(item.date) + '">' + Site.fmtDate(item.date) + '</time>');
       if (item.author || item.director || item.creator) meta.push(esc(item.author || item.director || item.creator) + (item.year ? " (" + esc(item.year) + ")" : ""));
-      if (item.place) meta.push(esc(item.place));
-      if (item.level) meta.push(esc(item.level));
-      if (item.number) meta.push("Episode " + esc(item.number));
+      if (f(item, "place")) meta.push(esc(f(item, "place")));
+      if (f(item, "level")) meta.push(esc(f(item, "level")));
+      if (item.number) meta.push(L.ep + esc(item.number));
       if (item.rating != null) meta.push(Site.stars(item.rating));
       if (item.doi) meta.push('<a href="https://doi.org/' + esc(item.doi) + '">doi:' + esc(item.doi) + '</a>');
       meta.push(Site.exampleTag(item));
@@ -56,28 +63,36 @@
         var ready = course.lessons.filter(function (l) { return l.body && !l.soon; });
         var i = ready.findIndex(function (l) { return l.id === item.id; });
         var prev = ready[i - 1], next = ready[i + 1];
-        lessonNav = '<nav class="board-head section-gap" aria-label="Lessons">' +
-          (prev ? '<a href="' + Site.postUrl("lessons", prev.id) + '">Previous: ' + esc(prev.title) + '</a>' : '<span></span>') +
-          (next ? '<a href="' + Site.postUrl("lessons", next.id) + '">Next: ' + esc(next.title) + '</a>' : '<span class="muted">Next lesson coming soon</span>') + '</nav>';
+        lessonNav = '<nav class="board-head section-gap" aria-label="' + L.lessons + '">' +
+          (prev ? '<a href="' + Site.postUrl("lessons", prev.id) + '">' + L.prev + esc(f(prev, "title")) + '</a>' : '<span></span>') +
+          (next ? '<a href="' + Site.postUrl("lessons", next.id) + '">' + L.next + esc(f(next, "title")) + '</a>' : '<span class="muted">' + L.soon + '</span>') + '</nav>';
       }
 
+      // text in the chosen language; if it only exists in the other one, show it with a note
+      var body = f(item, "body") || f(item, "summary") || "";
+      var otherOnly = "";
+      if (es && !("body_es" in item) && item.body) otherOnly = t("This entry is only available in English for now.");
+      if (!es && !("body" in item) && item.body_es) otherOnly = t("This entry is only available in Spanish for now.");
+
       var embed = item.embed ? '<iframe src="' + esc(item.embed) + '" height="232" loading="lazy" allow="autoplay; clipboard-write; encrypted-media"></iframe>' : "";
-      var listen = item.url && c === "podcast" ? '<p><a href="' + esc(item.url) + '">Listen to this episode</a></p>' : "";
+      var listen = item.url && c === "podcast" ? '<p><a href="' + esc(item.url) + '">' + L.listen + '</a></p>' : "";
+      var note = f(item, "note");
 
       main.innerHTML =
         '<article class="article">' +
-          '<a class="back" href="' + backHref + '">Back to ' + esc(backLabel) + '</a>' +
-          '<header><h1>' + esc(item.title || "doi:" + item.doi) + '</h1>' +
+          '<a class="back" href="' + backHref + '">' + L.back + esc(backLabel) + '</a>' +
+          '<header><h1>' + esc(title) + '</h1>' +
             '<div class="meta">' + meta.filter(Boolean).join("") + '</div>' + Site.tagList(item.tags) + '</header>' +
           (item.image ? '<img class="hero-img" src="' + esc(item.image) + '" alt="">' : '') +
-          '<div class="prose">' + embed + listen + (item.note ? '<p><strong>My take:</strong> ' + esc(item.note) + '</p>' : '') + Site.md(item.body || item.summary || "") + '</div>' +
+          '<div class="prose">' + (otherOnly ? '<p class="callout">' + otherOnly + '</p>' : '') + embed + listen +
+            (note ? '<p><strong>' + t("My take") + ':</strong> ' + esc(note) + '</p>' : '') + Site.md(body) + '</div>' +
           lessonNav +
         '</article>';
 
       Site.highlight(main);
 
       // a paper page without a title fills it in from the DOI
-      if (c === "papers" && !item.title && item.doi) {
+      if (c === "papers" && !f(item, "title") && item.doi) {
         Site.crossref(item.doi).then(function (m) {
           if (!m) return;
           main.querySelector("h1").textContent = m.title;

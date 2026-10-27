@@ -221,7 +221,6 @@ h3 { font-size: 1.3rem; }
 .paper h3 a { color: var(--ink); text-decoration: none; }
 .paper h3 a:hover { text-decoration: underline; }
 .paper .take { margin-top: 8px; max-width: 75ch; }
-.paper .take::before { content: "My take: "; font-weight: 600; }
 .paper .foot { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; margin-top: 12px; font-size: .9rem; }
 .doi { font-variant-numeric: tabular-nums; }
 .copy-btn { font: inherit; font-size: .85rem; border: 1px solid var(--line); background: none; color: var(--ink-soft); border-radius: 999px; padding: 2px 10px; cursor: pointer; }
@@ -339,7 +338,29 @@ h3 { font-size: 1.3rem; }
 
 .section-gap { margin-top: 72px; }
 
-/* materials inside a tutoring subject */
-.level li > div { flex: 1; }
-.level li ul { margin-top: 4px; gap: 2px; font-size: .92rem; }
-.level li li { border: 0; padding: 0; }
+/* language switch: blocks written twice in the HTML, one per language */
+html[lang="es"] [data-lang="en"], html[lang="en"] [data-lang="es"] { display: none !important; }
+.lang-btn { font-weight: 600; letter-spacing: .02em; }
+@media (max-width: 1080px) { .lang-btn { order: 0; } }
+
+/* ---------- tutoring: subjects with exercises and model exams ---------- */
+.subject-filter { margin-top: 28px; }
+.level ul.subjects { gap: 0; }
+.level .subjects > li { display: block; border-bottom: 1px dashed var(--line); padding: 0; }
+.level .subjects > li:last-child { border-bottom: 0; }
+.level details > summary {
+  list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+  gap: 10px; padding: 9px 2px; font-weight: 500;
+}
+.level details > summary::-webkit-details-marker { display: none; }
+.level details > summary::after { content: "+"; font-family: var(--display); font-size: 1.2rem; color: var(--signature); width: 1em; text-align: center; }
+.level details[open] > summary::after { content: "–"; }
+.level details > summary .count { margin-left: auto; color: var(--ink-soft); font-size: .85rem; font-weight: 400; }
+.level .group { padding: 2px 0 12px; }
+.level .group h4 { font-size: .85rem; font-weight: 600; color: var(--ink-soft); margin: 6px 0 4px; }
+.level .group ul { display: flex; flex-direction: column; gap: 4px; list-style: none; }
+.level .group li { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; border: 0; padding: 0; font-size: .95rem; }
+.level .group li a.pdf::before { content: "PDF"; font-size: .68rem; font-weight: 700; color: #fff; background: #e0697a; border-radius: 3px; padding: 1px 4px; margin-right: 6px; vertical-align: 1px; }
+.level .group .sol { font-size: .85rem; }
+.level .group .none { color: var(--ink-soft); font-style: italic; font-size: .9rem; }
+[hidden] { display: none !important; }

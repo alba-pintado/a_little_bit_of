@@ -3,6 +3,7 @@
    Fields: id, title, date ("YYYY-MM-DD"), level, summary,
            tags, body (Markdown — code blocks are highlighted),
            example (true = placeholder badge)
+   Spanish versions: title_es, summary_es, level_es, body_es
    Tip: write code blocks with three backticks and the language,
    e.g.  ```bash   ```r   ```python
    ========================================================= */
@@ -12,9 +13,12 @@ SITE.tutorials = [
   {
     id: "qc-fastqc-multiqc",
     title: "Quality control of sequencing reads with FastQC and MultiQC",
+    title_es: "Control de calidad de lecturas de secuenciación con FastQC y MultiQC",
     date: "2026-10-18",
     level: "Beginner",
     summary: "Check your raw FASTQ files before doing anything else, and read the report without panicking.",
+    summary_es: "Revisa tus FASTQ antes de hacer nada más, y aprende a leer el informe sin entrar en pánico.",
+    level_es: "Principiante",
     tags: ["NGS", "Command line", "Quality control"],
     example: true,
     body: `
@@ -60,9 +64,12 @@ SITE.tutorials = [
   {
     id: "align-and-call-variants",
     title: "From reads to variants: BWA, SAMtools and BCFtools",
+    title_es: "De lecturas a variantes: BWA, SAMtools y BCFtools",
     date: "2026-10-05",
     level: "Intermediate",
     summary: "Align paired-end reads to a reference genome and call SNPs and indels in five commands.",
+    summary_es: "Alinea lecturas paired-end contra un genoma de referencia y detecta SNPs e indels en cinco comandos.",
+    level_es: "Intermedio",
     tags: ["NGS", "Command line", "Variant calling"],
     example: true,
     body: `
