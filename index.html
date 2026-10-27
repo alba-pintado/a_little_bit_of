@@ -6,10 +6,10 @@
   <meta name="author" content="Alba Pintado Rodrigo">
   <title>A Little Bit Of… · Alba Pintado Rodrigo</title>
   <meta name="description" content="Science, bioinformatics, tutoring, books, travel, films and podcasts, by Alba Pintado Rodrigo, biologist and bioinformatician from Madrid.">
-  <meta property="og:image" content="images/perfil.jpg">
+  <meta property="og:image" content="assets/images/perfil.jpg">
   <meta property="og:title" content="A Little Bit Of…">
   <meta property="og:description" content="For the curious and weird ones. Science, bioinformatics and everyday life by Alba Pintado Rodrigo.">
-  <link rel="icon" href="images/favicon.png">
+  <link rel="icon" href="assets/images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Outfit:wght@400;500;600;700&family=Homemade+Apple&display=swap" rel="stylesheet">
@@ -21,13 +21,13 @@
     <section class="hero">
       <h1>A Little Bit Of…</h1>
       <p class="tagline"><span data-lang="en">For the curious and weird ones</span><span data-lang="es">Para las mentes curiosas y raritas</span></p>
-      <img class="signature reveal" src="images/signature.svg" alt="by Alba Pintado Rodrigo" width="656" height="91">
+      <img class="signature reveal" src="assets/images/signature.svg" alt="by Alba Pintado Rodrigo" width="656" height="91">
     </section>
 
     <section class="about" aria-labelledby="about-title">
       <div>
         <figure class="polaroid tape">
-          <img id="profile-photo" src="images/perfil.jpg" alt="Alba Pintado Rodrigo" width="216" height="216">
+          <img id="profile-photo" src="assets/images/perfil.jpg" alt="Alba Pintado Rodrigo" width="216" height="216">
           <figcaption class="hand"><span data-lang="en">that's me!</span><span data-lang="es">¡esta soy yo!</span></figcaption>
         </figure>
       </div>
@@ -77,8 +77,8 @@
       var esc = Site.esc, t = Site.t, f = Site.f;
 
       document.getElementById("stickers").innerHTML = S.sections.map(function (s) {
-        return '<a class="sticker" href="' + s.key + '.html">' +
-          '<img src="' + esc(s.icon) + '" alt="" loading="lazy">' +
+        return '<a class="sticker" href="' + Site.pageUrl(s.key) + '">' +
+          '<img src="' + esc(Site.url(s.icon)) + '" alt="" loading="lazy">' +
           '<strong>' + esc(f(s, "label")) + '</strong><span>' + esc(f(s, "blurb")) + '</span></a>';
       }).join("");
 

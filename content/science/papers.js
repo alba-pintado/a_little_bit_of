@@ -56,7 +56,7 @@ SITE.papers = [
 
       ## Key figure
       Describe the figure that convinced you, or add an image:
-      \`![Figure 1](images/your-figure.png)\`
+      \`![Figure 1](content/science/images/your-figure.png)\`
     `
   }
 ];

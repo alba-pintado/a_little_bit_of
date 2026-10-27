@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="images/phage.png" alt="" width="120">
+  <img src="assets/images/perfil.jpg" alt="Alba Pintado Rodrigo" width="140">
 </p>
 
 <h1 align="center">A Little Bit Of…</h1>
 <p align="center"><em>For the curious and weird ones</em></p>
 <p align="center">
-  <img src="images/signature.svg" alt="by Alba Pintado Rodrigo" width="360">
+  <img src="assets/images/signature.svg" alt="by Alba Pintado Rodrigo" width="360">
 </p>
 
 <p align="center">
@@ -37,25 +37,27 @@ A static site with no build step and no framework: plain HTML, CSS and JavaScrip
 hosted on GitHub Pages.
 
 ```
-├── index.html, science.html, books.html, …   one page per section
-├── post.html                                 renders any single entry (?c=books&id=…)
-├── data/                                     ← all the content lives here
-│   ├── config.js                             name, links, menu sections
-│   ├── papers.js  tutorials.js  courses.js
-│   ├── books.js   movies.js     travel.js
-│   └── lifestyle.js  music.js   tutoring.js
-├── assets/css/style.css                      design
-├── assets/js/site.js                         menu, search, filters, Markdown, DOI lookup
-├── materials/                                tutoring PDFs, one folder per level and subject
-├── icons/                                    section stickers
-└── images/                                   photos, signature, favicon
+├── index.html            home page
+├── 404.html              "page not found" (also redirects old links)
+├── pages/                one page per section + post.html, which shows any single entry
+├── content/              ← all the texts, photos and PDFs, one folder per section
+│   ├── config.js         name, links, menu
+│   ├── science/          papers.js · tutorials.js · courses.js · images/
+│   ├── tutoring/         tutoring.js · materials/<level>/<subject>/*.pdf
+│   ├── lifestyle/        lifestyle.js · images/
+│   ├── books/            books.js · covers/
+│   ├── movies/           movies.js · posters/
+│   ├── travel/           travel.js · photos/
+│   └── music/            music.js · images/
+├── assets/               the site itself: css/ · js/ · icons/ · images/
+└── docs/                 how to add content (in Spanish)
 ```
 
 Content is written as JavaScript objects with Markdown bodies, so adding a post
-means editing one file in `data/`. Code blocks in tutorials and lessons are
+means editing one file in `content/`. Code blocks in tutorials and lessons are
 syntax-highlighted. Papers only need a DOI.
 
-See **[COMO-ANADIR-CONTENIDO.md](COMO-ANADIR-CONTENIDO.md)** (Spanish) for a step-by-step guide.
+See **[docs/COMO-ANADIR-CONTENIDO.md](docs/COMO-ANADIR-CONTENIDO.md)** (Spanish) for a step-by-step guide.
 
 ## Run it locally
 

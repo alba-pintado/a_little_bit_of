@@ -2,7 +2,7 @@
    BOOK REVIEWS
    Fields: id, title, author, year, rating (0–5), date (when you
            reviewed it), type ("Science", "Novel", …), summary,
-           image (cover, optional), tags, body (Markdown)
+           image (cover, optional — put covers in content/books/covers/), tags, body (Markdown)
    ========================================================= */
 window.SITE = window.SITE || {};
 

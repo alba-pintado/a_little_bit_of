@@ -3,7 +3,7 @@
 Cada curso y asignatura tiene su carpeta:
 
 ```
-materials/
+content/tutoring/materials/
 ├── 1eso/   matematicas/  fisica/  quimica/  biologia/
 ├── 2eso/   …
 ├── 3eso/   …
@@ -13,19 +13,19 @@ materials/
 ```
 
 1. Guarda el PDF en su carpeta, con un nombre sin espacios, tildes ni ñ:
-   `materials/2bach/quimica/examen-modelo-1.pdf`
-2. Añádelo en `data/tutoring.js`, en el curso y la asignatura que toque:
+   `content/tutoring/materials/2bach/quimica/examen-modelo-1.pdf`
+2. Añádelo en `content/tutoring/tutoring.js`, en el curso y la asignatura que toque:
 
 ```js
 qui: {
   exercises: [
     { title: "Equilibrium – advanced problems", title_es: "Equilibrio – problemas avanzados",
-      url: "materials/2bach/quimica/equilibrio-avanzado.pdf",
-      solutions: "materials/2bach/quimica/equilibrio-avanzado-soluciones.pdf" }
+      url: "content/tutoring/materials/2bach/quimica/equilibrio-avanzado.pdf",
+      solutions: "content/tutoring/materials/2bach/quimica/equilibrio-avanzado-soluciones.pdf" }
   ],
   exams: [
     { title: "Model exam 1", title_es: "Examen modelo 1",
-      url: "materials/2bach/quimica/examen-modelo-1.pdf" }
+      url: "content/tutoring/materials/2bach/quimica/examen-modelo-1.pdf" }
   ]
 }
 ```

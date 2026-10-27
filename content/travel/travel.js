@@ -1,7 +1,7 @@
 /* =========================================================
    TRAVEL
    Fields: id, title, place, date ("YYYY-MM" or "YYYY-MM-DD"),
-           image (cover photo, optional — put photos in images/travel/),
+           image (cover photo, optional — put photos in content/travel/photos/),
            emoji (shown when there is no photo), summary, tags,
            body (Markdown: your itinerary, tips, photos)
    ========================================================= */
@@ -31,7 +31,7 @@ SITE.travel = [
       ## Budget
       ## What I'd do differently
 
-      Add photos with \`![caption](images/travel/photo.jpg)\`.
+      Add photos with \`![caption](content/travel/photos/photo.jpg)\`.
     `
   }
 ];

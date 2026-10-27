@@ -9,8 +9,8 @@ SITE.config = {
   title: "A Little Bit Of…",
   tagline: "For the curious and weird ones",
 
-  // Your photo for the home page (in /images).
-  photo: "images/perfil.jpg",
+  // Your photo for the home page (in assets/images).
+  photo: "assets/images/perfil.jpg",
 
   // Links shown in the footer (leave "" to hide)
   email: "",                       // e.g. "hello@yourdomain.com"
@@ -23,40 +23,40 @@ SITE.config = {
 
 /* The sections of the site, in menu order.
    Fields ending in _es are the Spanish version.
-   key   = the page name (key + ".html")
+   key   = the page name (pages/key.html)
    icon  = the sticker shown on the home page and the section header */
 SITE.sections = [
-  { key: "science",   icon: "icons/science.png",
+  { key: "science",   icon: "assets/icons/science.png",
     label: "Science & Bioinformatics", label_es: "Ciencia y Bioinformática",
     short: "Science", short_es: "Ciencia",
     blurb: "Papers, news, tutorials and courses in R, Python and machine learning",
     blurb_es: "Papers, noticias, tutoriales y cursos de R, Python y machine learning" },
-  { key: "tutoring",  icon: "icons/tutoring.png",
+  { key: "tutoring",  icon: "assets/icons/tutoring.png",
     label: "Tutoring", label_es: "Clases particulares",
     short: "Tutoring", short_es: "Clases",
     blurb: "High-level exercises and model exams, from 1º ESO to 2º Bachillerato",
     blurb_es: "Ejercicios de alto nivel y exámenes modelo, de 1º ESO a 2º Bachillerato" },
-  { key: "lifestyle", icon: "icons/lifestyle.png",
+  { key: "lifestyle", icon: "assets/icons/lifestyle.png",
     label: "Lifestyle", label_es: "Lifestyle",
     short: "Lifestyle", short_es: "Lifestyle",
     blurb: "Staying active, eating well and small everyday adventures",
     blurb_es: "Moverse, comer bien y pequeñas aventuras del día a día" },
-  { key: "books",     icon: "icons/books.png",
+  { key: "books",     icon: "assets/icons/books.png",
     label: "Books", label_es: "Libros",
     short: "Books", short_es: "Libros",
     blurb: "What I'm reading and what I thought of it",
     blurb_es: "Lo que estoy leyendo y lo que me ha parecido" },
-  { key: "travel",    icon: "icons/travel.png",
+  { key: "travel",    icon: "assets/icons/travel.png",
     label: "Travel", label_es: "Viajes",
     short: "Travel", short_es: "Viajes",
     blurb: "Trips, routes and the places worth the detour",
     blurb_es: "Viajes, rutas y los sitios que merecen el desvío" },
-  { key: "movies",    icon: "icons/movies.png",
+  { key: "movies",    icon: "assets/icons/movies.png",
     label: "Movies, Series & Documentaries", label_es: "Pelis, series y documentales",
     short: "Movies & Series", short_es: "Pelis y series",
     blurb: "Reviews of films, series and documentaries",
     blurb_es: "Reseñas de películas, series y documentales" },
-  { key: "music",     icon: "icons/music.png",
+  { key: "music",     icon: "assets/icons/music.png",
     label: "Music & Podcasts", label_es: "Música y podcasts",
     short: "Music & Podcasts", short_es: "Música y podcasts",
     blurb: "My podcast, plus the music and shows on repeat",

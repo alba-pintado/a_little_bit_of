@@ -1,7 +1,7 @@
 /* =========================================================
    LIFESTYLE POSTS
    Fields: id, title, date ("YYYY-MM-DD"), summary, tags,
-           image (optional, e.g. "images/lifestyle/run.jpg"),
+           image (optional, e.g. "content/lifestyle/images/run.jpg"),
            body (Markdown), example (true = placeholder badge)
    ========================================================= */
 window.SITE = window.SITE || {};
@@ -18,13 +18,13 @@ SITE.lifestyle = [
     example: true,
     body: `
       This is a template post so you can see how a Lifestyle entry looks.
-      Duplicate it in \`data/lifestyle.js\`, change the \`id\`, and write your own.
+      Duplicate it in \`content/lifestyle/lifestyle.js\`, change the \`id\`, and write your own.
 
       ## Things you can use in the text
       - **Bold** and *italics*
       - Lists like this one
       - Links: [a link](https://example.org)
-      - Images: \`![description](images/lifestyle/photo.jpg)\`
+      - Images: \`![description](content/lifestyle/images/photo.jpg)\`
 
       > And quotes, for the lines you want to stand out.
     `

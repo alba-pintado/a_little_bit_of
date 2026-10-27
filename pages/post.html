@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Alba Pintado Rodrigo">
   <title>A Little Bit Of…</title>
-  <link rel="icon" href="images/favicon.png">
+  <link rel="icon" href="../assets/images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Outfit:wght@400;500;600;700&family=Homemade+Apple&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
   <main id="main" class="wrap"></main>
@@ -18,15 +18,15 @@
   <!-- Markdown and code highlighting -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-  <script src="assets/js/site.js"></script>
+  <script src="../assets/js/site.js"></script>
   <script>
     /* One page shows any entry: post.html?c=<collection>&id=<id> */
     Site.ready().then(function (S) {
       var esc = Site.esc, f = Site.f, t = Site.t, es = Site.lang === "es", main = document.getElementById("main");
       var L = es
-        ? { nf: "Esta página se ha perdido", nfText: 'Puede que el enlace sea antiguo o que la entrada haya cambiado de nombre. Prueba con el buscador o vuelve a la <a href="index.html">página de inicio</a>.',
+        ? { nf: "Esta página se ha perdido", nfText: 'Puede que el enlace sea antiguo o que la entrada haya cambiado de nombre. Prueba con el buscador o vuelve a la <a href="../index.html">página de inicio</a>.',
             back: "Volver a ", tutorials: "Tutoriales", ep: "Episodio ", prev: "Anterior: ", next: "Siguiente: ", soon: "La siguiente lección, muy pronto", listen: "Escuchar este episodio", lessons: "Lecciones" }
-        : { nf: "This page wandered off", nfText: 'The link may be old, or the entry was renamed. Try the search, or go back to the <a href="index.html">home page</a>.',
+        : { nf: "This page wandered off", nfText: 'The link may be old, or the entry was renamed. Try the search, or go back to the <a href="../index.html">home page</a>.',
             back: "Back to ", tutorials: "Tutorials", ep: "Episode ", prev: "Previous: ", next: "Next: ", soon: "Next lesson coming soon", listen: "Listen to this episode", lessons: "Lessons" };
 
       var q = new URLSearchParams(location.search), c = q.get("c"), id = q.get("id");
@@ -41,7 +41,7 @@
       }
 
       var sec = Site.sectionOf(c);
-      var backHref = sec.key + ".html" + (info.tab ? "#" + info.tab : "");
+      var backHref = Site.pageUrl(sec.key) + (info.tab ? "#" + info.tab : "");
       var backLabel = c === "lessons" ? item.courseTitle : (info.tab === "tutorials" ? L.tutorials : f(sec, "label"));
       var title = f(item, "title") || "doi:" + item.doi;
       document.title = title + " · A Little Bit Of…";
@@ -83,12 +83,13 @@
           '<a class="back" href="' + backHref + '">' + L.back + esc(backLabel) + '</a>' +
           '<header><h1>' + esc(title) + '</h1>' +
             '<div class="meta">' + meta.filter(Boolean).join("") + '</div>' + Site.tagList(item.tags) + '</header>' +
-          (item.image ? '<img class="hero-img" src="' + esc(item.image) + '" alt="">' : '') +
+          (item.image ? '<img class="hero-img" src="' + esc(Site.url(item.image)) + '" alt="">' : '') +
           '<div class="prose">' + (otherOnly ? '<p class="callout">' + otherOnly + '</p>' : '') + embed + listen +
             (note ? '<p><strong>' + t("My take") + ':</strong> ' + esc(note) + '</p>' : '') + Site.md(body) + '</div>' +
           lessonNav +
         '</article>';
 
+      Site.fixLinks(main);
       Site.highlight(main);
 
       // a paper page without a title fills it in from the DOI

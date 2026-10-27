@@ -5,10 +5,10 @@
      exams     → model exams
    Each PDF:
      { title: "Exam 1 – Kinematics", title_es: "Examen 1 – Cinemática",
-       url: "materials/4eso/fisica/examen-1.pdf",
-       solutions: "materials/4eso/fisica/examen-1-soluciones.pdf" }   ← optional
-   Put the files in the matching folder inside /materials
-   (see materials/LEEME.md for the folder names).
+       url: "content/tutoring/materials/4eso/fisica/examen-1.pdf",
+       solutions: "content/tutoring/materials/4eso/fisica/examen-1-soluciones.pdf" }   ← optional
+   Put the files in the matching folder inside content/tutoring/materials/
+   (see content/tutoring/materials/LEEME.md for the folder names).
    ========================================================= */
 window.SITE = window.SITE || {};
 

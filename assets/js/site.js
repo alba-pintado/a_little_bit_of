@@ -8,11 +8,22 @@
 (function () {
   "use strict";
 
+  /* Where the site lives. Worked out from this script's own address,
+     so links work from the home page and from /pages/ alike. */
+  const ROOT = ((document.currentScript && document.currentScript.src) || "").replace(/assets\/js\/site\.js(\?.*)?$/, "");
+
+  /* Turns a path written from the site root ("assets/…", "content/…")
+     into a working link. Full links (https://, mailto:, #…) are left alone. */
+  const url = (p) => (!p || /^([a-z][a-z0-9+.-]*:|\/|#|\?)/i.test(p) ? p || "" : ROOT + p);
+  const pageUrl = (key) => (key === "index" ? url("index.html") : url(`pages/${key}.html`));
+
   const DATA_FILES = [
-    "data/config.js", "data/papers.js", "data/tutorials.js", "data/courses.js",
-    "data/tutoring.js", "data/lifestyle.js", "data/books.js", "data/travel.js",
-    "data/movies.js", "data/music.js"
-  ];
+    "content/config.js",
+    "content/science/papers.js", "content/science/tutorials.js", "content/science/courses.js",
+    "content/tutoring/tutoring.js",
+    "content/lifestyle/lifestyle.js", "content/books/books.js", "content/movies/movies.js",
+    "content/travel/travel.js", "content/music/music.js"
+  ].map(url);
 
   /* Which section each kind of content belongs to */
   const COLLECTIONS = {
@@ -104,7 +115,7 @@
 
   const exampleTag = (item) => (item && item.example ? `<span class="tag example" title="${t("Placeholder: replace with your own content")}">${t("example")}</span>` : "");
 
-  const postUrl = (collection, id) => `post.html?c=${encodeURIComponent(collection)}&id=${encodeURIComponent(id)}`;
+  const postUrl = (collection, id) => `${url("pages/post.html")}?c=${encodeURIComponent(collection)}&id=${encodeURIComponent(id)}`;
 
   /* Markdown → HTML. Uses the "marked" library when it loaded,
      otherwise a tiny fallback so the text still shows. */
@@ -169,6 +180,15 @@
     const ind = Math.min(...lines.filter((l) => l.trim()).map((l) => l.match(/^ */)[0].length));
     return lines.map((l) => l.slice(ind)).join("\n");
   }
+  /* Links and images written inside a text ("content/travel/photos/x.jpg")
+     are relative to the site root; point them there. */
+  function fixLinks(root) {
+    root.querySelectorAll("[src], [href]").forEach((el) => {
+      const attr = el.hasAttribute("src") ? "src" : "href";
+      const v = el.getAttribute(attr);
+      if (v && /^(assets|content|pages)\//.test(v)) el.setAttribute(attr, ROOT + v);
+    });
+  }
   function highlight(root) {
     if (window.hljs) root.querySelectorAll("pre code").forEach((el) => window.hljs.highlightElement(el));
   }
@@ -202,9 +222,9 @@
   }
 
   function itemHref(collection, item) {
-    if (collection === "papers") return item.body ? postUrl("papers", item.id) : (item.doi ? `https://doi.org/${item.doi}` : item.url || "science.html#papers");
-    if (collection === "music") return item.url || "music.html";
-    if (collection === "podcast" && !item.body) return item.url || "music.html";
+    if (collection === "papers") return item.body ? postUrl("papers", item.id) : (item.doi ? `https://doi.org/${item.doi}` : url(item.url) || pageUrl("science") + "#papers");
+    if (collection === "music") return item.url || pageUrl("music");
+    if (collection === "podcast" && !item.body) return item.url || pageUrl("music");
     return postUrl(collection, item.id);
   }
 
@@ -247,10 +267,10 @@
     header.className = "site-header";
     header.innerHTML = `
       <div class="wrap">
-        <a class="brand" href="index.html"><img src="images/favicon.png" alt="">${esc(C.title || "A Little Bit Of…")}</a>
+        <a class="brand" href="${pageUrl("index")}"><img src="${url("assets/images/favicon.png")}" alt="">${esc(C.title || "A Little Bit Of…")}</a>
         <button class="icon-btn menu-btn" aria-expanded="false" aria-controls="site-nav">${ICON_MENU}<span>${t("Menu")}</span></button>
         <nav class="site-nav" id="site-nav" aria-label="Main">
-          <ul>${(S.sections || []).map((s) => `<li><a href="${s.key}.html"${s.key === activeKey ? ' aria-current="page"' : ""}>${esc(f(s, "short"))}</a></li>`).join("")}</ul>
+          <ul>${(S.sections || []).map((s) => `<li><a href="${pageUrl(s.key)}"${s.key === activeKey ? ' aria-current="page"' : ""}>${esc(f(s, "short"))}</a></li>`).join("")}</ul>
         </nav>
         <button class="icon-btn lang-btn" lang="${LANG === "es" ? "en" : "es"}" aria-label="${t("Change language")}: ${LANG === "es" ? "English" : "Español"}">${LANG === "es" ? "EN" : "ES"}</button>
         <button class="icon-btn search-btn" aria-label="${t("Search the site")}">${ICON_SEARCH}<kbd>/</kbd></button>
@@ -284,7 +304,7 @@
     footer.innerHTML = `
       <div class="wrap">
         <div>
-          <img class="sig" src="images/signature.svg" alt="by ${esc(C.name)}">
+          <img class="sig" src="${url("assets/images/signature.svg")}" alt="by ${esc(C.name)}">
           <small>© ${new Date().getFullYear()} ${esc(C.name)} · ${t("Made in Madrid")}</small>
         </div>
         <ul>${links}</ul>
@@ -343,7 +363,7 @@
     return `
       <div class="page-head">
         <div><h1>${esc(h)}</h1>${lead ? `<p class="lead">${lead}</p>` : ""}</div>
-        ${s.icon ? `<img src="${esc(s.icon)}" alt="">` : ""}
+        ${s.icon ? `<img src="${esc(url(s.icon))}" alt="">` : ""}
       </div>`;
   }
 
@@ -460,7 +480,7 @@
 
     reviews: (collection) => (list) => `<div class="reviews">${list.map((r) => `
       <article class="review">
-        <div class="cover">${r.image ? `<img src="${esc(r.image)}" alt="" loading="lazy">` : `<span>${esc((r.title || "?").trim()[0])}</span>`}</div>
+        <div class="cover">${r.image ? `<img src="${esc(url(r.image))}" alt="" loading="lazy">` : `<span>${esc((r.title || "?").trim()[0])}</span>`}</div>
         <div class="body">
           <div class="tags">${f(r, "type") ? `<span class="tag blush">${esc(f(r, "type"))}</span>` : ""}${exampleTag(r)}</div>
           <h3><a href="${postUrl(collection, r.id)}">${esc(f(r, "title"))}</a></h3>
@@ -472,7 +492,7 @@
 
     trips: (list) => `<div class="trips">${list.map((t) => `
       <article class="trip tape">
-        <div class="photo">${t.image ? `<img src="${esc(t.image)}" alt="${esc(f(t, "title"))}" loading="lazy">` : `<span aria-hidden="true">${esc(t.emoji || "✈︎")}</span>`}</div>
+        <div class="photo">${t.image ? `<img src="${esc(url(t.image))}" alt="${esc(f(t, "title"))}" loading="lazy">` : `<span aria-hidden="true">${esc(t.emoji || "✈︎")}</span>`}</div>
         <h3><a href="${postUrl("travel", t.id)}">${esc(f(t, "title"))}</a></h3>
         <p>${esc(f(t, "place") || "")}${t.date ? ` · ${fmtDate(t.date, { month: "long", year: "numeric" })}` : ""} ${exampleTag(t)}</p>
       </article>`).join("")}</div>`
@@ -483,6 +503,6 @@
     return allItems().filter((x) => x.date).slice(0, n);
   }
 
-  window.Site = { lang: LANG, setLang, t, f, tx, ready, esc, fmtDate, stars, tagList, exampleTag, md, highlight, postUrl, pageHead, filterable,
+  window.Site = { ROOT, url, pageUrl, fixLinks, lang: LANG, setLang, t, f, tx, ready, esc, fmtDate, stars, tagList, exampleTag, md, highlight, postUrl, pageHead, filterable,
     paperCard, hydratePapers, crossref, authorLine, R, latest, itemHref, sectionOf, COLLECTIONS, flattenLessons, $ };
 })();

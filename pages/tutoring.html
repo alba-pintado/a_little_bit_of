@@ -6,15 +6,15 @@
   <meta name="author" content="Alba Pintado Rodrigo">
   <title>Tutoring · A Little Bit Of…</title>
   <meta name="description" content="Classes in maths, physics, chemistry and biology from 1º ESO to 2º Bachillerato, with high-level exercises and model exams to download.">
-  <link rel="icon" href="images/favicon.png">
+  <link rel="icon" href="../assets/images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Outfit:wght@400;500;600;700&family=Homemade+Apple&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
   <main id="main" class="wrap"></main>
-  <script src="assets/js/site.js"></script>
+  <script src="../assets/js/site.js"></script>
   <script>
     Site.ready().then(function (S) {
       var esc = Site.esc, tx = Site.tx, f = Site.f, es = Site.lang === "es";
@@ -26,8 +26,8 @@
       function files(list) {
         if (!list || !list.length) return '<p class="none">' + L.soon + '</p>';
         return '<ul>' + list.map(function (x) {
-          return '<li><a class="pdf" href="' + esc(x.url) + '" target="_blank" rel="noopener">' + esc(f(x, "title")) + '</a>' +
-            (x.solutions ? '<a class="sol" href="' + esc(x.solutions) + '" target="_blank" rel="noopener">' + L.sol + '</a>' : '') + '</li>';
+          return '<li><a class="pdf" href="' + esc(Site.url(x.url)) + '" target="_blank" rel="noopener">' + esc(f(x, "title")) + '</a>' +
+            (x.solutions ? '<a class="sol" href="' + esc(Site.url(x.solutions)) + '" target="_blank" rel="noopener">' + L.sol + '</a>' : '') + '</li>';
         }).join("") + '</ul>';
       }
 

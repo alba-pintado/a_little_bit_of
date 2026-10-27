@@ -2,7 +2,7 @@
    MOVIES, SERIES & DOCUMENTARIES
    Fields: id, title, type ("Film" | "Series" | "Documentary"),
            director or creator, year, rating (0–5), date,
-           summary, image (optional), tags, body (Markdown)
+           summary, image (optional — put posters in content/movies/posters/), tags, body (Markdown)
    ========================================================= */
 window.SITE = window.SITE || {};
 
