@@ -6,66 +6,133 @@
   <meta name="author" content="Alba Pintado Rodrigo">
   <title>Tutoring · A Little Bit Of…</title>
   <meta name="description" content="Classes in maths, physics, chemistry and biology from 1º ESO to 2º Bachillerato, with high-level exercises and model exams to download.">
-  <link rel="icon" href="../assets/images/logo.svg" type="image/svg+xml">
-  <link rel="icon" href="../assets/images/favicon.png" type="image/png">
-  <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
+  <link rel="icon" href="../assets/images/logo.svg?v=20261027c" type="image/svg+xml">
+  <link rel="icon" href="../assets/images/favicon.png?v=20261027c" type="image/png">
+  <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png?v=20261027c">
   <meta name="theme-color" content="#1c1a47">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Outfit:wght@400;500;600;700&family=Homemade+Apple&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/style.css?v=20261027c">
 </head>
 <body>
   <main id="main" class="wrap"></main>
-  <script src="../assets/js/site.js"></script>
+  <script src="../assets/js/site.js?v=20261027c"></script>
   <script>
     Site.ready().then(function (S) {
       var esc = Site.esc, tx = Site.tx, f = Site.f, es = Site.lang === "es";
-      var T = S.tutoring || { levels: [], subjects: {} }, C = S.config;
+      var T = S.tutoring, C = S.config;
+      var BASE = "content/tutoring/materials/";
       var L = es
-        ? { all: "Todas", ex: "Ejercicios de alto nivel", exam: "Exámenes modelo", sol: "Soluciones", soon: "Próximamente", pdfs: " PDF", write: "Escríbeme" }
-        : { all: "All", ex: "High-level exercises", exam: "Model exams", sol: "Solutions", soon: "Coming soon", pdfs: " PDFs", write: "Write to me" };
+        ? { all: "Todas", ex: "Ejercicios de alto nivel", exam: "Exámenes modelo", web: "Webs recomendadas", sol: "Soluciones",
+            soon: "Próximamente", pdfs: " PDF", write: "Escríbeme", offline: "No se ha podido cargar la lista de PDFs. Vuelve a intentarlo en unos minutos." }
+        : { all: "All", ex: "High-level exercises", exam: "Model exams", web: "Recommended websites", sol: "Solutions",
+            soon: "Coming soon", pdfs: " PDFs", write: "Write to me", offline: "The list of PDFs couldn't be loaded. Please try again in a few minutes." };
 
-      function files(list) {
-        if (!list || !list.length) return '<p class="none">' + L.soon + '</p>';
-        return '<ul>' + list.map(function (x) {
+      /* "examen-modelo-1.pdf" → "Examen modelo 1" */
+      function niceName(file) {
+        var n = decodeURIComponent(file).replace(/\.pdf$/i, "").replace(/[-_]+/g, " ").trim();
+        return n.charAt(0).toUpperCase() + n.slice(1);
+      }
+
+      /* Every PDF in the repo, read from GitHub (kept for 10 minutes) */
+      function loadRepoPdfs() {
+        if (!C.repo) return Promise.resolve([]);
+        var key = "tree:" + C.repo + ":" + (C.branch || "main"), cached = null;
+        try { cached = JSON.parse(localStorage.getItem(key) || "null"); } catch (e) { /* storage blocked */ }
+        if (cached && Date.now() - cached.t < 10 * 60 * 1000) return Promise.resolve(cached.paths);
+        return fetch("https://api.github.com/repos/" + C.repo + "/git/trees/" + (C.branch || "main") + "?recursive=1")
+          .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+          .then(function (j) {
+            var paths = (j.tree || []).map(function (x) { return x.path; })
+              .filter(function (p) { return p.indexOf(BASE) === 0 && /\.pdf$/i.test(p); });
+            try { localStorage.setItem(key, JSON.stringify({ t: Date.now(), paths: paths })); } catch (e) { /* ignore */ }
+            return paths;
+          })
+          .catch(function () { return cached ? cached.paths : null; });
+      }
+
+      /* Group PDFs by level / subject / type, and pair each file with its "-soluciones" file */
+      function buildIndex(paths) {
+        var idx = {}, folderToKey = {};
+        Object.keys(T.subjects).forEach(function (k) { folderToKey[T.subjects[k].folder] = k; });
+        (paths || []).forEach(function (p) {
+          var parts = p.slice(BASE.length).split("/");          // [level, subject, ejercicios|examenes, file]
+          if (parts.length !== 4) return;
+          var key = folderToKey[parts[1]], type = parts[2] === "examenes" ? "exams" : parts[2] === "ejercicios" ? "exercises" : null;
+          if (!key || !type) return;
+          var bucket = (((idx[parts[0]] = idx[parts[0]] || {})[key] = idx[parts[0]][key] || {})[type] = idx[parts[0]][key][type] || {});
+          var m = parts[3].match(/^(.*?)[-_ ]soluci(?:o|ó)n(?:es)?\.pdf$/i);
+          var base = (m ? m[1] : parts[3].replace(/\.pdf$/i, "")).toLowerCase();
+          var item = bucket[base] = bucket[base] || { base: m ? m[1] : parts[3].replace(/\.pdf$/i, "") };
+          if (m) item.solutions = p; else { item.url = p; item.title = niceName(parts[3]); }
+        });
+        (T.extra || []).forEach(function (x) {
+          var b = (((idx[x.level] = idx[x.level] || {})[x.subject] = idx[x.level][x.subject] || {})[x.type] = idx[x.level][x.subject][x.type] || {});
+          b["extra:" + (x.url || x.title)] = x;
+        });
+        return idx;
+      }
+
+      function fileList(bucket) {
+        var items = Object.keys(bucket || {}).map(function (k) { return bucket[k]; })
+          .map(function (x) { return x.url ? x : { title: niceName(x.base) + (es ? " (soluciones)" : " (solutions)"), url: x.solutions }; })
+          .sort(function (a, b) { return String(f(a, "title")).localeCompare(String(f(b, "title")), undefined, { numeric: true }); });
+        if (!items.length) return '<p class="none">' + L.soon + '</p>';
+        return '<ul>' + items.map(function (x) {
           return '<li><a class="pdf" href="' + esc(Site.url(x.url)) + '" target="_blank" rel="noopener">' + esc(f(x, "title")) + '</a>' +
-            (x.solutions ? '<a class="sol" href="' + esc(Site.url(x.solutions)) + '" target="_blank" rel="noopener">' + L.sol + '</a>' : '') + '</li>';
+            (x.solutions && x.url !== x.solutions ? '<a class="sol" href="' + esc(Site.url(x.solutions)) + '" target="_blank" rel="noopener">' + L.sol + '</a>' : '') + '</li>';
         }).join("") + '</ul>';
       }
 
-      var note = tx(T.note);
-      document.getElementById("main").innerHTML = Site.pageHead("tutoring", null, esc(tx(T.intro))) +
-        (note ? '<p class="callout">' + esc(note) + (C.email ? ' <a href="mailto:' + esc(C.email) + '">' + L.write + '</a>.' : '') + '</p>' : '') +
-        '<div class="toolbar subject-filter">' +
-          '<button class="chip" type="button" aria-pressed="true" data-subject="">' + L.all + '</button>' +
-          Object.keys(T.subjects).map(function (k) {
-            return '<button class="chip" type="button" aria-pressed="false" data-subject="' + k + '">' + esc(tx(T.subjects[k])) + '</button>';
-          }).join("") +
-        '</div>' +
-        '<div class="levels">' + T.levels.map(function (lv) {
-          return '<article class="level"><h3>' + esc(lv.name) + '</h3><ul class="subjects">' +
-            Object.keys(lv.subjects).map(function (k) {
-              var m = lv.subjects[k], n = (m.exercises || []).length + (m.exams || []).length;
-              return '<li data-subject="' + k + '"><details><summary>' + esc(tx(T.subjects[k]) || k) +
-                '<span class="count">' + (n ? n + L.pdfs : L.soon) + '</span></summary>' +
-                '<div class="group"><h4>' + L.ex + '</h4>' + files(m.exercises) + '<h4>' + L.exam + '</h4>' + files(m.exams) + '</div>' +
-                '</details></li>';
-            }).join("") + '</ul></article>';
-        }).join("") + '</div>';
+      function webList(list) {
+        if (!list.length) return "";
+        return '<h4>' + L.web + '</h4><ul class="webs">' + list.map(function (w) {
+          return '<li><a href="' + esc(w.url) + '" target="_blank" rel="noopener">' + esc(w.title) + '</a><span>' + esc(f(w, "note") || "") + '</span></li>';
+        }).join("") + '</ul>';
+      }
 
-      // show only one subject across all levels
-      var chips = document.querySelectorAll(".subject-filter .chip");
-      chips.forEach(function (b) {
-        b.addEventListener("click", function () {
-          var k = b.dataset.subject;
-          chips.forEach(function (c) { c.setAttribute("aria-pressed", c === b); });
-          document.querySelectorAll(".subjects > li").forEach(function (li) {
-            li.hidden = k && li.dataset.subject !== k;
-            if (k && !li.hidden) li.querySelector("details").open = true;
+      function render(paths) {
+        var idx = buildIndex(paths);
+        var note = tx(T.note);
+        document.getElementById("main").innerHTML = Site.pageHead("tutoring", null, esc(tx(T.intro))) +
+          (note ? '<p class="callout">' + esc(note) + (C.email ? ' <a href="mailto:' + esc(C.email) + '">' + L.write + '</a>.' : '') + '</p>' : '') +
+          (paths === null ? '<p class="callout">' + L.offline + '</p>' : '') +
+          '<div class="toolbar subject-filter">' +
+            '<button class="chip" type="button" aria-pressed="true" data-subject="">' + L.all + '</button>' +
+            Object.keys(T.subjects).map(function (k) {
+              return '<button class="chip" type="button" aria-pressed="false" data-subject="' + k + '">' + esc(tx(T.subjects[k])) + '</button>';
+            }).join("") +
+          '</div>' +
+          '<div class="levels">' + T.levels.map(function (lv) {
+            return '<article class="level"><h3>' + esc(lv.name) + '</h3><ul class="subjects">' +
+              Object.keys(T.subjects).map(function (k) {
+                var sub = T.subjects[k], m = (idx[lv.folder] || {})[k] || {};
+                var n = Object.keys(m.exercises || {}).length + Object.keys(m.exams || {}).length;
+                var webs = (sub.websites || []).concat(T.levelWebsites || []).filter(function (w) { return !w.levels || w.levels.indexOf(lv.folder) >= 0; });
+                return '<li data-subject="' + k + '"><details><summary>' + esc(tx(sub)) +
+                  '<span class="count">' + (n ? n + L.pdfs : L.soon) + '</span></summary>' +
+                  '<div class="group"><h4>' + L.ex + '</h4>' + fileList(m.exercises) +
+                  '<h4>' + L.exam + '</h4>' + fileList(m.exams) + webList(webs) + '</div>' +
+                  '</details></li>';
+              }).join("") + '</ul></article>';
+          }).join("") + '</div>';
+
+        var chips = document.querySelectorAll(".subject-filter .chip");
+        chips.forEach(function (b) {
+          b.addEventListener("click", function () {
+            var k = b.dataset.subject;
+            chips.forEach(function (c) { c.setAttribute("aria-pressed", c === b); });
+            document.querySelectorAll(".subjects > li").forEach(function (li) {
+              li.hidden = !!k && li.dataset.subject !== k;
+              if (k && !li.hidden) li.querySelector("details").open = true;
+            });
           });
         });
-      });
+      }
+
+      render([]);                       // draw straight away…
+      loadRepoPdfs().then(render);      // …then fill in the PDFs from the repo
     });
   </script>
 </body>

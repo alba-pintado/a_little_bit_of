@@ -103,6 +103,21 @@ Todos funcionan igual: copia una entrada existente, cambia el `id` (tiene que se
 
 ---
 
+## Géneros de pelis y series
+
+En `content/movies/movies.js`, cada reseña puede llevar sus géneros:
+
+```js
+    genres: ["scifi", "drama"],
+```
+
+Los nombres disponibles están al final del mismo archivo, en `SITE.movieGenres`
+(action, adventure, animation, biography, comedy, crime, documentary, drama, family,
+fantasy, history, horror, musical, mystery, romance, scifi, sport, thriller, war, western).
+En la web salen todos como filtros, en inglés y en español.
+
+---
+
 ## Añadir una lección a un curso (R, Python, ML)
 
 En `content/science/courses.js`, cada curso tiene una lista `lessons` **en orden**.
@@ -116,31 +131,35 @@ Para un curso nuevo (por ejemplo, Bash), copia un bloque de curso entero y cambi
 
 ## Subir ejercicios de alto nivel y exámenes modelo
 
-Cada curso y asignatura ya tiene su carpeta dentro de `content/tutoring/materials/`
-(`2bach/quimica/`, `1eso/matematicas/`…).
+**No hace falta escribir código: la web detecta los PDF sola.**
 
-1. Guarda el PDF en su carpeta, con un nombre sin espacios, tildes ni ñ:
-   `content/tutoring/materials/2bach/quimica/examen-modelo-1.pdf`
-2. En `content/tutoring/tutoring.js`, busca el curso y la asignatura
-   (`mat` = Matemáticas, `fis` = Física, `qui` = Química, `bio` = Biología)
-   y añade el PDF en `exercises` (ejercicios de alto nivel) o en `exams` (exámenes modelo):
+Cada curso y asignatura tiene dos carpetas dentro de `content/tutoring/materials/`:
 
-```js
-qui: {
-  exercises: [
-    { title: "Equilibrium – advanced problems", title_es: "Equilibrio – problemas avanzados",
-      url: "content/tutoring/materials/2bach/quimica/equilibrio-avanzado.pdf",
-      solutions: "content/tutoring/materials/2bach/quimica/equilibrio-avanzado-soluciones.pdf" }
-  ],
-  exams: [
-    { title: "Model exam 1", title_es: "Examen modelo 1",
-      url: "content/tutoring/materials/2bach/quimica/examen-modelo-1.pdf" }
-  ]
-},
+```
+content/tutoring/materials/
+└── 2bach/                      (1eso, 2eso, 3eso, 4eso, 1bach, 2bach)
+    └── quimica/                (matematicas, fisica, quimica, biologia)
+        ├── ejercicios/         ← ejercicios de alto nivel
+        └── examenes/           ← exámenes modelo
 ```
 
-`solutions` es opcional: si lo pones, aparece un enlace "Soluciones" al lado del PDF.
-Más detalles en `content/tutoring/materials/LEEME.md`.
+**Desde la web de GitHub (lo más fácil):**
+1. Entra en tu repo y navega hasta la carpeta, por ejemplo
+   `content/tutoring/materials/2bach/quimica/examenes`.
+2. Pulsa **Add file → Upload files** y arrastra tus PDF (puedes subir muchos a la vez).
+3. Pulsa **Commit changes**. En uno o dos minutos aparecen en la web.
+
+**Desde la terminal:** copia los PDF a su carpeta y haz `git add`, `git commit` y `git push`.
+
+Cómo nombrar los archivos (sin espacios, tildes ni ñ):
+- El nombre se convierte en el título: `examen-modelo-1.pdf` se ve como **"Examen modelo 1"**.
+- Las soluciones se enlazan solas si se llaman igual + `-soluciones`:
+  `examen-modelo-1-soluciones.pdf` sale como enlace "Soluciones" junto a "Examen modelo 1".
+- Se ordenan por nombre, así que numerarlos (`tema-01`, `tema-02`…) ayuda.
+
+Las **webs recomendadas** de cada asignatura están en `content/tutoring/tutoring.js`
+(en `subjects` → `websites`). Las de un curso concreto, como los exámenes de la PAU
+para 2º Bachillerato, están en `levelWebsites`.
 
 ---
 

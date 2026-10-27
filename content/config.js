@@ -18,7 +18,11 @@ SITE.config = {
   linkedin: "",                    // e.g. "https://www.linkedin.com/in/your-name"
   orcid: "",                       // e.g. "https://orcid.org/0000-0000-0000-0000"
   googleScholar: "",
-  podcastFeed: ""                  // Spotify / Apple / iVoox link to your podcast
+  podcastFeed: "",                 // Spotify / Apple / iVoox link to your podcast
+
+  // Your GitHub repository: the tutoring page reads it to list the PDFs on its own
+  repo: "alba-pintado/a_little_bit_of",
+  branch: "main"
 };
 
 /* The sections of the site, in menu order.

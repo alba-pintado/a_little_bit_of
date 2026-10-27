@@ -364,3 +364,12 @@ html[lang="es"] [data-lang="en"], html[lang="en"] [data-lang="es"] { display: no
 .level .group .sol { font-size: .85rem; }
 .level .group .none { color: var(--ink-soft); font-style: italic; font-size: .9rem; }
 [hidden] { display: none !important; }
+.level .group ul.webs li { flex-direction: column; gap: 0; }
+.level .group ul.webs li span { color: var(--ink-soft); font-size: .85rem; line-height: 1.4; }
+
+/* movies: genre filter */
+.genre-bar { margin-top: -8px; }
+.genre-bar .chip { font-size: .82rem; padding: 4px 11px; }
+.genre-bar .chip.zero { opacity: .55; }
+.genre-bar .chip .n { font-size: .75rem; opacity: .7; }
+.review .genres { font-size: .85rem; color: var(--ink-soft); }

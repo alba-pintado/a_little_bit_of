@@ -17,13 +17,16 @@
   const url = (p) => (!p || /^([a-z][a-z0-9+.-]*:|\/|#|\?)/i.test(p) ? p || "" : ROOT + p);
   const pageUrl = (key) => (key === "index" ? url("index.html") : url(`pages/${key}.html`));
 
+  /* Change this when you update the site, so browsers download the new files */
+  const VERSION = "20261027c";
+
   const DATA_FILES = [
     "content/config.js",
     "content/science/papers.js", "content/science/tutorials.js", "content/science/courses.js",
     "content/tutoring/tutoring.js",
     "content/lifestyle/lifestyle.js", "content/books/books.js", "content/movies/movies.js",
     "content/travel/travel.js", "content/music/music.js"
-  ].map(url);
+  ].map((p) => `${url(p)}?v=${VERSION}`);
 
   /* Which section each kind of content belongs to */
   const COLLECTIONS = {
@@ -267,7 +270,7 @@
     header.className = "site-header";
     header.innerHTML = `
       <div class="wrap">
-        <a class="brand" href="${pageUrl("index")}"><img src="${url("assets/images/logo.svg")}" alt="">${esc(C.title || "A Little Bit Of…")}</a>
+        <a class="brand" href="${pageUrl("index")}"><img src="${url("assets/images/logo.svg")}?v=${VERSION}" alt="">${esc(C.title || "A Little Bit Of…")}</a>
         <button class="icon-btn menu-btn" aria-expanded="false" aria-controls="site-nav">${ICON_MENU}<span>${t("Menu")}</span></button>
         <nav class="site-nav" id="site-nav" aria-label="Main">
           <ul>${(S.sections || []).map((s) => `<li><a href="${pageUrl(s.key)}"${s.key === activeKey ? ' aria-current="page"' : ""}>${esc(f(s, "short"))}</a></li>`).join("")}</ul>
@@ -486,6 +489,7 @@
           <h3><a href="${postUrl(collection, r.id)}">${esc(f(r, "title"))}</a></h3>
           <div class="by">${esc(r.author || r.director || r.creator || "")}${r.year ? ` (${esc(r.year)})` : ""}</div>
           ${stars(r.rating)}
+          ${r.genreNames ? `<div class="genres">${esc(r.genreNames)}</div>` : ""}
           <p>${esc(f(r, "summary") || "")}</p>
         </div>
       </article>`).join("")}</div>`,

@@ -6,23 +6,79 @@
   <meta name="author" content="Alba Pintado Rodrigo">
   <title>Movies, Series &amp; Documentaries · A Little Bit Of…</title>
   <meta name="description" content="Reviews of films, series and documentaries.">
-  <link rel="icon" href="../assets/images/logo.svg" type="image/svg+xml">
-  <link rel="icon" href="../assets/images/favicon.png" type="image/png">
-  <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
+  <link rel="icon" href="../assets/images/logo.svg?v=20261027c" type="image/svg+xml">
+  <link rel="icon" href="../assets/images/favicon.png?v=20261027c" type="image/png">
+  <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png?v=20261027c">
   <meta name="theme-color" content="#1c1a47">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Outfit:wght@400;500;600;700&family=Homemade+Apple&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/style.css?v=20261027c">
 </head>
 <body>
   <main id="main" class="wrap"></main>
-  <script src="../assets/js/site.js"></script>
+  <script src="../assets/js/site.js?v=20261027c"></script>
   <script>
     Site.ready().then(function (S) {
-      document.getElementById("main").innerHTML = Site.pageHead("movies", null, { en: "Films, series and documentaries, with a soft spot for anything with a scientist in it.", es: "Películas, series y documentales, con debilidad por cualquier cosa en la que salga una científica." }) + '<div id="list"></div>';
-      var list = (S.movies || []).slice().sort(function (a, b) { return String(b.date).localeCompare(String(a.date)); });
-      Site.filterable(document.getElementById("list"), list, Site.R.reviews("movies"), { id: "movies", placeholder: { en: "Filter by title, director…", es: "Filtrar por título, director…" }, empty: { en: "No reviews yet.", es: "Todavía no hay reseñas." } });
+      var esc = Site.esc, tx = Site.tx, f = Site.f, es = Site.lang === "es";
+      var G = S.movieGenres || [], byKey = {};
+      G.forEach(function (g) { byKey[g.key] = g; });
+      var list = (S.movies || []).slice().sort(function (a, b) { return String(b.date).localeCompare(String(a.date)); })
+        .map(function (m) {
+          return Object.assign({}, m, { genreNames: (m.genres || []).map(function (k) { return byKey[k] ? tx(byKey[k]) : k; }).join(" · ") });
+        });
+      var types = [
+        { key: "", label: es ? "Todo" : "All" },
+        { key: "Film", label: es ? "Películas" : "Films" },
+        { key: "Series", label: es ? "Series" : "Series" },
+        { key: "Documentary", label: es ? "Documentales" : "Documentaries" }
+      ];
+      var state = { type: "", genre: "", q: "" };
+
+      document.getElementById("main").innerHTML = Site.pageHead("movies", null, {
+          en: "Films, series and documentaries, with a soft spot for anything with a scientist in it.",
+          es: "Películas, series y documentales, con debilidad por cualquier cosa en la que salga una científica." }) +
+        '<div class="toolbar">' +
+          '<label class="sr-only" for="f-movies">' + (es ? "Filtrar" : "Filter") + '</label>' +
+          '<input id="f-movies" type="search" placeholder="' + (es ? "Buscar por título, director…" : "Search by title, director…") + '">' +
+          types.map(function (t) { return '<button class="chip" type="button" data-type="' + t.key + '" aria-pressed="' + (t.key === "" ) + '">' + t.label + '</button>'; }).join("") +
+        '</div>' +
+        '<div class="toolbar genre-bar" role="group" aria-label="' + (es ? "Géneros" : "Genres") + '">' +
+          G.map(function (g) {
+            var n = list.filter(function (m) { return (m.genres || []).indexOf(g.key) >= 0; }).length;
+            return '<button class="chip' + (n ? '' : ' zero') + '" type="button" data-genre="' + g.key + '" aria-pressed="false">' + esc(tx(g)) + (n ? ' <span class="n">' + n + '</span>' : '') + '</button>';
+          }).join("") +
+        '</div><div id="list"></div>';
+
+      function draw() {
+        var q = state.q.toLowerCase();
+        var shown = list.filter(function (m) {
+          return (!state.type || m.type === state.type) &&
+                 (!state.genre || (m.genres || []).indexOf(state.genre) >= 0) &&
+                 (!q || JSON.stringify(m).toLowerCase().indexOf(q) >= 0);
+        });
+        var g = byKey[state.genre];
+        document.getElementById("list").innerHTML = shown.length ? Site.R.reviews("movies")(shown) :
+          '<div class="empty">' + (g
+            ? (es ? "Todavía no hay reseñas de " + esc(tx(g).toLowerCase()) + "." : "No " + esc(tx(g).toLowerCase()) + " reviews yet.")
+            : (es ? "Nada coincide con ese filtro." : "Nothing matches that filter.")) + '</div>';
+      }
+      document.getElementById("f-movies").addEventListener("input", function (e) { state.q = e.target.value; draw(); });
+      document.querySelectorAll("[data-type]").forEach(function (b) {
+        b.addEventListener("click", function () {
+          state.type = b.dataset.type;
+          document.querySelectorAll("[data-type]").forEach(function (c) { c.setAttribute("aria-pressed", c === b); });
+          draw();
+        });
+      });
+      document.querySelectorAll("[data-genre]").forEach(function (b) {
+        b.addEventListener("click", function () {
+          state.genre = state.genre === b.dataset.genre ? "" : b.dataset.genre;
+          document.querySelectorAll("[data-genre]").forEach(function (c) { c.setAttribute("aria-pressed", c.dataset.genre === state.genre); });
+          draw();
+        });
+      });
+      draw();
     });
   </script>
 </body>

@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Alba Pintado Rodrigo">
   <title>A Little Bit Of…</title>
-  <link rel="icon" href="../assets/images/logo.svg" type="image/svg+xml">
-  <link rel="icon" href="../assets/images/favicon.png" type="image/png">
-  <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png">
+  <link rel="icon" href="../assets/images/logo.svg?v=20261027c" type="image/svg+xml">
+  <link rel="icon" href="../assets/images/favicon.png?v=20261027c" type="image/png">
+  <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png?v=20261027c">
   <meta name="theme-color" content="#1c1a47">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Outfit:wght@400;500;600;700&family=Homemade+Apple&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/style.css?v=20261027c">
 </head>
 <body>
   <main id="main" class="wrap"></main>
@@ -21,7 +21,7 @@
   <!-- Markdown and code highlighting -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-  <script src="../assets/js/site.js"></script>
+  <script src="../assets/js/site.js?v=20261027c"></script>
   <script>
     /* One page shows any entry: post.html?c=<collection>&id=<id> */
     Site.ready().then(function (S) {
@@ -55,6 +55,9 @@
       if (f(item, "place")) meta.push(esc(f(item, "place")));
       if (f(item, "level")) meta.push(esc(f(item, "level")));
       if (item.number) meta.push(L.ep + esc(item.number));
+      if (item.genres && S.movieGenres) meta.push(item.genres.map(function (k) {
+        var g = S.movieGenres.find(function (x) { return x.key === k; }); return esc(g ? Site.tx(g) : k);
+      }).join(" · "));
       if (item.rating != null) meta.push(Site.stars(item.rating));
       if (item.doi) meta.push('<a href="https://doi.org/' + esc(item.doi) + '">doi:' + esc(item.doi) + '</a>');
       meta.push(Site.exampleTag(item));
