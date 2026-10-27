@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Books · A Little Bit Of…</title>
+  <meta name="description" content="Book reviews: science, novels and everything in between.">
+  <link rel="icon" href="images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Outfit:wght@400;500;600;700&family=Homemade+Apple&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <main id="main" class="wrap"></main>
+  <script src="assets/js/site.js"></script>
+  <script>
+    Site.ready().then(function (S) {
+      document.getElementById("main").innerHTML = Site.pageHead("books", null, "What I'm reading and what I thought of it. Science books, novels and everything in between.") + '<div id="list"></div>';
+      var list = (S.books || []).slice().sort(function (a, b) { return String(b.date).localeCompare(String(a.date)); });
+      Site.filterable(document.getElementById("list"), list, Site.R.reviews("books"), { id: "books", placeholder: "Filter by title, author…", empty: "No reviews yet." });
+    });
+  </script>
+</body>
+</html>

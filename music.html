@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music &amp; Podcasts · A Little Bit Of…</title>
+  <meta name="description" content="My podcast episodes, plus the music and shows I recommend.">
+  <link rel="icon" href="images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Outfit:wght@400;500;600;700&family=Homemade+Apple&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <main id="main" class="wrap"></main>
+  <script src="assets/js/site.js"></script>
+  <script>
+    Site.ready().then(function (S) {
+      var esc = Site.esc, C = S.config;
+      var eps = (S.podcast || []).slice().sort(function (a, b) { return (b.number || 0) - (a.number || 0); });
+      var recs = (S.music || []).slice().sort(function (a, b) { return String(b.date).localeCompare(String(a.date)); });
+
+      document.getElementById("main").innerHTML = Site.pageHead("music", null, "Episodes of my podcast, and the music and shows I keep coming back to.") +
+        '<div class="board-head"><h2>My podcast</h2>' + (C.podcastFeed ? '<a href="' + esc(C.podcastFeed) + '">Follow the podcast</a>' : '') + '</div>' +
+        (eps.length ? '<ol class="episodes">' + eps.map(function (e) {
+          var href = e.body ? Site.postUrl("podcast", e.id) : e.url;
+          return '<li class="episode"><span class="num" aria-label="Episode">' + esc(e.number) + '</span><div>' +
+            '<h3>' + (href ? '<a href="' + esc(href) + '">' + esc(e.title) + '</a>' : esc(e.title)) + ' ' + Site.exampleTag(e) + '</h3>' +
+            '<p>' + Site.fmtDate(e.date) + (e.summary ? ' · ' + esc(e.summary) : '') + '</p></div>' +
+            (e.url ? '<a class="listen" href="' + esc(e.url) + '">Listen</a>' : '') + '</li>';
+        }).join("") + '</ol>' : '<div class="empty">The first episode is on its way.</div>') +
+        '<div class="board-head section-gap"><h2>On repeat</h2></div><div id="recs"></div>';
+
+      Site.filterable(document.getElementById("recs"), recs, function (list) {
+        return '<div class="entries">' + list.map(function (m) {
+          return '<article class="entry"><div class="meta"><span class="tag blush">' + esc(m.type || "") + '</span> ' + Site.exampleTag(m) + '</div>' +
+            '<h3>' + (m.url ? '<a href="' + esc(m.url) + '">' + esc(m.title) + '</a>' : esc(m.title)) + '</h3>' +
+            '<div class="meta">' + esc(m.artist || "") + '</div><p>' + esc(m.note || "") + '</p></article>';
+        }).join("") + '</div>';
+      }, { id: "music", placeholder: "Filter recommendations…", empty: "No recommendations yet." });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lifestyle · A Little Bit Of…</title>
+  <meta name="description" content="Staying active, eating well and small everyday adventures.">
+  <link rel="icon" href="images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Outfit:wght@400;500;600;700&family=Homemade+Apple&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <main id="main" class="wrap"></main>
+  <script src="assets/js/site.js"></script>
+  <script>
+    Site.ready().then(function (S) {
+      var main = document.getElementById("main");
+      main.innerHTML = Site.pageHead("lifestyle", null, "Staying active, eating well, and the small everyday adventures that teach us so much.") + '<div id="list"></div>';
+      var list = (S.lifestyle || []).slice().sort(function (a, b) { return String(b.date).localeCompare(String(a.date)); });
+      Site.filterable(document.getElementById("list"), list, Site.R.entries("lifestyle"), { id: "life", placeholder: "Filter posts…", empty: "No posts yet." });
+    });
+  </script>
+</body>
+</html>

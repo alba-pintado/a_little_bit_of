@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Science &amp; Bioinformatics · A Little Bit Of…</title>
+  <meta name="description" content="Papers with DOI, science news, bioinformatics tutorials and courses in R, Python and machine learning.">
+  <link rel="icon" href="images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Outfit:wght@400;500;600;700&family=Homemade+Apple&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <main id="main" class="wrap"></main>
+  <script src="assets/js/site.js"></script>
+  <script>
+    Site.ready().then(function (S) {
+      var esc = Site.esc, main = document.getElementById("main");
+      main.innerHTML = Site.pageHead("science", null,
+          "Papers and news I found worth reading, step-by-step bioinformatics tutorials, and my courses in R, Python and machine learning.") +
+        '<div class="tabs" role="tablist">' +
+          '<button role="tab" id="tab-papers" aria-controls="papers">Papers &amp; news</button>' +
+          '<button role="tab" id="tab-tutorials" aria-controls="tutorials">Tutorials</button>' +
+          '<button role="tab" id="tab-courses" aria-controls="courses">Courses</button>' +
+        '</div>' +
+        '<section role="tabpanel" id="papers" aria-labelledby="tab-papers"></section>' +
+        '<section role="tabpanel" id="tutorials" aria-labelledby="tab-tutorials"></section>' +
+        '<section role="tabpanel" id="courses" aria-labelledby="tab-courses"></section>';
+
+      var byDate = function (a, b) { return String(b.date).localeCompare(String(a.date)); };
+
+      Site.filterable(document.getElementById("papers"), (S.papers || []).slice().sort(byDate), Site.R.papers,
+        { id: "papers", placeholder: "Filter papers…", empty: "No papers yet.", after: Site.hydratePapers });
+
+      Site.filterable(document.getElementById("tutorials"), (S.tutorials || []).slice().sort(byDate), Site.R.entries("tutorials"),
+        { id: "tutorials", placeholder: "Filter tutorials…", empty: "No tutorials yet." });
+
+      document.getElementById("courses").innerHTML = '<div class="courses">' + (S.courses || []).map(function (c) {
+        return '<article class="course" data-lang="' + esc(c.key) + '"><h2>' + esc(c.title) + '</h2><p>' + esc(c.description) + '</p><ol>' +
+          (c.lessons || []).map(function (l) {
+            return l.soon || !l.body
+              ? '<li><span class="soon">' + esc(l.title) + ' (coming soon)</span></li>'
+              : '<li><a href="' + Site.postUrl("lessons", l.id) + '">' + esc(l.title) + '</a> ' + Site.exampleTag(l) + '</li>';
+          }).join("") + '</ol></article>';
+      }).join("") + '</div>';
+
+      // tabs, remembered in the address (science.html#courses)
+      var tabs = ["papers", "tutorials", "courses"];
+      function show(name) {
+        if (tabs.indexOf(name) < 0) name = "papers";
+        tabs.forEach(function (t) {
+          document.getElementById(t).hidden = t !== name;
+          document.getElementById("tab-" + t).setAttribute("aria-selected", t === name);
+        });
+      }
+      tabs.forEach(function (t) {
+        document.getElementById("tab-" + t).addEventListener("click", function () { history.replaceState(null, "", "#" + t); show(t); });
+      });
+      window.addEventListener("hashchange", function () { show(location.hash.slice(1)); });
+      show(location.hash.slice(1));
+    });
+  </script>
+</body>
+</html>
