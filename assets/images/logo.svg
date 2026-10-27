@@ -1,9 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="t">
   <title id="t">Alba Pintado Rodrigo</title>
   <rect width="120" height="120" rx="30" fill="#1c1a47"/>
-  <g fill="none" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" transform="translate(1 0)">
-    <path d="M59 29H70a16 16 0 0 1 0 32H59" stroke="#ff9a9e"/>
-    <path d="M30 91L59 29V91" stroke="#fffaf6"/>
-    <path d="M40.5 71H59" stroke="#fffaf6"/>
+  <g transform="translate(0.5 -2)">
+    <!-- ">" : the start of a FASTA header -->
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="9">
+      <path d="M18 40L30 52L18 64" stroke="#ff9a9e"/>
+      <!-- A -->
+      <path d="M38 70L52 32L66 70M43 58H61" stroke="#fffaf6"/>
+      <!-- P -->
+      <path d="M76 70V32H86a10 10 0 0 1 0 20H76" stroke="#fffaf6"/>
+    </g>
+    <!-- the sequence: one bar per base (A, T, G, C) -->
+    <rect x="18" y="84" width="17" height="8" rx="4" fill="#9fdcc0"/>
+    <rect x="40" y="84" width="17" height="8" rx="4" fill="#ff9a9e"/>
+    <rect x="62" y="84" width="17" height="8" rx="4" fill="#f5c96b"/>
+    <rect x="84" y="84" width="17" height="8" rx="4" fill="#a1c4fd"/>
   </g>
 </svg>
