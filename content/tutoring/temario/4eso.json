@@ -168,13 +168,7 @@
     "cards": 10
    }
   ],
-  "examenes": [
-   {
-    "titulo": "Examen modelo 1",
-    "file": "examenes/examen-modelo-1.pdf",
-    "solutions": "examenes/examen-modelo-1-soluciones.pdf"
-   }
-  ]
+  "examenes": []
  },
  "fq": {
   "folder": "fisica-y-quimica",
