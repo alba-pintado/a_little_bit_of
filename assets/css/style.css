@@ -411,7 +411,6 @@ html[lang="es"] [data-lang="en"], html[lang="en"] [data-lang="es"] { display: no
 .m-cardspdf { background: #fff0f1; border-color: #f8c9cf; font-weight: 400; }
 .m-ej { background: #effaf4; border-color: #c4e8d4; }
 .m-sol { background: #fff; font-weight: 400; color: var(--ink-soft); }
-.m-exam { background: #f3efff; border-color: #d8cdfa; }
 .tema .soon { color: var(--ink-soft); font-style: italic; font-size: .9rem; }
 .temario-extra { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-top: 22px; }
 @media (max-width: 560px) { .tema { grid-template-columns: 30px 1fr; padding: 12px 14px; gap: 10px; } }

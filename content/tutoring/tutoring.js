@@ -19,8 +19,8 @@ window.SITE = window.SITE || {};
 
 SITE.tutoring = {
   intro: {
-    en: "Classes in maths, physics, chemistry and biology, from 1º ESO to 2º Bachillerato. For every subject you'll find high-level exercises, model exams and the websites I recommend. In 2º Bachillerato the whole syllabus is here, topic by topic: colour-coded notes, one-page summaries, flashcards and graded exercises with solutions. 2º ESO has Physics & Chemistry (in the order of the SM «Revuela» textbook) and English grammar, with a test for every topic.",
-    es: "Clases de matemáticas, física, química y biología, de 1º ESO a 2º Bachillerato. En cada asignatura tienes ejercicios de alto nivel, exámenes modelo y las webs que te recomiendo. En 2º Bachillerato está todo el temario, tema a tema: apuntes subrayados por colores, resúmenes de una cara, flashcards y ejercicios por niveles con soluciones. En 2º ESO tienes Física y Química (en el orden del libro «Revuela» de SM) y gramática de Inglés, con un examen por tema."
+    en: "Classes in maths, physics, chemistry and biology, from 1º ESO to 2º Bachillerato. For every subject you'll find high-level exercises, model exams and the websites I recommend. In 2º Bachillerato the whole syllabus is here, topic by topic: colour-coded notes, one-page summaries, flashcards and graded exercises with solutions.",
+    es: "Clases de matemáticas, física, química y biología, de 1º ESO a 2º Bachillerato. En cada asignatura tienes ejercicios de alto nivel, exámenes modelo y las webs que te recomiendo. En 2º Bachillerato está todo el temario, tema a tema: apuntes subrayados por colores, resúmenes de una cara, flashcards y ejercicios por niveles con soluciones."
   },
   note: {
     en: "I am from Madrid, Spain, and I usually give my classes in Spanish. For this reason, most of the documents are in Spanish. However, if you would like any of the documents in English, please do not hesitate to contact me and I can provide them in English.",
@@ -78,29 +78,6 @@ SITE.tutoring = {
           note_es: "Simulaciones: construye moléculas, ajusta reacciones, pH." },
         { title: "Khan Academy", url: "https://es.khanacademy.org/science/chemistry",
           note: "Videos and practice exercises.", note_es: "Vídeos y ejercicios de práctica." }
-      ]
-    },
-    fq: {
-      en: "Physics & Chemistry", es: "Física y Química", folder: "fisica-y-quimica", levels: ["2eso"],
-      websites: [
-        { title: "Fisicalab", url: "https://www.fisicalab.com",
-          note: "Theory and worked problems by level.", note_es: "Teoría y problemas resueltos por niveles." },
-        { title: "PhET (Universidad de Colorado)", url: "https://phet.colorado.edu/es/",
-          note: "Simulations: states of matter, density, forces, energy.",
-          note_es: "Simulaciones: estados de la materia, densidad, fuerzas, energía." }
-      ]
-    },
-    ing: {
-      en: "English", es: "Inglés", folder: "ingles", levels: ["2eso"],
-      websites: [
-        { title: "British Council – LearnEnglish Teens", url: "https://learnenglishteens.britishcouncil.org/grammar",
-          note: "Grammar explanations and online exercises for teenagers.",
-          note_es: "Explicaciones de gramática y ejercicios online para adolescentes." },
-        { title: "Agenda Web", url: "https://agendaweb.org",
-          note: "Hundreds of free grammar and vocabulary exercises.",
-          note_es: "Cientos de ejercicios gratis de gramática y vocabulario." },
-        { title: "Cambridge Dictionary", url: "https://dictionary.cambridge.org/es/",
-          note: "Meanings, examples and pronunciation.", note_es: "Significados, ejemplos y pronunciación." }
       ]
     },
     bio: {
