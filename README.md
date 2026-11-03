@@ -23,7 +23,7 @@ books, travel, films and podcasts on the other.
 | Section | Content |
 |---|---|
 | **Science & Bioinformatics** | Papers and science news with their DOI (title, journal and authors are fetched automatically from Crossref), step-by-step bioinformatics tutorials, and courses in **R**, **Python** and **machine learning** |
-| **Tutoring** | High-level exercises and model exams (PDF) for maths, physics, chemistry and biology, from 1º ESO to 2º Bachillerato |
+| **Tutoring** | Material for maths, physics, chemistry and biology, organised by school year (1º ESO to 2º Bachillerato). 2º Bachillerato has the full syllabus topic by topic: colour-coded notes, one-page summaries, flashcards (interactive on the web and printable), graded exercises with worked solutions, and a model exam per subject |
 | **Lifestyle** | Staying active, eating well, everyday adventures |
 | **Books** · **Movies, Series & Documentaries** | Reviews with ratings |
 | **Travel** | Trips and itineraries |
@@ -43,7 +43,7 @@ hosted on GitHub Pages.
 ├── content/              ← all the texts, photos and PDFs, one folder per section
 │   ├── config.js         name, links, menu
 │   ├── science/          papers.js · tutorials.js · courses.js · images/
-│   ├── tutoring/         tutoring.js · materials/<level>/<subject>/*.pdf
+│   ├── tutoring/         tutoring.js · temario/ (syllabus + flashcards) · materials/<level>/<subject>/<topic>/*.pdf
 │   ├── lifestyle/        lifestyle.js · images/
 │   ├── books/            books.js · covers/
 │   ├── movies/           movies.js · posters/
@@ -74,6 +74,6 @@ Opening `index.html` directly also works.
 
 Typefaces: [Caprasimo](https://fonts.google.com/specimen/Caprasimo), [Outfit](https://fonts.google.com/specimen/Outfit) and [Homemade Apple](https://fonts.google.com/specimen/Homemade+Apple) (Google Fonts).
 Paper metadata: [Crossref REST API](https://www.crossref.org/documentation/retrieve-metadata/rest-api/).
-Markdown: [marked](https://marked.js.org/). Code highlighting: [highlight.js](https://highlightjs.org/).
+Markdown: [marked](https://marked.js.org/). Code highlighting: [highlight.js](https://highlightjs.org/). Maths in flashcards: [KaTeX](https://katex.org/).
 
 © Alba Pintado Rodrigo. All rights reserved for the written content and images.

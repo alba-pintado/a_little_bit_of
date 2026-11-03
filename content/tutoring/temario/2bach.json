@@ -463,5 +463,134 @@
     "solutions": "examenes/examen-modelo-1-soluciones.pdf"
    }
   ]
+ },
+ "fis": {
+  "folder": "fisica",
+  "temas": [
+   {
+    "n": 1,
+    "slug": "campo-gravitatorio",
+    "titulo": "Campo gravitatorio",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 11
+   },
+   {
+    "n": 2,
+    "slug": "campo-electrico",
+    "titulo": "Campo eléctrico",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 11
+   },
+   {
+    "n": 3,
+    "slug": "campo-magnetico",
+    "titulo": "Campo magnético",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 11
+   },
+   {
+    "n": 4,
+    "slug": "induccion",
+    "titulo": "Inducción electromagnética",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 5,
+    "slug": "mas-y-ondas",
+    "titulo": "Movimiento armónico simple y ondas",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 12
+   },
+   {
+    "n": 6,
+    "slug": "optica",
+    "titulo": "Óptica",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 12
+   },
+   {
+    "n": 7,
+    "slug": "relatividad",
+    "titulo": "Relatividad especial",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 11
+   },
+   {
+    "n": 8,
+    "slug": "fisica-cuantica",
+    "titulo": "Física cuántica",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 11
+   },
+   {
+    "n": 9,
+    "slug": "fisica-nuclear",
+    "titulo": "Física nuclear y de partículas",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 12
+   }
+  ],
+  "examenes": [
+   {
+    "titulo": "Examen modelo 1",
+    "file": "examenes/examen-modelo-1.pdf",
+    "solutions": "examenes/examen-modelo-1-soluciones.pdf"
+   }
+  ]
  }
 }

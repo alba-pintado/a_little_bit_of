@@ -163,6 +163,55 @@ para 2º Bachillerato, están en `levelWebsites`.
 
 ---
 
+## Temario por temas (apuntes, resúmenes, flashcards y ejercicios)
+
+En los cursos que ya tienen temario (de momento, 2º Bachillerato), cada tema tiene su
+propia carpeta con cinco PDF:
+
+```
+content/tutoring/materials/2bach/matematicas/
+├── 01-matrices/
+│   ├── apuntes.pdf                 apuntes subrayados con el código de colores
+│   ├── resumen.pdf                 resumen de una cara para estudiar
+│   ├── flashcards.pdf              tarjetas para imprimir a doble cara y recortar
+│   ├── ejercicios.pdf              ejercicios ordenados: ● básico, ●● medio, ●●● tipo PAU
+│   └── ejercicios-soluciones.pdf   las soluciones paso a paso
+├── 02-determinantes/
+│   └── …
+└── examenes/
+    ├── examen-modelo-1.pdf
+    └── examen-modelo-1-soluciones.pdf
+```
+
+Código de colores de los apuntes: **amarillo** definición · **azul** fórmula o idea clave ·
+**rosa** ojo / error típico · **verde** ejemplo.
+
+**Qué lee la web.** La lista de temas está en `content/tutoring/temario/temario.js`
+(la misma información, más legible, está en `2bach.json`). Cada tema tiene su número (`n`),
+su carpeta (`slug`), su título y los archivos que tiene. Si cambias un PDF por otro con
+el mismo nombre, no hay que tocar nada más. Para añadir un tema nuevo, crea su carpeta
+y añade una entrada en `temario.js`.
+
+**Flashcards en la web.** Cada tarjeta de la página *Flashcards* (botón «Flashcards» de
+cada tema) sale de `content/tutoring/temario/cards-<curso>-<asignatura>.js`, por ejemplo
+`cards-2bach-mat.js`. Cada tarjeta es un par `["pregunta", "respuesta"]` dentro del tema
+correspondiente:
+
+```js
+"1": {"titulo": "Matrices", "cards": [
+  ["¿Es conmutativo el producto de matrices?", "No: en general $AB\\neq BA$."],
+  …
+]}
+```
+
+- Las fórmulas van entre `$…$` (se dibujan con KaTeX). Dentro de un `.js`, las barras de
+  LaTeX se escriben dobles: `\\frac`, `\\vec`, `\\neq`.
+- La web recuerda en cada navegador qué tarjetas te sabes ("Me la sé" / "Repasar").
+- Enlace directo a un tema: `pages/flashcards.html?l=2bach&s=mat&t=1`
+  (`t=all` para todas las del curso y asignatura).
+
+---
+
 ## Web en dos idiomas (inglés / español)
 
 Arriba a la derecha hay un botón **ES / EN**. La web recuerda el idioma que eligió
