@@ -154,5 +154,176 @@
    }
   ],
   "examenes": []
+ },
+ "mat": {
+  "folder": "matematicas",
+  "temas": [
+   {
+    "n": 1,
+    "slug": "divisibilidad-y-enteros",
+    "titulo": "Divisibilidad y números enteros",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 2,
+    "slug": "fracciones-y-decimales",
+    "titulo": "Fracciones y números decimales",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 3,
+    "slug": "potencias-y-raices",
+    "titulo": "Potencias, raíces y notación científica",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 4,
+    "slug": "proporcionalidad",
+    "titulo": "Proporcionalidad y porcentajes",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 5,
+    "slug": "polinomios",
+    "titulo": "Expresiones algebraicas y polinomios",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 6,
+    "slug": "ecuaciones",
+    "titulo": "Ecuaciones de primer y segundo grado",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 7,
+    "slug": "sistemas-de-ecuaciones",
+    "titulo": "Sistemas de ecuaciones",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 8,
+    "slug": "pitagoras-y-semejanza",
+    "titulo": "Teorema de Pitágoras y semejanza",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 9,
+    "slug": "cuerpos-geometricos",
+    "titulo": "Cuerpos geométricos: áreas y volúmenes",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 10,
+    "slug": "funciones",
+    "titulo": "Funciones lineales y afines",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 11,
+    "slug": "estadistica-y-probabilidad",
+    "titulo": "Estadística y probabilidad",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   }
+  ],
+  "examenes": []
  }
 }
