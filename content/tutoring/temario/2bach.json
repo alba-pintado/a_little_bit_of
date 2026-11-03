@@ -1,0 +1,467 @@
+{
+ "qui": {
+  "folder": "quimica",
+  "temas": [
+   {
+    "n": 1,
+    "slug": "estructura-atomica-y-sistema-periodico",
+    "titulo": "Estructura atómica y sistema periódico",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 16
+   },
+   {
+    "n": 2,
+    "slug": "enlace-quimico",
+    "titulo": "Enlace químico",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 15
+   },
+   {
+    "n": 3,
+    "slug": "termoquimica-y-espontaneidad",
+    "titulo": "Termoquímica y espontaneidad",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 15
+   },
+   {
+    "n": 4,
+    "slug": "cinetica-quimica",
+    "titulo": "Cinética química",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 15
+   },
+   {
+    "n": 5,
+    "slug": "equilibrio-quimico",
+    "titulo": "Equilibrio químico",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 16
+   },
+   {
+    "n": 6,
+    "slug": "acidos-y-bases",
+    "titulo": "Ácidos y bases",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 18
+   },
+   {
+    "n": 7,
+    "slug": "reacciones-redox-y-electroquimica",
+    "titulo": "Reacciones redox y electroquímica",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 16
+   },
+   {
+    "n": 8,
+    "slug": "quimica-del-carbono",
+    "titulo": "Química del carbono",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 15
+   }
+  ],
+  "examenes": [
+   {
+    "titulo": "Examen modelo 1",
+    "file": "examenes/examen-modelo-1.pdf",
+    "solutions": "examenes/examen-modelo-1-soluciones.pdf"
+   }
+  ]
+ },
+ "bio": {
+  "folder": "biologia",
+  "temas": [
+   {
+    "n": 1,
+    "slug": "bioelementos-agua-y-sales-minerales",
+    "titulo": "Bioelementos, agua y sales minerales",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 14
+   },
+   {
+    "n": 2,
+    "slug": "glucidos-y-lipidos",
+    "titulo": "Glúcidos y lípidos",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 14
+   },
+   {
+    "n": 3,
+    "slug": "proteinas-y-enzimas",
+    "titulo": "Proteínas y enzimas",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 15
+   },
+   {
+    "n": 4,
+    "slug": "acidos-nucleicos",
+    "titulo": "Ácidos nucleicos",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 13
+   },
+   {
+    "n": 5,
+    "slug": "la-celula",
+    "titulo": "La célula: membrana y orgánulos",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 14
+   },
+   {
+    "n": 6,
+    "slug": "metabolismo-y-catabolismo",
+    "titulo": "Metabolismo y catabolismo",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 14
+   },
+   {
+    "n": 7,
+    "slug": "anabolismo-fotosintesis",
+    "titulo": "Anabolismo: fotosíntesis y quimiosíntesis",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 13
+   },
+   {
+    "n": 8,
+    "slug": "ciclo-celular-mitosis-y-meiosis",
+    "titulo": "Ciclo celular, mitosis y meiosis",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 13
+   },
+   {
+    "n": 9,
+    "slug": "genetica-mendeliana",
+    "titulo": "Genética mendeliana",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 13
+   },
+   {
+    "n": 10,
+    "slug": "genetica-molecular",
+    "titulo": "Genética molecular: del ADN a las proteínas",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 14
+   },
+   {
+    "n": 11,
+    "slug": "microbiologia-y-biotecnologia",
+    "titulo": "Microbiología y biotecnología",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 14
+   },
+   {
+    "n": 12,
+    "slug": "inmunologia",
+    "titulo": "Inmunología",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 14
+   }
+  ],
+  "examenes": [
+   {
+    "titulo": "Examen modelo 1",
+    "file": "examenes/examen-modelo-1.pdf",
+    "solutions": "examenes/examen-modelo-1-soluciones.pdf"
+   }
+  ]
+ },
+ "mat": {
+  "folder": "matematicas",
+  "temas": [
+   {
+    "n": 1,
+    "slug": "matrices",
+    "titulo": "Matrices",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 12
+   },
+   {
+    "n": 2,
+    "slug": "determinantes",
+    "titulo": "Determinantes",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 3,
+    "slug": "sistemas",
+    "titulo": "Sistemas de ecuaciones lineales",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 4,
+    "slug": "vectores",
+    "titulo": "Vectores en el espacio",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 5,
+    "slug": "rectas-y-planos",
+    "titulo": "Rectas y planos en el espacio",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 6,
+    "slug": "problemas-metricos",
+    "titulo": "Problemas métricos: ángulos y distancias",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 7,
+    "slug": "limites-y-continuidad",
+    "titulo": "Límites y continuidad",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 11
+   },
+   {
+    "n": 8,
+    "slug": "derivadas",
+    "titulo": "Derivadas",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 11
+   },
+   {
+    "n": 9,
+    "slug": "aplicaciones-derivada",
+    "titulo": "Aplicaciones de la derivada",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 10,
+    "slug": "integrales-indefinidas",
+    "titulo": "Integrales indefinidas",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 11
+   },
+   {
+    "n": 11,
+    "slug": "integral-definida",
+    "titulo": "Integral definida y áreas",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 12,
+    "slug": "probabilidad",
+    "titulo": "Probabilidad",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 13,
+    "slug": "binomial-y-normal",
+    "titulo": "Distribuciones binomial y normal",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones"
+    ],
+    "cards": 11
+   }
+  ],
+  "examenes": [
+   {
+    "titulo": "Examen modelo 1",
+    "file": "examenes/examen-modelo-1.pdf",
+    "solutions": "examenes/examen-modelo-1-soluciones.pdf"
+   }
+  ]
+ }
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Alba Pintado Rodrigo">
+  <title>Flashcards · A Little Bit Of…</title>
+  <link rel="icon" href="../assets/images/logo.svg?v=20261030a" type="image/svg+xml">
+  <link rel="icon" href="../assets/images/favicon.png?v=20261030a" type="image/png">
+  <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png?v=20261030a">
+  <meta name="theme-color" content="#1c1a47">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Outfit:wght@400;500;600;700&family=Homemade+Apple&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css?v=20261030a">
+  <!-- KaTeX: formulas written as $...$ in maths and physics cards -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+  <main id="main" class="wrap"></main>
+  <script src="../assets/js/site.js?v=20261030a"></script>
+  <script>
+    /* pages/flashcards.html?l=2bach&s=qui&t=6   (t = topic number, or "all") */
+    Site.ready().then(function (S) {
+      var esc = Site.esc, tx = Site.tx, es = Site.lang === "es", main = document.getElementById("main");
+      var q = new URLSearchParams(location.search), level = q.get("l") || "", subj = q.get("s") || "", topic = q.get("t") || "all";
+      var L = es
+        ? { back: "Volver a Clases", all: "Todos los temas", tema: "Tema", flip: "Toca la tarjeta o pulsa espacio para darle la vuelta",
+            again: "Repasar", know: "Me la sé", prev: "Anterior", shuffle: "Barajar", only: "Solo las que me falta repasar", reset: "Empezar de nuevo",
+            card: "Tarjeta", of: "de", q: "Pregunta", a: "Respuesta", pdf: "Imprimir en PDF", none: "No hay flashcards para este tema todavía.",
+            done: "¡Ronda terminada!", score: function (k, n) { return "Te sabes " + k + " de " + n + " tarjetas."; },
+            retry: "Repasar las que fallé", known: "sabidas" }
+        : { back: "Back to Tutoring", all: "All topics", tema: "Topic", flip: "Tap the card or press space to flip it",
+            again: "Review again", know: "I know it", prev: "Previous", shuffle: "Shuffle", only: "Only cards left to review", reset: "Start again",
+            card: "Card", of: "of", q: "Question", a: "Answer", pdf: "Print as PDF", none: "There are no flashcards for this topic yet.",
+            done: "Round finished!", score: function (k, n) { return "You know " + k + " of " + n + " cards."; },
+            retry: "Review the ones I missed", known: "known" };
+
+      var sub = (S.tutoring.subjects || {})[subj], lv = (S.tutoring.levels || []).find(function (x) { return x.folder === level; });
+      var TM = ((S.temario || {})[level] || {})[subj];
+      var backHref = Site.pageUrl("tutoring") + "#" + level + "/" + subj;
+      document.title = "Flashcards · " + (sub ? tx(sub) : "") + " · A Little Bit Of…";
+
+      function store(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem(k) || "null"); localStorage.setItem(k, JSON.stringify(v)); } catch (e) { return null; } }
+
+      var s = document.createElement("script");
+      s.src = Site.url("content/tutoring/temario/cards-" + level + "-" + subj + ".js");
+      s.onload = start; s.onerror = start;
+      document.head.appendChild(s);
+
+      function start() {
+        var data = ((S.flashcards || {})[level + "/" + subj]) || {};
+        var topics = Object.keys(data).sort(function (a, b) { return a - b; });
+        if (topic !== "all" && !data[topic]) topic = topics.length ? topics[0] : "all";
+
+        // every card gets a stable id "topic:index" so progress survives shuffling
+        function deck() {
+          var list = [];
+          (topic === "all" ? topics : [topic]).forEach(function (t) {
+            data[t].cards.forEach(function (c, i) { list.push({ id: t + ":" + i, t: t, q: c[0], a: c[1] }); });
+          });
+          return list;
+        }
+        var KEY = "fc:" + level + "/" + subj;
+        var known = store(KEY) || {};
+        var cards = deck(), pos = 0, flipped = false, onlyMissing = false;
+
+        var tema = data[topic], pdfDir = TM && topic !== "all" ? TM.temas.find(function (x) { return String(x.n) === String(topic); }) : null;
+        var pdf = pdfDir && pdfDir.files.indexOf("flashcards") >= 0
+          ? Site.url("content/tutoring/materials/" + level + "/" + TM.folder + "/" + String(pdfDir.n).padStart(2, "0") + "-" + pdfDir.slug + "/flashcards.pdf") : "";
+
+        main.innerHTML =
+          '<div class="page-head"><div><a class="back" href="' + esc(backHref) + '">' + L.back + '</a>' +
+          '<h1>Flashcards</h1><p class="lead">' + esc(sub ? tx(sub) : "") + (lv ? ' · ' + esc(lv.name) : '') + '</p></div>' +
+          '<img src="' + esc(Site.url("assets/icons/tutoring.png")) + '" alt=""></div>' +
+          '<div class="fc-wrap">' +
+            '<div class="fc-top">' +
+              '<label class="sr-only" for="fc-topic">' + L.tema + '</label>' +
+              '<select id="fc-topic">' + (topics.length > 1 ? '<option value="all">' + L.all + '</option>' : '') +
+                topics.map(function (t) { return '<option value="' + t + '"' + (t === topic ? ' selected' : '') + '>' + L.tema + ' ' + t + ' · ' + esc(data[t].titulo) + '</option>'; }).join("") +
+              '</select>' +
+              (pdf ? '<a href="' + esc(pdf) + '" target="_blank" rel="noopener">' + L.pdf + '</a>' : '') +
+            '</div>' +
+            '<div class="fc-progress" aria-hidden="true"><span></span></div>' +
+            '<div id="fc-stage"></div>' +
+            '<div class="toolbar" style="justify-content:center;margin-top:18px">' +
+              '<button class="chip" type="button" id="fc-shuffle">' + L.shuffle + '</button>' +
+              '<button class="chip" type="button" id="fc-only" aria-pressed="false">' + L.only + '</button>' +
+              '<button class="chip" type="button" id="fc-reset">' + L.reset + '</button>' +
+            '</div>' +
+          '</div>';
+        if (topic === "all" && topics.length > 1) document.getElementById("fc-topic").value = "all";
+
+        var stage = document.getElementById("fc-stage"), bar = main.querySelector(".fc-progress span");
+
+        function visible() { return onlyMissing ? cards.filter(function (c) { return !known[c.id]; }) : cards; }
+
+        function draw() {
+          var list = visible();
+          var nKnown = cards.filter(function (c) { return known[c.id]; }).length;
+          bar.style.width = (cards.length ? 100 * nKnown / cards.length : 0) + "%";
+          if (!cards.length) { stage.innerHTML = '<div class="empty">' + L.none + '</div>'; return; }
+          if (pos >= list.length) {
+            stage.innerHTML = '<div class="fc-done"><h2>' + L.done + '</h2><p class="lead" style="margin:10px auto 18px">' + L.score(nKnown, cards.length) + '</p>' +
+              '<div class="fc-actions">' + (nKnown < cards.length ? '<button class="again" id="fc-retry">' + L.retry + '</button>' : '') +
+              '<button id="fc-again">' + L.reset + '</button></div></div>';
+            var r = document.getElementById("fc-retry");
+            if (r) r.onclick = function () { onlyMissing = true; document.getElementById("fc-only").setAttribute("aria-pressed", true); pos = 0; draw(); };
+            document.getElementById("fc-again").onclick = reset;
+            return;
+          }
+          var c = list[pos];
+          stage.innerHTML =
+            '<div class="fc-scene"><button class="fc-card' + (flipped ? ' flipped' : '') + '" id="fc-card" aria-live="polite" aria-label="' + (flipped ? L.a : L.q) + '">' +
+              '<span class="fc-face fc-front"><small>' + L.tema + ' ' + esc(c.t) + ' · ' + L.card + ' ' + (pos + 1) + ' ' + L.of + ' ' + list.length + (known[c.id] ? ' · ✓' : '') + '</small>' + esc(c.q) + '</span>' +
+              '<span class="fc-face fc-back"><small>' + L.a + '</small>' + esc(c.a) + '</span>' +
+            '</button></div>' +
+            '<p class="fc-hint">' + L.flip + '</p>' +
+            '<div class="fc-actions">' +
+              '<button id="fc-prev"' + (pos ? '' : ' disabled') + '>← ' + L.prev + '</button>' +
+              '<button class="again" id="fc-no">' + L.again + '</button>' +
+              '<button class="know" id="fc-yes">' + L.know + ' →</button>' +
+            '</div>';
+          if (window.renderMathInElement) renderMathInElement(stage, { delimiters: [{ left: "$", right: "$", display: false }], throwOnError: false });
+          document.getElementById("fc-card").onclick = flip;
+          document.getElementById("fc-prev").onclick = function () { if (pos) { pos--; flipped = false; draw(); } };
+          document.getElementById("fc-no").onclick = function () { mark(false); };
+          document.getElementById("fc-yes").onclick = function () { mark(true); };
+        }
+        function flip() { flipped = !flipped; var el = document.getElementById("fc-card"); if (el) el.classList.toggle("flipped", flipped); }
+        function mark(ok) {
+          var c = visible()[pos]; if (!c) return;
+          if (ok) known[c.id] = 1; else delete known[c.id];
+          store(KEY, known);
+          if (!(onlyMissing && ok)) pos++;      // in "only missing" mode the list shrinks instead
+          flipped = false; draw();
+        }
+        function reset() {
+          cards.forEach(function (c) { delete known[c.id]; }); store(KEY, known);
+          onlyMissing = false; document.getElementById("fc-only").setAttribute("aria-pressed", false); pos = 0; flipped = false; draw();
+        }
+        document.getElementById("fc-topic").onchange = function (e) {
+          var u = new URL(location.href); u.searchParams.set("t", e.target.value); location.href = u.toString();
+        };
+        document.getElementById("fc-shuffle").onclick = function () {
+          for (var i = cards.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var tmp = cards[i]; cards[i] = cards[j]; cards[j] = tmp; }
+          pos = 0; flipped = false; draw();
+        };
+        document.getElementById("fc-only").onclick = function (e) {
+          onlyMissing = !onlyMissing; e.currentTarget.setAttribute("aria-pressed", onlyMissing); pos = 0; flipped = false; draw();
+        };
+        document.getElementById("fc-reset").onclick = reset;
+        document.addEventListener("keydown", function (e) {
+          if (/input|select|textarea|button|a/i.test(e.target.tagName) && (e.key === " " || e.key === "Enter")) return;
+          if (/input|select|textarea/i.test(e.target.tagName) || document.querySelector("dialog[open]")) return;
+          if (e.key === " " || e.key === "Enter") { if (document.getElementById("fc-card")) { e.preventDefault(); flip(); } }
+          else if (e.key === "ArrowRight" || e.key === "2") mark(true);
+          else if (e.key === "1") mark(false);
+          else if (e.key === "ArrowLeft" && pos) { pos--; flipped = false; draw(); }
+        });
+        draw();
+      }
+    });
+  </script>
+</body>
+</html>

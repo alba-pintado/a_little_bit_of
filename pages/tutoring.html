@@ -6,18 +6,18 @@
   <meta name="author" content="Alba Pintado Rodrigo">
   <title>Tutoring · A Little Bit Of…</title>
   <meta name="description" content="Classes in maths, physics, chemistry and biology from 1º ESO to 2º Bachillerato, with high-level exercises and model exams to download.">
-  <link rel="icon" href="../assets/images/logo.svg?v=20261027c" type="image/svg+xml">
-  <link rel="icon" href="../assets/images/favicon.png?v=20261027c" type="image/png">
-  <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png?v=20261027c">
+  <link rel="icon" href="../assets/images/logo.svg?v=20261030a" type="image/svg+xml">
+  <link rel="icon" href="../assets/images/favicon.png?v=20261030a" type="image/png">
+  <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png?v=20261030a">
   <meta name="theme-color" content="#1c1a47">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Outfit:wght@400;500;600;700&family=Homemade+Apple&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/style.css?v=20261027c">
+  <link rel="stylesheet" href="../assets/css/style.css?v=20261030a">
 </head>
 <body>
   <main id="main" class="wrap"></main>
-  <script src="../assets/js/site.js?v=20261027c"></script>
+  <script src="../assets/js/site.js?v=20261030a"></script>
   <script>
     Site.ready().then(function (S) {
       var esc = Site.esc, tx = Site.tx, f = Site.f, es = Site.lang === "es";
@@ -92,44 +92,119 @@
         }).join("") + '</ul>';
       }
 
+      /* One tab per level; the chosen level is kept in the address (tutoring.html#2bach) */
+      var current = location.hash.slice(1).split("/")[0], currentSubject = location.hash.slice(1).split("/")[1];
+      if (!T.levels.some(function (lv) { return lv.folder === current; })) current = T.levels[0].folder;
+
+
+      /* ---- courses without a temario yet: one card per subject ---- */
+      function websFor(sub, lv) {
+        return (sub.websites || []).concat(T.levelWebsites || []).filter(function (w) { return !w.levels || w.levels.indexOf(lv.folder) >= 0; });
+      }
+      function legacyCard(lv, k, idx) {
+        var sub = T.subjects[k], m = (idx[lv.folder] || {})[k] || {};
+        return '<article class="subject-card" data-subject="' + k + '"><h2>' + esc(tx(sub)) + '</h2>' +
+          '<div class="group"><h4>' + L.ex + '</h4>' + fileList(m.exercises) +
+          '<h4>' + L.exam + '</h4>' + fileList(m.exams) + webList(websFor(sub, lv)) + '</div></article>';
+      }
+      function legacyView(lv, idx) {
+        return '<div class="subject-grid">' + Object.keys(T.subjects).map(function (k) { return legacyCard(lv, k, idx); }).join("") + '</div>';
+      }
+
+      /* ---- courses with a temario: subject tabs, then the topics in order ---- */
+      var LT = es
+        ? { apuntes: "Apuntes", resumen: "Resumen", fc: "Flashcards", fcpdf: "Flashcards PDF", ej: "Ejercicios", sol: "Soluciones",
+            tema: "Tema", soon: "En preparación", exam: "Examen modelo", examSol: "Soluciones", cards: " tarjetas", temas: " temas", tema1: " tema" }
+        : { apuntes: "Notes", resumen: "One-page summary", fc: "Flashcards", fcpdf: "Flashcards PDF", ej: "Exercises", sol: "Solutions",
+            tema: "Topic", soon: "Coming soon", exam: "Model exam", examSol: "Solutions", cards: " cards", temas: " topics", tema1: " topic" };
+      function temarioView(lv, TM, idx) {
+        var keys = Object.keys(T.subjects);
+        var tabs = '<div class="toolbar subject-tabs" role="tablist">' + keys.map(function (k) {
+          var n = TM[k] ? TM[k].temas.length : 0;
+          return '<button class="chip" type="button" role="tab" data-level="' + lv.folder + '" data-subject="' + k + '" aria-pressed="false">' +
+            esc(tx(T.subjects[k])) + (n ? ' <span class="n">' + n + (n === 1 ? LT.tema1 : LT.temas) + '</span>' : '') + '</button>';
+        }).join("") + '</div>';
+        var panels = keys.map(function (k) {
+          var d = TM[k], sub = T.subjects[k];
+          if (!d) return '<div class="subject-panel" data-level="' + lv.folder + '" data-subject="' + k + '">' + legacyCard(lv, k, idx) + '</div>';
+          var base = "content/tutoring/materials/" + lv.folder + "/" + d.folder + "/";
+          var list = '<ol class="temas">' + d.temas.map(function (t) {
+            var dir = base + String(t.n).padStart(2, "0") + "-" + t.slug + "/", has = function (f) { return t.files.indexOf(f) >= 0; };
+            var btn = function (f, label, cls) {
+              return has(f) ? '<a class="mat ' + (cls || "") + '" href="' + esc(Site.url(dir + f + ".pdf")) + '" target="_blank" rel="noopener">' + label + '</a>' : "";
+            };
+            var mats = t.files.length
+              ? btn("apuntes", LT.apuntes, "m-apuntes") + btn("resumen", LT.resumen, "m-resumen") +
+                (t.cards ? '<a class="mat m-cards" href="' + esc(Site.url("pages/flashcards.html")) + '?l=' + lv.folder + '&s=' + k + '&t=' + t.n + '">' + LT.fc + ' <span class="n">' + t.cards + '</span></a>' : "") +
+                btn("flashcards", LT.fcpdf, "m-cardspdf") + btn("ejercicios", LT.ej, "m-ej") + btn("ejercicios-soluciones", LT.sol, "m-sol")
+              : '<span class="soon">' + LT.soon + '</span>';
+            return '<li class="tema" id="' + lv.folder + '-' + k + '-' + t.n + '"><span class="tn">' + t.n + '</span><div><h3>' + esc(t.titulo) + '</h3><div class="mats">' + mats + '</div></div></li>';
+          }).join("") + '</ol>';
+          var exams = (d.examenes || []).map(function (e) {
+            return '<li><a class="pdf" href="' + esc(Site.url(base + e.file)) + '" target="_blank" rel="noopener">' + LT.exam + '</a>' +
+              (e.solutions ? ' <a class="sol" href="' + esc(Site.url(base + e.solutions)) + '" target="_blank" rel="noopener">' + LT.examSol + '</a>' : '') + '</li>';
+          }).join("");
+          var webs = websFor(sub, lv);
+          return '<div class="subject-panel" data-level="' + lv.folder + '" data-subject="' + k + '">' + list +
+            '<div class="temario-extra">' +
+              (exams ? '<div class="subject-card" data-subject="' + k + '"><h2>' + LT.exam + '</h2><div class="group"><ul>' + exams + '</ul></div></div>' : '') +
+              (webs.length ? '<div class="subject-card" data-subject="' + k + '"><div class="group">' + webList(webs) + '</div></div>' : '') +
+            '</div></div>';
+        }).join("");
+        return tabs + panels;
+      }
+      function showSubject(level, k) {
+        document.querySelectorAll('.subject-panel[data-level="' + level + '"]').forEach(function (p) { p.hidden = p.dataset.subject !== k; });
+        document.querySelectorAll('.subject-tabs [data-level="' + level + '"]').forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.subject === k); });
+      }
+
       function render(paths) {
         var idx = buildIndex(paths);
         var note = tx(T.note);
         document.getElementById("main").innerHTML = Site.pageHead("tutoring", null, esc(tx(T.intro))) +
           (note ? '<p class="callout">' + esc(note) + (C.email ? ' <a href="mailto:' + esc(C.email) + '">' + L.write + '</a>.' : '') + '</p>' : '') +
           (paths === null ? '<p class="callout">' + L.offline + '</p>' : '') +
-          '<div class="toolbar subject-filter">' +
-            '<button class="chip" type="button" aria-pressed="true" data-subject="">' + L.all + '</button>' +
-            Object.keys(T.subjects).map(function (k) {
-              return '<button class="chip" type="button" aria-pressed="false" data-subject="' + k + '">' + esc(tx(T.subjects[k])) + '</button>';
-            }).join("") +
-          '</div>' +
-          '<div class="levels">' + T.levels.map(function (lv) {
-            return '<article class="level"><h3>' + esc(lv.name) + '</h3><ul class="subjects">' +
-              Object.keys(T.subjects).map(function (k) {
-                var sub = T.subjects[k], m = (idx[lv.folder] || {})[k] || {};
-                var n = Object.keys(m.exercises || {}).length + Object.keys(m.exams || {}).length;
-                var webs = (sub.websites || []).concat(T.levelWebsites || []).filter(function (w) { return !w.levels || w.levels.indexOf(lv.folder) >= 0; });
-                return '<li data-subject="' + k + '"><details><summary>' + esc(tx(sub)) +
-                  '<span class="count">' + (n ? n + L.pdfs : L.soon) + '</span></summary>' +
-                  '<div class="group"><h4>' + L.ex + '</h4>' + fileList(m.exercises) +
-                  '<h4>' + L.exam + '</h4>' + fileList(m.exams) + webList(webs) + '</div>' +
-                  '</details></li>';
-              }).join("") + '</ul></article>';
-          }).join("") + '</div>';
+          '<div class="tabs level-tabs" role="tablist">' + T.levels.map(function (lv) {
+            var TMl = (S.temario || {})[lv.folder];
+            var total = TMl ? Object.keys(TMl).reduce(function (sum, k) { return sum + TMl[k].temas.filter(function (t) { return t.files.length; }).length; }, 0)
+              : Object.keys(T.subjects).reduce(function (sum, k) {
+              var m = (idx[lv.folder] || {})[k] || {};
+              return sum + Object.keys(m.exercises || {}).length + Object.keys(m.exams || {}).length;
+            }, 0);
+            return '<button role="tab" id="tab-' + lv.folder + '" aria-controls="panel-' + lv.folder + '" data-level="' + lv.folder + '">' + esc(lv.name) +
+              (total ? ' <span class="n">' + total + '</span>' : '') + '</button>';
+          }).join("") + '</div>' +
+          T.levels.map(function (lv) {
+            var TM = (S.temario || {})[lv.folder];
+            return '<section role="tabpanel" class="level-panel" id="panel-' + lv.folder + '" aria-labelledby="tab-' + lv.folder + '">' +
+              (TM ? temarioView(lv, TM, idx) : legacyView(lv, idx)) + '</section>';
+          }).join("");
 
-        var chips = document.querySelectorAll(".subject-filter .chip");
-        chips.forEach(function (b) {
-          b.addEventListener("click", function () {
-            var k = b.dataset.subject;
-            chips.forEach(function (c) { c.setAttribute("aria-pressed", c === b); });
-            document.querySelectorAll(".subjects > li").forEach(function (li) {
-              li.hidden = !!k && li.dataset.subject !== k;
-              if (k && !li.hidden) li.querySelector("details").open = true;
-            });
+        function show(level) {
+          current = level;
+          T.levels.forEach(function (lv) {
+            document.getElementById("panel-" + lv.folder).hidden = lv.folder !== level;
+            document.getElementById("tab-" + lv.folder).setAttribute("aria-selected", lv.folder === level);
           });
+        }
+        document.querySelectorAll(".level-tabs [data-level]").forEach(function (b) {
+          b.addEventListener("click", function () { history.replaceState(null, "", "#" + b.dataset.level); show(b.dataset.level); });
         });
+        document.querySelectorAll(".subject-tabs [data-subject]").forEach(function (b) {
+          b.addEventListener("click", function () { history.replaceState(null, "", "#" + b.dataset.level + "/" + b.dataset.subject); showSubject(b.dataset.level, b.dataset.subject); });
+        });
+        T.levels.forEach(function (lv) {
+          var TM = (S.temario || {})[lv.folder]; if (!TM) return;
+          var first = Object.keys(T.subjects).filter(function (k) { return TM[k]; })[0] || Object.keys(T.subjects)[0];
+          showSubject(lv.folder, lv.folder === current && currentSubject ? currentSubject : first);
+        });
+        show(current);
       }
+      window.addEventListener("hashchange", function () {
+        var h = location.hash.slice(1).split("/");
+        if (document.getElementById("panel-" + h[0])) document.getElementById("tab-" + h[0]).click();
+        if (h[1]) showSubject(h[0], h[1]);
+      });
 
       render([]);                       // draw straight away…
       loadRepoPdfs().then(render);      // …then fill in the PDFs from the repo

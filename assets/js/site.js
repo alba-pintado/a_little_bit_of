@@ -18,14 +18,15 @@
   const pageUrl = (key) => (key === "index" ? url("index.html") : url(`pages/${key}.html`));
 
   /* Change this when you update the site, so browsers download the new files */
-  const VERSION = "20261027c";
+  const VERSION = "20261030a";
 
   const DATA_FILES = [
     "content/config.js",
     "content/science/papers.js", "content/science/tutorials.js", "content/science/courses.js",
     "content/tutoring/tutoring.js",
     "content/lifestyle/lifestyle.js", "content/books/books.js", "content/movies/movies.js",
-    "content/travel/travel.js", "content/music/music.js"
+    "content/travel/travel.js", "content/music/music.js",
+    "content/tutoring/temario/temario.js"
   ].map((p) => `${url(p)}?v=${VERSION}`);
 
   /* Which section each kind of content belongs to */
@@ -264,7 +265,7 @@
     const S = window.SITE, C = S.config || {};
     const here = (location.pathname.split("/").pop() || "index.html").replace(".html", "") || "index";
     const params = new URLSearchParams(location.search);
-    const activeKey = here === "post" && COLLECTIONS[params.get("c")] ? COLLECTIONS[params.get("c")].section : here;
+    const activeKey = here === "flashcards" ? "tutoring" : here === "post" && COLLECTIONS[params.get("c")] ? COLLECTIONS[params.get("c")].section : here;
 
     const header = document.createElement("header");
     header.className = "site-header";
