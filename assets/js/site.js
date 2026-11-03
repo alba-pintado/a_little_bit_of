@@ -18,7 +18,7 @@
   const pageUrl = (key) => (key === "index" ? url("index.html") : url(`pages/${key}.html`));
 
   /* Change this when you update the site, so browsers download the new files */
-  const VERSION = "20261103a";
+  const VERSION = "20261104a";
 
   const DATA_FILES = [
     "content/config.js",

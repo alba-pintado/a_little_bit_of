@@ -1,0 +1,158 @@
+{
+ "fq": {
+  "folder": "fisica-y-quimica",
+  "temas": [
+   {
+    "n": 1,
+    "slug": "la-ciencia-investiga",
+    "titulo": "La ciencia investiga",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 12
+   },
+   {
+    "n": 2,
+    "slug": "propiedades-de-la-materia",
+    "titulo": "Propiedades de la materia",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 11
+   },
+   {
+    "n": 3,
+    "slug": "estados-de-la-materia",
+    "titulo": "Teoría cinética y estados de la materia",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 11
+   },
+   {
+    "n": 4,
+    "slug": "mezclas-y-disoluciones",
+    "titulo": "Mezclas y disoluciones",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 11
+   },
+   {
+    "n": 5,
+    "slug": "reacciones-quimicas",
+    "titulo": "Las reacciones químicas",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 11
+   },
+   {
+    "n": 6,
+    "slug": "el-movimiento",
+    "titulo": "El movimiento",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 11
+   },
+   {
+    "n": 7,
+    "slug": "las-fuerzas",
+    "titulo": "Las fuerzas",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 12
+   },
+   {
+    "n": 8,
+    "slug": "la-energia",
+    "titulo": "La energía",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 12
+   },
+   {
+    "n": 9,
+    "slug": "energia-termica",
+    "titulo": "La energía térmica y el calor",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 11
+   },
+   {
+    "n": 10,
+    "slug": "uso-de-la-energia",
+    "titulo": "El uso de la energía y el cambio climático",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   }
+  ],
+  "examenes": []
+ }
+}
