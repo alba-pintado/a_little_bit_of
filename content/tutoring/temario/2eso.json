@@ -1,0 +1,314 @@
+{
+ "fq": {
+  "folder": "fisica-y-quimica",
+  "temas": [
+   {
+    "n": 1,
+    "slug": "la-ciencia-investiga",
+    "titulo": "La ciencia investiga",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 12
+   },
+   {
+    "n": 2,
+    "slug": "propiedades-de-la-materia",
+    "titulo": "Propiedades de la materia",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 11
+   },
+   {
+    "n": 3,
+    "slug": "estados-de-la-materia",
+    "titulo": "Teoría cinética y estados de la materia",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 11
+   },
+   {
+    "n": 4,
+    "slug": "mezclas-y-disoluciones",
+    "titulo": "Mezclas y disoluciones",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 11
+   },
+   {
+    "n": 5,
+    "slug": "reacciones-quimicas",
+    "titulo": "Las reacciones químicas",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 11
+   },
+   {
+    "n": 6,
+    "slug": "el-movimiento",
+    "titulo": "El movimiento",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 11
+   },
+   {
+    "n": 7,
+    "slug": "las-fuerzas",
+    "titulo": "Las fuerzas",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 12
+   },
+   {
+    "n": 8,
+    "slug": "la-energia",
+    "titulo": "La energía",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 12
+   },
+   {
+    "n": 9,
+    "slug": "energia-termica",
+    "titulo": "La energía térmica y el calor",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 11
+   },
+   {
+    "n": 10,
+    "slug": "uso-de-la-energia",
+    "titulo": "El uso de la energía y el cambio climático",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   }
+  ],
+  "examenes": []
+ },
+ "ing": {
+  "folder": "ingles",
+  "temas": [
+   {
+    "n": 1,
+    "slug": "present-simple-y-continuous",
+    "titulo": "Present simple y present continuous",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 11
+   },
+   {
+    "n": 2,
+    "slug": "past-simple",
+    "titulo": "Past simple (was/were, regulares e irregulares)",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 11
+   },
+   {
+    "n": 3,
+    "slug": "past-continuous",
+    "titulo": "Past continuous y past simple (when / while)",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 4,
+    "slug": "comparativos-y-superlativos",
+    "titulo": "Comparativos y superlativos",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 11
+   },
+   {
+    "n": 5,
+    "slug": "contables-e-incontables",
+    "titulo": "Contables e incontables: some, any, much, many",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 6,
+    "slug": "el-futuro",
+    "titulo": "El futuro: will, be going to y present continuous",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 7,
+    "slug": "present-perfect",
+    "titulo": "Present perfect",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 11
+   },
+   {
+    "n": 8,
+    "slug": "modal-verbs",
+    "titulo": "Modal verbs: can, could, must, have to, should",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 9,
+    "slug": "condicionales",
+    "titulo": "Zero y first conditional",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 10,
+    "slug": "relative-pronouns",
+    "titulo": "Relative pronouns: who, which, that, where, whose",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   }
+  ],
+  "examenes": []
+ }
+}
