@@ -55,7 +55,7 @@ SITE.tutoring = {
       ]
     },
     fis: {
-      en: "Physics", es: "Física", folder: "fisica", levels: ["3eso", "4eso", "1bach", "2bach"],
+      en: "Physics", es: "Física", folder: "fisica", levels: ["4eso", "1bach", "2bach"],
       websites: [
         { title: "Fisicalab", url: "https://www.fisicalab.com",
           note: "Physics theory by level, worked problems and formulas.",
@@ -68,7 +68,7 @@ SITE.tutoring = {
       ]
     },
     qui: {
-      en: "Chemistry", es: "Química", folder: "quimica", levels: ["3eso", "4eso", "1bach", "2bach"],
+      en: "Chemistry", es: "Química", folder: "quimica", levels: ["4eso", "1bach", "2bach"],
       websites: [
         { title: "Ptable", url: "https://ptable.com",
           note: "Interactive periodic table: properties, orbitals, isotopes.",
@@ -81,7 +81,7 @@ SITE.tutoring = {
       ]
     },
     fq: {
-      en: "Physics & Chemistry", es: "Física y Química", folder: "fisica-y-quimica", levels: ["2eso"],
+      en: "Physics & Chemistry", es: "Física y Química", folder: "fisica-y-quimica", levels: ["2eso", "3eso"],
       websites: [
         { title: "Fisicalab", url: "https://www.fisicalab.com",
           note: "Theory and worked problems by level.", note_es: "Teoría y problemas resueltos por niveles." },
@@ -91,7 +91,7 @@ SITE.tutoring = {
       ]
     },
     byg: {
-      en: "Biology & Geology", es: "Biología y Geología", folder: "biologia-y-geologia", levels: ["1eso"],
+      en: "Biology & Geology", es: "Biología y Geología", folder: "biologia-y-geologia", levels: ["1eso", "3eso"],
       websites: [
         { title: "Khan Academy", url: "https://es.khanacademy.org/science/biology",
           note: "Videos on cells, the human body, genetics and ecology.",
@@ -104,7 +104,7 @@ SITE.tutoring = {
       ]
     },
     bio: {
-      en: "Biology", es: "Biología", folder: "biologia", levels: ["3eso", "4eso", "1bach", "2bach"],
+      en: "Biology", es: "Biología", folder: "biologia", levels: ["4eso", "1bach", "2bach"],
       websites: [
         { title: "Khan Academy", url: "https://es.khanacademy.org/science/biology",
           note: "Videos on cells, genetics, evolution and more.",

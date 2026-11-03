@@ -1,0 +1,440 @@
+{
+ "mat": {
+  "folder": "matematicas",
+  "temas": [
+   {
+    "n": 1,
+    "slug": "numeros-racionales",
+    "titulo": "Números racionales",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 2,
+    "slug": "potencias-y-radicales",
+    "titulo": "Potencias y radicales",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 3,
+    "slug": "sucesiones-y-progresiones",
+    "titulo": "Sucesiones y progresiones",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 4,
+    "slug": "polinomios",
+    "titulo": "Polinomios",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 5,
+    "slug": "ecuaciones",
+    "titulo": "Ecuaciones",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 6,
+    "slug": "sistemas",
+    "titulo": "Sistemas de ecuaciones",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 7,
+    "slug": "funciones",
+    "titulo": "Funciones y sus características",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 8,
+    "slug": "funciones-lineales-y-cuadraticas",
+    "titulo": "Funciones lineales y cuadráticas",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 9,
+    "slug": "geometria-plana",
+    "titulo": "Geometría plana",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 10,
+    "slug": "movimientos-y-cuerpos",
+    "titulo": "Movimientos en el plano y cuerpos geométricos",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 11,
+    "slug": "estadistica-y-probabilidad",
+    "titulo": "Estadística y probabilidad",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   }
+  ],
+  "examenes": []
+ },
+ "fq": {
+  "folder": "fisica-y-quimica",
+  "temas": [
+   {
+    "n": 1,
+    "slug": "actividad-cientifica",
+    "titulo": "La actividad científica y la medida",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 2,
+    "slug": "gases-y-teoria-cinetica",
+    "titulo": "La materia: estados y leyes de los gases",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 3,
+    "slug": "disoluciones",
+    "titulo": "Sustancias puras, mezclas y disoluciones",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 4,
+    "slug": "el-atomo",
+    "titulo": "El átomo",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 5,
+    "slug": "elementos-y-compuestos",
+    "titulo": "Elementos, compuestos y sistema periódico",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 6,
+    "slug": "reacciones-quimicas",
+    "titulo": "Las reacciones químicas",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 7,
+    "slug": "fuerzas-y-movimiento",
+    "titulo": "Fuerzas y movimiento",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 8,
+    "slug": "electricidad",
+    "titulo": "Electricidad y energía",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   }
+  ],
+  "examenes": []
+ },
+ "byg": {
+  "folder": "biologia-y-geologia",
+  "temas": [
+   {
+    "n": 1,
+    "slug": "organizacion-del-cuerpo-humano",
+    "titulo": "La organización del cuerpo humano",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 2,
+    "slug": "alimentacion-y-nutricion",
+    "titulo": "Alimentación y nutrición",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 3,
+    "slug": "aparato-digestivo",
+    "titulo": "El aparato digestivo",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 4,
+    "slug": "respiratorio-circulatorio-excretor",
+    "titulo": "Aparatos respiratorio, circulatorio y excretor",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 5,
+    "slug": "sistema-nervioso-y-endocrino",
+    "titulo": "Los sistemas nervioso y endocrino",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 6,
+    "slug": "receptores-y-locomotor",
+    "titulo": "Receptores y aparato locomotor",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 7,
+    "slug": "reproduccion",
+    "titulo": "La reproducción humana",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 8,
+    "slug": "salud-y-enfermedad",
+    "titulo": "Salud y enfermedad",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 9,
+    "slug": "relieve-y-agentes-externos",
+    "titulo": "El relieve y los agentes geológicos externos",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   }
+  ],
+  "examenes": []
+ }
+}
