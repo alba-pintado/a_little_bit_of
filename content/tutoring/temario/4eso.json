@@ -1,0 +1,446 @@
+{
+ "mat": {
+  "folder": "matematicas",
+  "temas": [
+   {
+    "n": 1,
+    "slug": "numeros-reales",
+    "titulo": "Números reales",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 2,
+    "slug": "polinomios-y-fracciones-algebraicas",
+    "titulo": "Polinomios y fracciones algebraicas",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 3,
+    "slug": "ecuaciones-e-inecuaciones",
+    "titulo": "Ecuaciones e inecuaciones",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 4,
+    "slug": "sistemas",
+    "titulo": "Sistemas de ecuaciones",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 5,
+    "slug": "funciones",
+    "titulo": "Funciones: características",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 6,
+    "slug": "funciones-elementales",
+    "titulo": "Funciones elementales",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 7,
+    "slug": "trigonometria",
+    "titulo": "Trigonometría",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 8,
+    "slug": "geometria-analitica",
+    "titulo": "Geometría analítica",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 9,
+    "slug": "combinatoria",
+    "titulo": "Combinatoria",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 10,
+    "slug": "probabilidad",
+    "titulo": "Probabilidad",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 11,
+    "slug": "estadistica",
+    "titulo": "Estadística",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   }
+  ],
+  "examenes": [
+   {
+    "titulo": "Examen modelo 1",
+    "file": "examenes/examen-modelo-1.pdf",
+    "solutions": "examenes/examen-modelo-1-soluciones.pdf"
+   }
+  ]
+ },
+ "fq": {
+  "folder": "fisica-y-quimica",
+  "temas": [
+   {
+    "n": 1,
+    "slug": "magnitudes-y-medida",
+    "titulo": "La actividad científica: magnitudes y errores",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 2,
+    "slug": "atomo-y-sistema-periodico",
+    "titulo": "El átomo y el sistema periódico",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 3,
+    "slug": "enlace-quimico",
+    "titulo": "El enlace químico y las fuerzas intermoleculares",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 4,
+    "slug": "formulacion-inorganica",
+    "titulo": "Formulación y nomenclatura inorgánica",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 5,
+    "slug": "reacciones-y-mol",
+    "titulo": "Reacciones químicas: mol y estequiometría",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 6,
+    "slug": "quimica-del-carbono",
+    "titulo": "La química del carbono",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 7,
+    "slug": "cinematica",
+    "titulo": "El movimiento: cinemática",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 8,
+    "slug": "fuerzas-presion-gravitacion",
+    "titulo": "Fuerzas, presión y gravitación",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 9,
+    "slug": "energia-trabajo-calor",
+    "titulo": "Energía, trabajo y calor",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   }
+  ],
+  "examenes": []
+ },
+ "byg": {
+  "folder": "biologia-y-geologia",
+  "temas": [
+   {
+    "n": 1,
+    "slug": "la-celula",
+    "titulo": "La célula",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 2,
+    "slug": "division-celular",
+    "titulo": "El ciclo celular: mitosis y meiosis",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 3,
+    "slug": "genetica-mendeliana",
+    "titulo": "La herencia genética: Mendel",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 4,
+    "slug": "genetica-molecular",
+    "titulo": "Genética molecular y biotecnología",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 5,
+    "slug": "evolucion",
+    "titulo": "El origen y la evolución de la vida",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 6,
+    "slug": "ecosistemas",
+    "titulo": "Dinámica de los ecosistemas",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 7,
+    "slug": "tectonica-de-placas",
+    "titulo": "La tectónica de placas",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   },
+   {
+    "n": 8,
+    "slug": "historia-de-la-tierra",
+    "titulo": "La historia de la Tierra",
+    "files": [
+     "apuntes",
+     "resumen",
+     "flashcards",
+     "ejercicios",
+     "ejercicios-soluciones",
+     "examen",
+     "examen-soluciones"
+    ],
+    "cards": 10
+   }
+  ],
+  "examenes": []
+ }
+}
